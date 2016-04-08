@@ -33,7 +33,7 @@
 	border:1px solid black;
 }
 .section{
-	padding:24px;
+	padding:12px;
 }
 .typed-text{
 	margin-top: -24px;
@@ -50,7 +50,7 @@
 	height: 100%;
 	position: relative;
 }
-#one{
+.main{
 	background-size: cover;
 	background-image: url('../img/bg.jpg')
 }
@@ -99,7 +99,19 @@ nav.navbar-default{
 .navbar-right li{
 	margin-right: 30px;
 }
+.about{
+	background-color: #efefef;
+}
+.heading{
+	font-size: 36px;
+	color:#777;
+	margin-top: 96px;
+}
+hr{
+	width: 30px;
+	border: 2px solid #777;
 
+}
 
 
 

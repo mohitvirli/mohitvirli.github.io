@@ -44,18 +44,19 @@
         <ul class="nav navbar-nav">
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="" class='small-text-cap'>About</a></li>
-          <li><a href="" class='small-text-cap'>Contact</a></li>
-          <li>
+          <li><a href="#about" class='small-text-cap'>about</a></li>
+          <li><a href="#work" class='small-text-cap'>work</a></li>
+          <li><a href="#contact" class='small-text-cap'>Contact</a></li>
+          <!-- <li>
             <a href='#' class='btn small-text-cap view-resume'>View Resume</a>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>
   </nav>
 
 <div id="fullpage">
-    <div class="section" id='one'>
+    <div class="section main" data-anchor='main' >
       <div class='container p-t-b-60'>
         <div class='row' style='height:100%'>
           <div class='col-sm-8 v-a-c'>
@@ -69,9 +70,14 @@
       </div>
 
     </div>
-    <div class="section" style='background-color:blue'>Some section</div>
-    <div class="section" style='background-color:green'>Some section</div>
-    <div class="section" style='background-color:orange'>Some section</div>
+    <div class="section about" data-anchor='about' >
+      <div class="container">
+        <div class='text-center heading'>ABOUT<hr/></div>
+
+      </div>
+    </div>
+    <div class="section work" data-anchor='work' >Some section</div>
+    <div class="section contact" data-anchor='contact' >Some section</div>
 </div>
 
 <!-- MAIN CONTENT END -->
