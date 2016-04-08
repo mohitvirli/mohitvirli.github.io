@@ -1,0 +1,108 @@
+
+
+/* ==========================================================================
+   custom styles
+   ========================================================================== */
+/*typed effect*/
+
+.typed-cursor{
+    opacity: 1;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
+}
+@keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-moz-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+
+/*custom*/
+#fp-nav ul li a.active span, .fp-slidesNav ul li a.active span, #fp-nav ul li:hover a.active span, .fp-slidesNav ul li:hover a.active span{
+	background-color: transparent;
+	border:1px solid black;
+}
+.section{
+	padding:24px;
+}
+.typed-text{
+	margin-top: -24px;
+	font-size: 36px;
+	font-family: 'Segoe UI';
+	font-weight: 100;
+	color:white;
+}
+.fp-tableCell{
+	vertical-align: top;
+}
+.p-t-b-60{
+	/*padding:60px 30px;*/
+	height: 100%;
+	position: relative;
+}
+#one{
+	background-size: cover;
+	background-image: url('../img/bg.jpg')
+}
+strong{
+	font-weight: 500;
+}
+.hi{
+	margin-bottom: 18px;
+	font-size: 84px;
+}
+.typed-text{
+	display: none;
+}
+nav.navbar-default{
+	background-color: transparent!important;
+	background-image: none;
+	box-shadow: none;
+	border: none;
+	padding: 36px;
+}
+.v-a-c{
+	display: flex;
+	align-items:center;
+	height: 100%;
+}
+.view-resume{
+	background-color: transparent;
+	min-width: 162px;
+	height: 48px;
+	border-radius: 800px;
+	border:2px solid #777;
+	padding:13px!important;
+	transition:all 0.3s;
+}
+.view-resume:hover{
+	border-color:transparent;
+	background-color: #333!important;
+	color:#fff!important;
+	transition:all 0.3s;
+}
+.small-text-cap{
+	text-transform: uppercase;
+	font-size: 12px;
+	font-weight: 700;
+}
+.navbar-right li{
+	margin-right: 30px;
+}
+
+
+
+
+
+
+
