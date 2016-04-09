@@ -152,14 +152,14 @@ hr{
 	margin: 0px auto;
 	margin-top:96px;
 	margin-bottom: 30px;
-	width:180px;
-	height: 180px;
+	width:150px;
+	height: 150px;
 	border-radius: 100%;
 	overflow: hidden;
 }
 .main-img{
-	width: 240px;
-	height: 240px;
+	width: 200px;
+	height: 200px;
 	margin-top: -40px;
 }
 .work-img{
@@ -205,9 +205,11 @@ hr{
 .p-r{
 	position: relative;
 }
+@media(min-width:768px ){
 .work-container{
 	padding: 60px;
 
+}
 }
 .h-100{
 	height: 100%;
