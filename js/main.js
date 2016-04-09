@@ -3,7 +3,6 @@ $(document).ready(function() {
     $('#fullpage').fullpage(
     	{
             anchors:['main','about', 'work', 'contact'],
-    		navigation:true,
             lockAnchors: false,
             scrollOverflow:true,
             slidesNavigation: true,
