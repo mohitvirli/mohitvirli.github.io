@@ -84,6 +84,7 @@ nav.navbar-default{
 	border:2px solid #777;
 	padding:13px!important;
 	transition:all 0.3s;
+	color:#777!important;
 }
 .view-resume:hover{
 	border-color:transparent;
@@ -105,16 +106,30 @@ nav.navbar-default{
 .heading{
 	font-size: 36px;
 	color:#777;
-	margin-top: 96px;
 }
 hr{
 	width: 30px;
 	border: 2px solid #777;
 
 }
-
-
-
+.about-text{
+	width: 600px;
+	margin:30px auto;
+}
+.img{
+	margin: 0px auto;
+	margin-top:96px;
+	margin-bottom: 30px;
+	width:180px;
+	height: 180px;
+	border-radius: 100%;
+	overflow: hidden;
+}
+.main-img{
+	width: 240px;
+	height: 240px;
+	margin-top: -40px;
+}
 
 
 
