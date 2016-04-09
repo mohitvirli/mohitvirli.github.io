@@ -3,6 +3,35 @@
 /* ==========================================================================
    custom styles
    ========================================================================== */
+@font-face {
+    font-family: 'Segoe UI';
+    src: url('../fonts/Segoe/segoeui.ttf');
+    font-weight: 500;
+}   
+@font-face {
+    font-family: 'Segoe UI';
+    src: url('../fonts/Segoe/segoeuisl.ttf');
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'Segoe UI';
+    src: url('../fonts/Segoe/segoeuil.ttf');
+    font-weight: 300;
+}
+@font-face {
+    font-family: 'Segoe UI';
+    src: url('../fonts/Segoe/segoeuib.ttf');
+    font-weight: 600;
+}
+@font-face {
+    font-family: 'Segoe UI';
+    src: url('../fonts/Segoe/segoeuili.ttf');
+    font-weight: 300;
+    font-style: italic;
+}
+body,html{
+	font-family: 'Segoe UI';
+}
 /*typed effect*/
 
 .typed-cursor{
@@ -101,7 +130,7 @@ nav.navbar-default{
 	margin-right: 30px;
 }
 .about{
-	background-color: #efefef;
+	background-color: #ffffff;
 }
 .heading{
 	font-size: 36px;
@@ -115,6 +144,9 @@ hr{
 .about-text{
 	width: 600px;
 	margin:30px auto;
+	line-height: 24px;
+	font-weight: 300;
+	font-size: 16px
 }
 .img{
 	margin: 0px auto;
@@ -130,6 +162,105 @@ hr{
 	height: 240px;
 	margin-top: -40px;
 }
+.work-img{
+	width:100%;
+}
+.work{
+	padding: 0px;
+}
+.work-div{
+	width: 70%;
+	height:300px;
+	margin: 0 auto;
+	overflow: hidden;
+	box-shadow: 0px 0 20px rgba(0,0,0,0.6);
+	position: relative;
+	cursor: pointer;
+}
+.pos-abs{
+	position: absolute;
+}
+.img-back{
+	background-image: url('../img/work-1.png');
+	-webkit-filter: blur(20px); /* Chrome, Safari, Opera */
+	-moz-filter:blur(20px);
+    filter: blur(20px);
+    height: 103%;
+    width: 130%;
+    opacity: 0.8;
+    background-size: cover;
+    position: relative;
+    margin:-40px;
+}
+.fp-scrollable{
+	position: relative;
+}
+.w-h{
+	width: 100%;
+	height: 100%;
+}
+.o-h{
+	overflow: hidden;
+}
+.p-r{
+	position: relative;
+}
+.work-container{
+	padding: 60px;
 
+}
+.h-100{
+	height: 100%;
+}
+.m-t-20{
+	margin-top: 20px;
+}
+.proj-head{
+	margin-top: 30px;
+	color: #777;
+	margin-right: 10px;
+}
+.proj-head:hover{
+	color:#aaa;
+	text-decoration: none;
+}
+a:hover{
+	text-decoration: none;
+}
+.proj-details{
 
+	margin:20px 0; 
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 24px;
+}
+.f-w-l{
+	font-weight: 300;
+}
+.sp-txt{
+	border-left: 2px solid #777;
+	padding-left: 20px;
+}
 
+.f-36{
+	font-size: 36px;
+}
+.overlay{
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.7);
+	display: none;
+}
+.overlay-btn{
+	color: #fff!important;
+	font-size: 36px!important;
+}
+.overlay-btn:hover{
+	color:#ddd!important;
+}
+.m-r-10{
+	margin-right: 10px;
+}
+.center{
+	margin: 0 auto;
+}

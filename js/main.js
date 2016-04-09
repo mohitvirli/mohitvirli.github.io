@@ -1,24 +1,16 @@
 $(document).ready(function() {
 
-    var firstcall=false;
     $('#fullpage').fullpage(
     	{
             anchors:['main','about', 'work', 'contact'],
     		navigation:true,
             lockAnchors: false,
             scrollOverflow:true,
-            afterLoad: function(anchorLink, index){
-                            var loadedSection = $(this);
-                            //using anchorLink
-                            if(anchorLink == 'about'){
-                                firstcall=true;
-                            }
-                        }
+            slidesNavigation: true,
+            slidesNavPosition: 'bottom',
+            loopHorizontal: true,
+            controlArrows:false,
     	});
-
-    if(firstcall){
-        console.log('first call');
-    }
 
     $(function(){
       	setTimeout(function(){
@@ -38,8 +30,6 @@ $(document).ready(function() {
     	},500);
     },300);
   	});
-    
-    particlesJS.load('particles-js', 'assets/particles.json', function() {
-        console.log('callback - particles.js config loaded');
-    });
+    $('.work-div').hover(function(){$(this).children('.overlay').fadeIn()},function(){$(this).children('.overlay').fadeOut()})
+
 });
