@@ -99,6 +99,7 @@ nav.navbar-default{
 	box-shadow: none;
 	border: none;
 	padding: 36px;
+	z-index: 10;
 }
 .v-a-c{
 	display: flex;
@@ -264,6 +265,9 @@ a:hover{
 	.work-container{
 		padding: 60px;
 	}
+	.work-details{
+	padding-left: 40px;
+}
 }
 @media(max-width: 768px){
 	.work-container{
@@ -301,4 +305,25 @@ a:hover{
 }
 .work-2{
 	background-image: url('../img/work-2.png');
+}
+#preloader  {
+	z-index: 100;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fefefe;
+    height: 100%;
+    display:flex;justify-content:center;align-items:center;
+}
+#status  {
+    
+ }
+.fp-controlArrow{
+	border: none;
+	width: auto;
+	height: auto;
+	font-size: 24px;
+	color:#333;
 }

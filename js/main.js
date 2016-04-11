@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    jQuery("#status").delay(500).fadeOut(500);
+    jQuery("#preloader").delay(1000).fadeOut("slow");
 
     $('#fullpage').fullpage(
     	{
@@ -8,7 +10,7 @@ $(document).ready(function() {
             slidesNavigation: true,
             slidesNavPosition: 'bottom',
             loopHorizontal: true,
-            controlArrows:false,
+            controlArrows:true,
     	});
 
     $(function(){
@@ -27,8 +29,16 @@ $(document).ready(function() {
             loop:true,
       	});
     	},500);
-    },300);
+    },1000);
   	});
     $('.work-div').hover(function(){$(this).children('.overlay').fadeIn()},function(){$(this).children('.overlay').fadeOut()})
-
+    $('.fp-prev').append('<i class="fa fa-angle-left fa-3x"></i>');
+    $('.fp-next').append('<i class="fa fa-angle-right fa-3x"></i>');
+    $('.work-div').click(function(e){
+        if( $(e.target).closest(".center").length > 0 ) {
+            return;
+        }
+         var win=window.open($(this).find('.behance').attr('href'),'_blank');
+         win.focus();
+    });
 });
