@@ -279,6 +279,9 @@ a:hover{
 	.img{
 		margin-top: 48px;
 	}
+	.fp-controlArrow{
+		display: none;
+	}
 }
 .navbar-collapse.in, .navbar-collapse.collapsing{
 	background-color: #fff;

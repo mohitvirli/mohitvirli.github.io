@@ -1,7 +1,7 @@
 $(document).ready(function() {
     jQuery("#status").delay(500).fadeOut(500);
     jQuery("#preloader").delay(1000).fadeOut("slow");
-
+    $('#preloader').css('height',$(window).height()+'px');
     $('#fullpage').fullpage(
     	{
             anchors:['main','about', 'work', 'contact'],
