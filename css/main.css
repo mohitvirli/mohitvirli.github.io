@@ -181,7 +181,6 @@ hr{
 	position: absolute;
 }
 .img-back{
-	background-image: url('../img/work-1.png');
 	-webkit-filter: blur(20px); /* Chrome, Safari, Opera */
 	-moz-filter:blur(20px);
     filter: blur(20px);
@@ -270,6 +269,12 @@ a:hover{
 	.work-container{
 		padding: 0;
 	}
+	.about-text{
+		width: 100%;
+	}
+	.img{
+		margin-top: 48px;
+	}
 }
 .navbar-collapse.in, .navbar-collapse.collapsing{
 	background-color: #fff;
@@ -288,4 +293,12 @@ a:hover{
 .navbar-toggle:hover{
 	background-color: transparent!important;
 }
-
+.m-0{
+	margin: 0;
+}
+.work-1{
+	background-image: url('../img/work-1.png');
+}
+.work-2{
+	background-image: url('../img/work-2.png');
+}
