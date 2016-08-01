@@ -9,7 +9,7 @@ $(document).ready(function() {
             scrollOverflow:true,
             slidesNavigation: true,
             slidesNavPosition: 'bottom',
-            loopHorizontal: true,
+            loopHorizontal: false,
             controlArrows:true,
     	});
 
@@ -19,7 +19,7 @@ $(document).ready(function() {
     	// $('.typed-text').addClass('animated fadeIn');
     	setTimeout(function(){
     		$("#element").typed({
-        	strings: ["<strong>UI/UX Designer</strong>","<strong>Frontend Developer</strong>","<strong>Graphic Designer</strong>"],
+        	strings: ["<strong>UI/UX Designer</strong>","<strong>Frontend Developer</strong>","<strong>Full Stack Designer</strong>"],
         	contentType:'html',
         	typeSpeed: 100,
         	showCursor: true,

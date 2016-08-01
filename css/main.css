@@ -174,7 +174,7 @@ hr{
 	height:300px;
 	margin: 0 auto;
 	overflow: hidden;
-	box-shadow: 10px 10px 60px rgba(0,0,0,0.4);
+	box-shadow: 0 9px 11px -5px rgba(0,0,0,.2),0 18px 28px 2px rgba(0,0,0,.14),0 7px 34px 6px rgba(0,0,0,.12);
 	position: relative;
 	cursor: pointer;
 }
@@ -317,7 +317,9 @@ a:hover{
     right: 0;
     bottom: 0;
     background-color: #fefefe;
-    display:flex;justify-content:center;align-items:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 #status  {
     
@@ -328,4 +330,58 @@ a:hover{
 	height: auto;
 	font-size: 24px;
 	color:#333;
+}
+.work-details, .disp-vert{
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+.w-i-p{
+	margin: 0 auto;
+	font-size: 42px;
+	font-weight: 100;
+}
+.tag{
+	padding: 5px 10px;
+	background-color: #eee;
+	border-radius: 4px;
+	margin: 4px;
+}
+.tags{
+	padding: 10px;
+	margin-bottom:10px: 
+}
+.social-icon{
+	margin:10px;
+	color:#777;
+}
+.social-icon:hover{
+	color:#333;
+}
+.m-t-40{
+	margin-top: 40px;
+}
+.contact{
+	background-image: url("../img/footer-02.png");
+	background-size: contain;	
+	background-position: center;
+}
+.scroll-more{
+	position: absolute;
+	color: white;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin-left: 20px;
+}
+.scroll-more a{
+	color:white;
+}
+.scroll-more a:focus, .scroll-more a:hover{
+	text-decoration: none;
+}
+.logo{
+	width: 50px;
+	display: block;
+	margin:40px auto;
 }
