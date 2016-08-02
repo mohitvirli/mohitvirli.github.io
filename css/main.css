@@ -282,6 +282,9 @@ a:hover{
 	.fp-controlArrow{
 		display: none;
 	}
+	.slide.p-r{
+		padding: 0 40px;
+	}
 }
 .navbar-collapse.in, .navbar-collapse.collapsing{
 	background-color: #fff;
@@ -346,10 +349,9 @@ a:hover{
 	background-color: #eee;
 	border-radius: 4px;
 	margin: 4px;
+	display: inline-block;
 }
 .tags{
-	padding: 10px;
-	margin-bottom:10px: 
 }
 .social-icon{
 	margin:10px;
