@@ -267,7 +267,10 @@ a:hover{
 	}
 	.work-details{
 	padding-left: 40px;
-}
+	}
+	.fp-controlArrow{
+		display:block!important;
+	}
 }
 @media(max-width: 768px){
 	.work-container{
@@ -283,7 +286,10 @@ a:hover{
 		display: none;
 	}
 	.slide.p-r{
-		padding: 0 40px;
+		padding: 10px;
+	}
+	.fp-controlArrow{
+		display:none!important;
 	}
 }
 .navbar-collapse.in, .navbar-collapse.collapsing{
