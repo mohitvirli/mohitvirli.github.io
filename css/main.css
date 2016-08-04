@@ -369,11 +369,12 @@ a:hover{
 .m-t-40{
 	margin-top: 40px;
 }
-.contact{
+/*.contact{
 	background-image: url("../img/footer-02.png");
 	background-size: contain;	
-	background-position: center;
-}
+	background-position: bottom;
+	background-repeat: no-repeat;
+}*/
 .scroll-more{
 	position: absolute;
 	color: white;
@@ -392,4 +393,7 @@ a:hover{
 	width: 50px;
 	display: block;
 	margin:40px auto;
+}
+.p-0{
+	padding: 0!important;
 }
