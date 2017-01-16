@@ -29,6 +29,10 @@
     font-weight: 300;
     font-style: italic;
 }
+@font-face {
+	font-family: 'Abril';
+    src: url('../fonts/abril/AbrilFatface-Regular.ttf');
+}
 body,html{
 	font-family: 'Segoe UI';
 }
@@ -66,8 +70,8 @@ body,html{
 }
 .typed-text{
 	margin-top: -24px;
-	font-size: 36px;
-	font-family: 'Segoe UI';
+	font-size: 48px;
+	font-family: 'Abril';
 	font-weight: 100;
 	color:white;
 }
@@ -81,14 +85,13 @@ body,html{
 }
 .main{
 	background-size: cover;
-	background-image: url('../img/bg.jpg')
+	background-color: #202020;
 }
 strong{
 	font-weight: 500;
 }
 .hi{
 	margin-bottom: 18px;
-	font-size: 84px;
 }
 .typed-text{
 	display: none;
@@ -98,8 +101,14 @@ nav.navbar-default{
 	background-image: none;
 	box-shadow: none;
 	border: none;
-	padding: 36px;
-	z-index: 10;
+	padding: 16px;
+	z-index: 1000;
+	-ms-transform: rotate(-90deg); /* IE 9 */
+    -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+    transform: rotate(-90deg) translateX(-100%);
+    -ms-transform-origin: 50% 100%; /* IE 9 */
+    -webkit-transform-origin: 20% 40%; /* Chrome, Safari, Opera */
+    transform-origin: left top;
 }
 .v-a-c{
 	display: flex;
