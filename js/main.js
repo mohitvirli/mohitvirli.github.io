@@ -41,5 +41,5 @@ $(document).ready(function() {
          var win=window.open($(this).find('.behance').attr('href'),'_blank');
          win.focus();
     });
-    
+    $('.navbar').width($(window).height());
 });

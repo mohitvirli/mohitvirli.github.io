@@ -95,13 +95,13 @@ strong{
 }
 .typed-text{
 	display: none;
+	margin-left: 64px;
 }
 nav.navbar-default{
 	background-color: transparent!important;
 	background-image: none;
 	box-shadow: none;
 	border: none;
-	padding: 16px;
 	z-index: 1000;
 	-ms-transform: rotate(-90deg); /* IE 9 */
     -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
@@ -109,6 +109,16 @@ nav.navbar-default{
     -ms-transform-origin: 50% 100%; /* IE 9 */
     -webkit-transform-origin: 20% 40%; /* Chrome, Safari, Opera */
     transform-origin: left top;
+}
+.navbar-collapse.collapse{
+	display: flex!important;
+	justify-content: center;
+}
+.navbar-right{
+	float:none!important;
+	display: inline-block;
+	margin-right:0;
+	margin-top: 24px;
 }
 .v-a-c{
 	display: flex;
@@ -137,7 +147,7 @@ nav.navbar-default{
 	font-weight: 700;
 }
 .navbar-right li{
-	margin-right: 30px;
+	/*margin-right: 30px;*/
 }
 .about{
 	background-color: #ffffff;
