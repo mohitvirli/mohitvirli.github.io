@@ -1,7 +1,10 @@
 $(document).ready(function() {
+
+
     jQuery("#status").delay(500).fadeOut(500);
     jQuery("#preloader").delay(1000).fadeOut("slow");
     $('#preloader').css('height',$(window).height()+'px');
+    var initRight = 0;
     $('#fullpage').fullpage(
     	{
             anchors:['main','about', 'work', 'contact'],
@@ -11,6 +14,25 @@ $(document).ready(function() {
             slidesNavPosition: 'bottom',
             loopHorizontal: false,
             controlArrows:true,
+            onLeave: function(index, nextIndex, direction){
+                var loadedSlide = $(this);
+                $('.navbar-nav li a').removeClass('active');
+                $('.navbar-nav li a.'+nextIndex).addClass('active');
+                if(index===1){
+                    $('.navbar-nav').removeClass('white');
+                    $('.bar').css('background-color','#333');
+                }
+                if(nextIndex === 1){
+                    $('.navbar-nav').addClass('white');
+                    $('.bar').css('background-color','#fff');
+                }
+                initRight = (nextIndex - index)*72 + initRight;
+
+                $('.bar').animate({
+                    right:initRight,
+                    width:$('.'+nextIndex + ' span').width()
+                },400);
+            }
     	});
 
     $(function(){
@@ -42,4 +64,13 @@ $(document).ready(function() {
          win.focus();
     });
     $('.navbar').width($(window).height());
+    $('.bar').css({
+        right:(parseInt($('.navbar-nav li a.active').attr('class').split(' ')[1]) - 1)*72,
+        width:$('.navbar-nav li a.active span').width(),
+        display: 'block'
+    })
+    if($('.main').hasClass('active')){
+        $('.navbar-nav').addClass('white');
+        $('.bar').css({'background-color':'#fff', 'right': '0', 'width':'37px'});
+    }
 });
