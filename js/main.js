@@ -20,11 +20,11 @@ $(document).ready(function() {
                 $('.navbar-nav li a.'+nextIndex).addClass('active');
                 if(index===1){
                     $('.navbar-nav').removeClass('white');
-                    $('.bar').css('background-color','#333');
+                    // $('.bar').css('background-color','#ED2');
                 }
                 if(nextIndex === 1){
                     $('.navbar-nav').addClass('white');
-                    $('.bar').css('background-color','#fff');
+                    // $('.bar').css('background-color','#ED2');
                 }
                 initRight = (nextIndex - index)*72 + initRight;
 
@@ -71,6 +71,7 @@ $(document).ready(function() {
     })
     if($('.main').hasClass('active')){
         $('.navbar-nav').addClass('white');
-        $('.bar').css({'background-color':'#fff', 'right': '0', 'width':'37px'});
+        $('.bar').css({'right': '0', 'width':'37px'});
     }
+    
 });
