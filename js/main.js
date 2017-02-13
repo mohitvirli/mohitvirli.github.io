@@ -1,19 +1,22 @@
 $(document).ready(function() {
 
-
+    if(window.location.hash == '#work/details'){
+        window.location = '#work';
+    }
     jQuery("#status").delay(500).fadeOut(500);
     jQuery("#preloader").delay(1000).fadeOut("slow");
     $('#preloader').css('height',$(window).height()+'px');
     var initRight = 0;
     $('#fullpage').fullpage(
     	{
-            anchors:['main','about', 'work', 'contact'],
+            anchors:['main','work', 'about', 'contact'],
             lockAnchors: false,
             scrollOverflow:true,
-            slidesNavigation: true,
+            slidesNavigation: false,
+            controlArrows: false,
             slidesNavPosition: 'bottom',
             loopHorizontal: false,
-            controlArrows:true,
+            scrollOverflow: true,
             onLeave: function(index, nextIndex, direction){
                 var loadedSlide = $(this);
                 $('.navbar-nav li a').removeClass('active');
@@ -21,6 +24,8 @@ $(document).ready(function() {
                 if(index===1){
                     $('.navbar-nav').removeClass('white');
                     // $('.bar').css('background-color','#ED2');
+
+                    $(".flickity-viewport").focus();
                 }
                 if(nextIndex === 1){
                     $('.navbar-nav').addClass('white');
@@ -32,9 +37,24 @@ $(document).ready(function() {
                     right:initRight,
                     width:$('.'+nextIndex + ' span').width()
                 },400);
-            }
-    	});
+            },
+            onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){
+                var loadedSlide = $(this);
+                // console.log(slideIndex);
+                if(slideIndex === 1){
+                    $.fn.fullpage.setAllowScrolling(true, 'up, down');
+                    $.fn.fullpage.setKeyboardScrolling(true, 'up, down');
+                }
 
+                if(nextSlideIndex === 1){
+                    $.fn.fullpage.setAllowScrolling(false, 'up, down');
+                    $.fn.fullpage.setKeyboardScrolling(false, 'up, down');
+                }
+            }
+
+    	});
+    $.fn.fullpage.setAllowScrolling(false, 'right');
+    $.fn.fullpage.setKeyboardScrolling(false, 'left, right');
     $(function(){
       	setTimeout(function(){
     	$('.typed-text').fadeIn(300);
@@ -73,5 +93,13 @@ $(document).ready(function() {
         $('.navbar-nav').addClass('white');
         $('.bar').css({'right': '0', 'width':'37px'});
     }
-    
+    $(".nano").nanoScroller({ preventPageScrolling: true });
+
+    $('.gallery-cell').on("click",
+        function(event){
+            window.location = '#work/details';
+            $('.details-hidden').hide();
+            $('#' + $(this).attr('data')).show();
+        }
+    )
 });

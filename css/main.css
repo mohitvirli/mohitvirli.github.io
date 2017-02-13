@@ -151,8 +151,11 @@ nav.navbar-default{
 	cursor: pointer;
 	/*margin-right: 30px;*/
 }
-.about{
+.work{
 	background-color: #fafafa;
+}
+.work .slide-main .fp-tableCell{
+	vertical-align: middle;
 }
 .heading{
 	font-size: 36px;
@@ -510,4 +513,62 @@ a:hover{
 }
 .flickity-viewport{
 	overflow: visible;
+}
+.slide{
+	overflow: hidden;
+}
+.back{
+	font-size:21px;
+}
+.back a{
+	color:#777;
+}
+.details{
+	height: 1000px;
+}
+.details-container{
+	padding: 4% 0;
+}
+.details-title{
+	font-family: "Abril";
+	background-color:#ED2;
+	/*margin:0;*/
+	font-size: 64px;
+	padding:16px;
+	margin-top: 8px;
+	display: inline-block;
+	/*background-color: #111;*/
+}
+.details-subheading{
+	margin-top: 16px;
+}
+.details-subheading span{
+	margin-right: 16px;
+	background-color: #ED2;
+	padding: 4px 16px;
+}
+.details-body{
+	padding: 8px 0;
+}
+
+.details-body p{
+	margin-top:16px;
+}
+
+.prettyprint{
+	margin: 16px 0;
+	border:none!important;
+	padding:16px!important;
+}
+.details-hidden{
+	display: none;
+}
+.arrow.left{
+	width: 20px;
+	height: 28px;
+	overflow: hidden;
+	display: inline-block;
+}
+.arrow.left img{
+	width: 20px;
 }
