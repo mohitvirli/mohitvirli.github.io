@@ -9,7 +9,7 @@ $(document).ready(function() {
     var initRight = 0;
     $('#fullpage').fullpage(
     	{
-            anchors:['main','work', 'about', 'contact'],
+            anchors:['main','work', 'about'],
             lockAnchors: false,
             scrollOverflow:true,
             slidesNavigation: false,
@@ -21,13 +21,13 @@ $(document).ready(function() {
                 var loadedSlide = $(this);
                 $('.navbar-nav li a').removeClass('active');
                 $('.navbar-nav li a.'+nextIndex).addClass('active');
-                if(index===1){
+                if(index===1 || index === 3){
                     $('.navbar-nav').removeClass('white');
                     // $('.bar').css('background-color','#ED2');
 
                     $(".flickity-viewport").focus();
                 }
-                if(nextIndex === 1){
+                if(nextIndex === 1 || nextIndex === 3){
                     $('.navbar-nav').addClass('white');
                     // $('.bar').css('background-color','#ED2');
                 }
@@ -93,7 +93,6 @@ $(document).ready(function() {
         $('.navbar-nav').addClass('white');
         $('.bar').css({'right': '0', 'width':'37px'});
     }
-    $(".nano").nanoScroller({ preventPageScrolling: true });
 
     $('.gallery-cell').on("click",
         function(event){
@@ -102,4 +101,7 @@ $(document).ready(function() {
             $('#' + $(this).attr('data')).show();
         }
     )
+
+    $('.skills-sub > div').css('margin-left', $('.container').css('margin-left'))
+    $('.about-sub > div').css('padding-right', $('.container').css('margin-left'))
 });

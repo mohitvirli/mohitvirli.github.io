@@ -398,7 +398,7 @@ a:hover{
 }
 .social-icon{
 	margin:10px;
-	color:#777;
+	color:#111;
 }
 .social-icon:hover{
 	color:#333;
@@ -571,4 +571,36 @@ a:hover{
 }
 .arrow.left img{
 	width: 20px;
+}
+.skills-sub{
+	background-color: #111;
+	color:#fff;
+}
+.about-sub{
+	background-color: #ED2;	
+}
+.p-16{
+	padding: 16px;
+}
+.c-al{
+	display: flex;
+	align-items: center;
+	height: 100%;
+}
+.skill-div, .about-div{
+	margin-bottom:40px;
+}
+.about-sub{
+	color:#111;
+}
+.mail{
+	color:#333;
+	text-decoration: underline;
+}
+.mail:hover{
+	color:#444;
+	text-decoration: underline;	
+}
+.set-w{
+	width: calc(100% - 32px);
 }
