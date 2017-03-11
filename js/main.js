@@ -24,12 +24,16 @@ $(document).ready(function() {
                 if(index===1 || index === 3){
                     $('.navbar-nav').removeClass('white');
                     // $('.bar').css('background-color','#ED2');
-
+                    $('.menu-mob-btn').css('color', '#111');
                     $(".flickity-viewport").focus();
                 }
                 if(nextIndex === 1 || nextIndex === 3){
+
                     $('.navbar-nav').addClass('white');
                     // $('.bar').css('background-color','#ED2');
+                }
+                if(nextIndex === 1){
+                    $('.menu-mob-btn').css('color', '#fff');
                 }
                 initRight = (nextIndex - index)*72 + initRight;
 

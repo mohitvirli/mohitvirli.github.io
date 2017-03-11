@@ -297,9 +297,14 @@ a:hover{
 	.typed-text{
 		margin-left: 64px;
 	}
+	.menu-mob{
+		display: none;
+	}
 }
 @media(max-width: 768px){
-
+	.menu-mob{
+		display: block;
+	}
 	.work-container{
 		padding: 0;
 	}
@@ -327,6 +332,14 @@ a:hover{
 	}
 	.card-text{
 		padding:8px!important;
+	}
+	.set-w{
+		width: calc(100% - 32px);
+	}
+	.typed-text{
+		font-size: 36px;
+		text-align: center;
+		margin: 0 auto;
 	}
 }
 .navbar-collapse.in, .navbar-collapse.collapsing{
@@ -601,6 +614,41 @@ a:hover{
 	color:#444;
 	text-decoration: underline;	
 }
-.set-w{
-	width: calc(100% - 32px);
+.menu-mob{
+	position: fixed;
+	top:16px;
+	right:16px;
+	z-index: 1000;
+}
+.menu-mob-btn{
+	background-color: transparent;
+	border: 0;
+	box-shadow: none;
+	color: #fff;
+}
+.menu-mob-open{
+	position: fixed;
+	right: -3px;
+	top:-3px;
+	left:-3px;
+	bottom: -3px;
+	background-color: rgba(0,0,0,0.97);
+}
+.menu-mob.open .menu-mob-open{
+	display: flex;
+	align-items: center;
+}
+.menu-mob-open li{
+	text-align: center;
+	padding: 16px 8px;
+	border-bottom: 1px solid #ED2;
+}
+.menu-mob-open li a{
+	color:#fff;
+}
+.menu-mob-open li:last-child{
+	border-bottom: none;	
+}
+.for-flex{
+	width: 100%;
 }

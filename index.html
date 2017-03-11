@@ -50,7 +50,7 @@
   <div id='preloader'>
     <div id="status"><i class='fa fa-circle-o-notch fa-spin fa-3x fa-fw'></i></div>
   </div>  
-  <nav class='navbar navbar-default navbar-fixed-top'>
+  <nav class='navbar navbar-default navbar-fixed-top hidden-xs'>
     <div class=''>
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -76,7 +76,18 @@
       </div>
     </div>
   </nav>
-
+  <div class="dropdown menu-mob">
+    <button type="button" class="dropdown-toggle menu-mob-btn" data-toggle="dropdown" >
+        <i class="fa fa-bars"></i>
+    </button>
+    <ul class="dropdown-menu menu-mob-open">
+      <div class="for-flex">
+          <li><a href="#main" class='small-text-cap'><span>home</span></a></li>
+          <li><a href="#work" class='small-text-cap'><span>work</span></a></li>
+          <li><a href="#about" class='small-text-cap'><span>About</span></a></li>
+      </div>
+    </ul>
+  </div>
 <div id="fullpage">
     <div class="section main" data-anchor='main' >
       <div class='container p-t-b-60'>
