@@ -505,10 +505,23 @@ a:hover{
 }
 .card-header{
 	transform: all 0.3s;
-	padding:32px;
+	padding:8px 32px;
 	font-family: "Abril";
 	font-size: 64px;
+	cursor: pointer;
 	/*color:#111;*/
+	transition: color 0.3s;
+}
+.card-sub-header{
+	padding:8px 32px 16px 32px;
+}
+.card-sub-header span{
+	background-color: #eee;
+	padding: 4px 8px;
+	color:#777;
+}
+.card-header:hover{
+	color:rgba(0,0,0,0.7);
 }
 .card-text{
 	font-weight: 500;

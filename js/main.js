@@ -98,7 +98,7 @@ $(document).ready(function() {
         $('.bar').css({'right': '0', 'width':'37px'});
     }
 
-    $('.gallery-cell').on("click",
+    $('.card-header').on("click",
         function(event){
             window.location = '#work/details';
             $('.details-hidden').hide();
