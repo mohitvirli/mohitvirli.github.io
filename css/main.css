@@ -369,12 +369,12 @@ a:hover{
 	background-image: url('../img/work-2.png');
 }
 #preloader  {
-	z-index: 100;
+	z-index: 2000;
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
     background-color: #fefefe;
     display:flex;
     justify-content:center;
@@ -550,31 +550,25 @@ a:hover{
 	color:#777;
 }
 .details{
-	height: 1000px;
+	/*min-height: 500px;*/
 }
 .details-container{
 	padding: 4% 0;
 }
 .details-title{
 	font-family: "Abril";
-	background-color:#ED2;
 	/*margin:0;*/
 	font-size: 64px;
-	padding:16px;
+	padding:8px 0;
 	margin-top: 8px;
 	display: inline-block;
-	/*background-color: #111;*/
 }
-.details-subheading{
-	margin-top: 16px;
-}
-.details-subheading span{
-	margin-right: 16px;
-	background-color: #ED2;
-	padding: 4px 16px;
+.details-sub{
+	margin-top: 8px;
+	margin-bottom: 16px;
 }
 .details-body{
-	padding: 8px 0;
+	/*padding: 8px 0;*/
 }
 
 .details-body p{
@@ -590,13 +584,13 @@ a:hover{
 	display: none;
 }
 .arrow.left{
-	width: 20px;
-	height: 28px;
+	width: 16px;
+	height: 26px;
 	overflow: hidden;
 	display: inline-block;
 }
 .arrow.left img{
-	width: 20px;
+	width: 16px;
 }
 .skills-sub{
 	background-color: #111;
@@ -664,4 +658,11 @@ a:hover{
 }
 .for-flex{
 	width: 100%;
+}
+.showreel img {
+  height: 400px;
+  margin-top: 8px;
+}
+.showreel .flickity-viewport{
+	overflow: hidden;
 }

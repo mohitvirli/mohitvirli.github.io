@@ -54,6 +54,7 @@ $(document).ready(function() {
                     $.fn.fullpage.setAllowScrolling(false, 'up, down');
                     $.fn.fullpage.setKeyboardScrolling(false, 'up, down');
                 }
+
             }
 
     	});
@@ -101,10 +102,19 @@ $(document).ready(function() {
     $('.card-header').on("click",
         function(event){
             window.location = '#work/details';
+            if($('.showreel') && !$('.showreel.sr' + $(this).attr('data')).hasClass('flickity-enabled')){
+                $('.showreel.sr' + $(this).attr('data')).flickity({
+                    imagesLoaded: true,
+                    percentPosition: false,
+                    cellAlign: 'left' 
+                });
+            }
             $('.details-hidden').hide();
             $('#' + $(this).attr('data')).show();
         }
     )
+
+   
 
     $('.skills-sub > div').css('margin-left', $('.container').css('margin-left'))
     $('.about-sub > div').css('padding-right', $('.container').css('margin-left'))
