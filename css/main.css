@@ -553,15 +553,20 @@ a:hover{
 	/*min-height: 500px;*/
 }
 .details-container{
-	padding: 4% 0;
+	padding: 4% 8%;
 }
-.details-title{
+.details-title, .details-title:visited{
 	font-family: "Abril";
 	/*margin:0;*/
 	font-size: 64px;
 	padding:8px 0;
 	margin-top: 8px;
 	display: inline-block;
+	color:#111;
+	text-decoration: none;
+}
+.details-title:hover{
+	color:#333;
 }
 .details-sub{
 	margin-top: 8px;
@@ -660,9 +665,44 @@ a:hover{
 	width: 100%;
 }
 .showreel img {
-  height: 400px;
+  height: 200px;
   margin-top: 8px;
 }
 .showreel .flickity-viewport{
 	overflow: hidden;
+}
+.image-bg{
+	position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 2000;
+    background-color: rgba(0,0,0,0.6);
+    display: none;
+}
+.full-img{
+	z-index: 100;
+}
+.full-img img{
+	width: 70%;
+}
+.full-img-rep{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left:0;
+	right: 0;
+}
+.view-gallery{
+	cursor: pointer;
+}
+.image-bg-center{
+	display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+}
+.details-sub-d{
+	text-align: justify;
+    text-justify: inter-word;
 }
