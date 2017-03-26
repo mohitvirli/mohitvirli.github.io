@@ -3,20 +3,23 @@ $(document).ready(function() {
     if(window.location.hash == '#work/details'){
         window.location = '#work';
     }
+    
     jQuery("#status").delay(500).fadeOut(500);
     jQuery("#preloader").delay(1000).fadeOut("slow");
-    $('#preloader').css('height',$(window).height()+'px');
     var initRight = 0;
     $('#fullpage').fullpage(
     	{
             anchors:['main','work', 'about'],
             lockAnchors: false,
-            scrollOverflow: false,
+            scrollOverflow: true,
             slidesNavigation: false,
             controlArrows: false,
             slidesNavPosition: 'bottom',
             loopHorizontal: false,
             scrollOverflowReset: true,
+            scrollOverflowOptions: {
+                'fadeScrollbars' : true
+            },
             onLeave: function(index, nextIndex, direction){
                 var loadedSlide = $(this);
                 $('.navbar-nav li a').removeClass('active');
@@ -48,14 +51,11 @@ $(document).ready(function() {
                 if(slideIndex === 1){
                     $.fn.fullpage.setAllowScrolling(true, 'up, down');
                     $.fn.fullpage.setKeyboardScrolling(true, 'up, down');
-                    $.fn.fullpage.setAutoScrolling(true);
                     $('.menu-mob').fadeIn();
                 }
                 if(nextSlideIndex === 1){
 
                     $.fn.fullpage.setAllowScrolling(false, 'up, down');
-                    if($(document).width() < 500)
-                        $.fn.fullpage.setAutoScrolling(false);
                     $('.menu-mob').fadeOut();
                     $.fn.fullpage.setKeyboardScrolling(false, 'up, down');
                 }
@@ -84,16 +84,7 @@ $(document).ready(function() {
     	},500);
     },1000);
   	});
-    $('.work-div').hover(function(){$(this).children('.overlay').fadeIn()},function(){$(this).children('.overlay').fadeOut()})
-    $('.fp-prev').append('<i class="fa fa-angle-left fa-3x"></i>');
-    $('.fp-next').append('<i class="fa fa-angle-right fa-3x"></i>');
-    $('.work-div').click(function(e){
-        if( $(e.target).closest(".center").length > 0 ) {
-            return;
-        }
-         var win=window.open($(this).find('.behance').attr('href'),'_blank');
-         win.focus();
-    });
+    
     $('.navbar').width($(window).height());
     $('.bar').css({
         right:(parseInt($('.navbar-nav li a.active').attr('class').split(' ')[1]) - 1)*72,
@@ -109,17 +100,24 @@ $(document).ready(function() {
         function(event){
             if($(this).parent().hasClass('is-selected')){
                 var id = $(this).attr('data');
-                // $('.details').css('height', $('.details').find('#' + id).height());
-                window.location = '#work/details';
-                if($('.showreel') && !$('.showreel.sr' + id).hasClass('flickity-enabled')){
-                    $('.showreel.sr' + $(this).attr('data')).flickity({
-                        imagesLoaded: true,
-                        percentPosition: false,
-                        cellAlign: 'left' 
-                    });
-                }
                 $('.details-hidden').hide();
                 $('#' + id).show();
+                setTimeout(function(){
+                    window.location = '#work/details';
+                    if($('.showreel') && !$('.showreel.sr' + id).hasClass('flickity-enabled')){
+                        $('.showreel.sr' + $(this).attr('data')).flickity({
+                            imagesLoaded: true,
+                            percentPosition: false,
+                            cellAlign: 'left' 
+                        });
+                    };
+                    $('.back').css({"-webkit-transform":"translate(0)"});
+                    $.fn.fullpage.setAllowScrolling(false, 'up, down');
+                    $('.menu-mob').fadeOut();
+                    $.fn.fullpage.setKeyboardScrolling(false, 'up, down');
+                }, 10)
+                $.fn.fullpage.reBuild();
+                // $('.details').css('height', $('.details').find('#' + id).height());
             }
         }
     )
@@ -146,5 +144,6 @@ $(document).ready(function() {
     $('.about-sub > div').css('padding-right', $('.container').css('margin-left'));
     $('.back a').on("click", function(){
         $.fn.fullpage.moveSlideLeft();
+        $('.back').css({"-webkit-transform":"translate(100px)"});
     })
 });

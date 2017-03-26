@@ -37,6 +37,9 @@
 body,html{
 	font-family: 'Segoe UI';
 }
+html{
+	overflow: hidden;
+}
 /*typed effect*/
 
 .typed-cursor{
@@ -505,6 +508,7 @@ a:hover{
 }
 .back{
 	font-size:21px;
+	transition: all ease-in-out 0.7s;
 }
 .back a{
 	color:#777;
@@ -717,5 +721,8 @@ a:hover{
 	}
 	.details-title, .details-title:visited{
 		font-size: 48px;
+	}
+	.view-gallery{
+		display: none;
 	}
 }
