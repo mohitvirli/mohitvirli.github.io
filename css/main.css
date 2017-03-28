@@ -726,3 +726,13 @@ a:hover{
 		display: none;
 	}
 }
+.download-resume, .download-resume:visited, .download-resume:focus{
+	margin-top: -15px;
+    margin-left: 10px;
+    color: #ED2;
+    background-color: #111;
+}
+.download-resume:hover{
+	color:#ED2;
+	background-color: #333;
+}
