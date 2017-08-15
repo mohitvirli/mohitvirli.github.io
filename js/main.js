@@ -70,7 +70,7 @@ $(document).ready(function() {
 			// $('.typed-text').addClass('animated fadeIn');
 			setTimeout(function(){
 				$('#element').typed({
-					strings: ['<strong>Frontend Developer</strong>','<strong>UI/UX Designer</strong>','<strong>Full Stack Designer</strong>'],
+					strings: ['<strong>Frontend Engineer</strong>','<strong>UI/UX Designer</strong>','<strong>Meme Lord</strong>'],
 					contentType:'html',
 					typeSpeed: 100,
 					showCursor: true,
