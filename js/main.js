@@ -1,6 +1,6 @@
 
 $(document).ready(function() {
-
+	console.log('Why you looking at my log boi?');
 	if(window.location.hash === '#work/details'){
 		window.location = '#work';
 	}

@@ -373,7 +373,7 @@ a:hover{
 .tags{
 }
 .social-icon{
-	margin:10px;
+	margin:10px 20px 10px 0;
 	color:#111;
 }
 .social-icon:hover{
@@ -608,11 +608,16 @@ a:hover{
 	top:-3px;
 	left:-3px;
 	bottom: -3px;
+    display: flex!important;
+    align-items: center;
 	background-color: rgba(0,0,0,0.97);
+    transform: translateX(100%);
+    transition: all 0.5s;
+    opacity: 0;
 }
 .menu-mob.open .menu-mob-open{
-	display: flex;
-	align-items: center;
+    transform: translateY(0);
+    opacity: 1;
 }
 .menu-mob-open li{
 	text-align: center;
@@ -725,6 +730,10 @@ a:hover{
 	.view-gallery{
 		display: none;
 	}
+    .download-resume{
+        margin-top: 10px !important;
+        margin-left: 0px !important;
+    }
 }
 .download-resume, .download-resume:visited, .download-resume:focus{
 	margin-top: -15px;
