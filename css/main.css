@@ -288,6 +288,9 @@ a:hover{
 	margin: 0 auto;
 }
 @media(min-width:768px){
+    .section.skills{
+        display: none;
+    }
 	.work-container{
 		padding: 60px;
 	}
@@ -676,6 +679,7 @@ a:hover{
     text-justify: inter-word;
 }
 @media(max-width: 768px){
+
 	.menu-mob{
 		display: block;
 	}

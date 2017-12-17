@@ -8,9 +8,16 @@ $(document).ready(function() {
 	jQuery('#status').delay(500).fadeOut(500);
 	jQuery('#preloader').delay(1000).fadeOut('slow');
 	var initRight = 0;
+	var anchors = [];
+	if ($(window).width() > 768) {
+		anchors = ['main','work', 'about'];
+		$('.section.skills').remove();
+	} else {
+		anchors = ['main','work', 'skills', 'about'];
+	}
 	$('#fullpage').fullpage(
 		{
-			anchors:['main','work', 'about'],
+			anchors: anchors,
 			lockAnchors: false,
 			scrollOverflow: true,
 			slidesNavigation: false,
@@ -29,6 +36,12 @@ $(document).ready(function() {
 					// $('.bar').css('background-color','#ED2');
 					$('.menu-mob-btn').css('color', '#111');
 					$('.flickity-viewport').focus();
+				}
+				if ($(document).width() < 768) {
+
+					if(nextIndex === 3){
+						$('.menu-mob-btn').css('color', '#fff');
+					}
 				}
 				if(nextIndex === 1 || nextIndex === 3){
 
@@ -70,7 +83,7 @@ $(document).ready(function() {
 			// $('.typed-text').addClass('animated fadeIn');
 			setTimeout(function(){
 				$('#element').typed({
-					strings: ['<strong>Frontend Engineer</strong>','<strong>UI/UX Designer</strong>','<strong>Memer</strong>'],
+					strings: ['<strong>Frontend Engineer</strong>','<strong>UI/UX Designer</strong>','<strong>Full Stack Developer (soon)</strong>','<strong>Memer</strong>'],
 					contentType:'html',
 					typeSpeed: 100,
 					showCursor: true,
