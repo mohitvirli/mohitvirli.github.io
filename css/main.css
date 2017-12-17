@@ -7,7 +7,7 @@
     font-family: 'Segoe UI';
     src: url('../fonts/Segoe/segoeui.ttf');
     font-weight: 500;
-}   
+}
 @font-face {
     font-family: 'Segoe UI';
     src: url('../fonts/Segoe/segoeuisl.ttf');
@@ -252,7 +252,7 @@ a:hover{
 }
 .proj-details{
 
-	margin:20px 0; 
+	margin:20px 0;
 	font-weight: 300;
 	font-size: 16px;
 	line-height: 24px;
@@ -347,7 +347,7 @@ a:hover{
     align-items:center;
 }
 #status  {
-    
+
  }
 .fp-controlArrow{
 	border: none;
@@ -387,7 +387,7 @@ a:hover{
 }
 /*.contact{
 	background-image: url("../img/footer-02.png");
-	background-size: contain;	
+	background-size: contain;
 	background-position: bottom;
 	background-repeat: no-repeat;
 }*/
@@ -569,7 +569,7 @@ a:hover{
 	color:#fff;
 }
 .about-sub{
-	background-color: #ED2;	
+	background-color: #ED2;
 }
 .p-16{
 	padding: 16px;
@@ -591,7 +591,7 @@ a:hover{
 }
 .mail:hover{
 	color:#444;
-	text-decoration: underline;	
+	text-decoration: underline;
 }
 .menu-mob{
 	position: fixed;
@@ -631,7 +631,7 @@ a:hover{
 	color:#fff;
 }
 .menu-mob-open li:last-child{
-	border-bottom: none;	
+	border-bottom: none;
 }
 .for-flex{
 	width: 100%;
@@ -678,8 +678,24 @@ a:hover{
 	text-align: justify;
     text-justify: inter-word;
 }
+
+.bg-lines{
+	right: 0;
+	position: absolute;
+}
+
+.bg-lines img{
+	width: 16em;
+	opacity: 0.25;
+}
 @media(max-width: 768px){
 
+	.bg-lines{
+		width: 50%;
+	}
+	.bg-lines img{
+		width: 100%;
+	}
 	.menu-mob{
 		display: block;
 	}
@@ -716,8 +732,6 @@ a:hover{
 	}
 	.typed-text{
 		font-size: 36px;
-		text-align: center;
-		margin: 0 auto;
 	}
 	.details-container{
 		padding: 8px;
@@ -749,3 +763,4 @@ a:hover{
 	color:#ED2;
 	background-color: #333;
 }
+
