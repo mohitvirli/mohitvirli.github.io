@@ -7,6 +7,72 @@ $(document).ready(function() {
 
 	jQuery('#status').delay(500).fadeOut(500);
 	jQuery('#preloader').delay(1000).fadeOut('slow');
+
+	$.getJSON('../assets/data.json', function(json) {
+		json.data.forEach(function (res, index) {
+			$('#gallery-main')
+				.append(`<div class="gallery-cell">
+				<div class="card-header" data='${index}'>
+					${res.title}
+				</div>
+				<div class="card-sub-header">
+						<span class='small-text-cap'>
+							${res.subtitle}
+						</span>
+				</div>
+				<div class="card-text">
+					${res.shortDesc}
+				</div>
+			</div>`);
+
+			$('#more-details-container')
+				.append(`<div class="container details-hidden" id='${index}'>
+					<div class="details-container">
+						<div class="details-header">
+							<div class="back">
+								<a href="#work">
+										<span class="arrow left">
+											<img src='img/arrow-left.svg'>
+										</span>
+									back
+								</a>
+							</div>
+							<a class='details-title' href='${res.externalLink}' target="_blank">${res.title}</a>
+						</div>
+						<div class="row">
+							<div class="col-sm-8">
+								<div class="details-sub">
+									<div class="details-sub-d">
+										${res.shortDescAlt || res.shortDesc}
+										<br><br>
+										${(res.details || []).map(function (d) {
+											return `<div class="details-sub-h small-text-cap">${d.title}</div>
+												<br>${d.description}<br><br>`;
+										}).join('')}
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-4 tools">
+								${Object.keys(res.tools || {}).map(function (tool) {
+									return `<div class="details-sub">
+										<div class="details-sub-h small-text-cap">${tool}</div>
+										<div class="details-sub-d">${res.tools[tool]}</div>
+									</div>`;
+								}).join('')}
+							</div>
+						</div>
+					</div>
+				</div>`);
+		});
+
+		$('#gallery-main').flickity({
+			contain: true,
+			wrapAround: true,
+		});
+
+		initClickListeners();
+	});
+
 	var initRight = 0;
 	var anchors = [];
 	if ($(window).width() > 768) {
@@ -106,54 +172,57 @@ $(document).ready(function() {
 		$('.bar').css({'right': '0', 'width':'37px'});
 	}
 
-	$('.card-header').on('click',
-		function(){
-			if($(this).parent().hasClass('is-selected')){
-				var id = $(this).attr('data');
-				$('.details-hidden').hide();
-				$('#' + id).show();
-				setTimeout(function(){
-					window.location = '#work/details';
-					if($('.showreel') && !$('.showreel.sr' + id).hasClass('flickity-enabled')){
-						$('.showreel.sr' + $(this).attr('data')).flickity({
-							imagesLoaded: true,
-							percentPosition: false,
-							cellAlign: 'left'
-						});
-					}
-					$('.back').css({'-webkit-transform':'translate(0)'});
-					$.fn.fullpage.setAllowScrolling(false, 'up, down');
-					$('.menu-mob').fadeOut();
-					$.fn.fullpage.setKeyboardScrolling(false, 'up, down');
-				}, 10);
-				$.fn.fullpage.reBuild();
-				// $('.details').css('height', $('.details').find('#' + id).height());
+	function initClickListeners() {
+		$('.card-header').on('click',
+			function(){
+				if($(this).parent().hasClass('is-selected')){
+					var id = $(this).attr('data');
+					$('.details-hidden').hide();
+					$('#' + id).show();
+					setTimeout(function(){
+						window.location = '#work/details';
+						if($('.showreel') && !$('.showreel.sr' + id).hasClass('flickity-enabled')){
+							$('.showreel.sr' + $(this).attr('data')).flickity({
+								imagesLoaded: true,
+								percentPosition: false,
+								cellAlign: 'left'
+							});
+						}
+						$('.back').css({'-webkit-transform':'translate(0)'});
+						$.fn.fullpage.setAllowScrolling(false, 'up, down');
+						$('.menu-mob').fadeOut();
+						$.fn.fullpage.setKeyboardScrolling(false, 'up, down');
+					}, 10);
+					$.fn.fullpage.reBuild();
+					// $('.details').css('height', $('.details').find('#' + id).height());
+				}
 			}
-		}
-	);
-	$('.view-gallery').on('click',function(){
+		);
 
-		if(!$('.image-bg.img-' + $(this).attr('data') + ' .full-img').hasClass('flickity-enabled')){
-			$('.image-bg.img-' + $(this).attr('data') + ' .full-img').flickity({
-				imagesLoaded: true,
-				percentPosition: false,
-				cellAlign: 'left'
-			});
-		}
-		$('.image-bg.img-' + $(this).attr('data')).fadeIn();
-		$(document).keyup(function(e) {
-			if (e.keyCode === 27) {
-				$('.image-bg').fadeOut();
+		$('.view-gallery').on('click',function(){
+
+			if(!$('.image-bg.img-' + $(this).attr('data') + ' .full-img').hasClass('flickity-enabled')){
+				$('.image-bg.img-' + $(this).attr('data') + ' .full-img').flickity({
+					imagesLoaded: true,
+					percentPosition: false,
+					cellAlign: 'left'
+				});
 			}
+			$('.image-bg.img-' + $(this).attr('data')).fadeIn();
+			$(document).keyup(function(e) {
+				if (e.keyCode === 27) {
+					$('.image-bg').fadeOut();
+				}
+			});
 		});
-	});
-	$('.full-img-rep').click(function(){
-		$('.image-bg').fadeOut();
-	});
-	$('.skills-sub > div').css('margin-left', $('.container').css('margin-left'));
-	$('.about-sub > div').css('padding-right', $('.container').css('margin-left'));
-	$('.back a').on('click', function(){
-		$.fn.fullpage.moveSlideLeft();
-		$('.back').css({'-webkit-transform':'translate(100px)'});
-	});
+		$('.full-img-rep').click(function(){
+			$('.image-bg').fadeOut();
+		});
+		$('.skills-sub > div').css('margin-left', $('.container').css('margin-left'));
+		$('.about-sub > div').css('padding-right', $('.container').css('margin-left'));
+		$('.back a').on('click', function(){
+			$.fn.fullpage.moveSlideLeft();
+			$('.back').css({'-webkit-transform':'translate(100px)'});
+		});
+	}
 });
