@@ -11,8 +11,8 @@ $(document).ready(function() {
 	$.getJSON('../assets/data.json', function(json) {
 		json.data.forEach(function (res, index) {
 			$('#gallery-main')
-				.append(`<div class="gallery-cell">
-				<div class="card-header" data='${index}'>
+				.append(`<div class="gallery-cell" data='${index}'>
+				<div class="card-header">
 					${res.title}
 				</div>
 				<div class="card-sub-header">
@@ -192,9 +192,9 @@ $(document).ready(function() {
 	}
 
 	function initClickListeners() {
-		$('.card-header').on('click',
+		$('.gallery-cell').on('click',
 			function(){
-				if($(this).parent().hasClass('is-selected')){
+				if($(this).hasClass('is-selected')){
 					var id = $(this).attr('data');
 					$('.details-hidden').hide();
 					$('#' + id).show();
@@ -239,9 +239,22 @@ $(document).ready(function() {
 		});
 		$('.skills-sub > div').css('margin-left', $('.container').css('margin-left'));
 		$('.about-sub > div').css('padding-right', $('.container').css('margin-left'));
-		$('.back a').on('click', function(){
+
+		function onBackClick() {
 			$.fn.fullpage.moveSlideLeft();
 			$('.back').css({'-webkit-transform':'translate(100px)'});
+			$.fn.fullpage.setAllowScrolling(true, 'up, down');
+			$.fn.fullpage.setKeyboardScrolling(true, 'up, down');
+		}
+
+		$('.navbar-nav li a').on('click', onBackClick)
+		$('.back a').on('click', onBackClick);
+
+		$(window).on('hashchange', (e) => {
+			if (e.target.location.hash === '#work') {
+				onBackClick();
+			}
 		});
 	}
+
 });

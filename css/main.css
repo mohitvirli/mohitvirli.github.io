@@ -413,7 +413,7 @@ a:hover{
 .p-0{
 	padding: 0!important;
 }
-.white.navbar-nav>li>a:hover, .white.navbar-nav>li>a:focus{
+.white.navbar-nav>li>a:hover {
 	color: #fff;
 }
 .white.navbar-nav>li>a.active{
@@ -732,6 +732,9 @@ a:hover{
 	}
 	.typed-text{
 		font-size: 36px;
+	}
+	.element-wrapper{
+		display: block;
 	}
 	.details-container{
 		padding: 8px;
