@@ -146,16 +146,35 @@ $(document).ready(function() {
 	$(function(){
 		setTimeout(function(){
 			$('.typed-text').fadeIn(300);
-			// $('.typed-text').addClass('animated fadeIn');
 			setTimeout(function(){
-				$('#element').typed({
-					strings: ['<strong>Frontend Engineer</strong>','<strong>UI/UX Designer</strong>','<strong>Full Stack Developer (soon)</strong>','<strong>Memer</strong>'],
-					contentType:'html',
-					typeSpeed: 100,
+				var strings = ['Frontend Engineer', 'Designer', 'JavaScript Developer', 'Memer', 'Footballer', 'Cinephile', 'Gamer', 'Optimist', 'Nihilist', 'Audiophile', '^1000Human, ^1000being^1000.^1000'];
+				// var strings = ['frontedn', 'Human being']
+				var options = {
+					typeSpeed: 120,
 					showCursor: true,
-					backSpeed: 0,
+					backSpeed: 50,
 					backDelay: 1000,
-					loop:true,
+					startDelay: 0,
+					loop: true,
+				};
+				var typed = new Typed('#element', {
+					strings: strings,
+					...options,
+					onStringTyped: (index) => {
+						if (index === strings.length - 2) {
+							typed.typeSpeed = 120;
+							return;
+						}
+						if (index === strings.length - 1) {
+							typed.backSpeed = 50;
+							typed.startDelay = 0;
+							typed.backDelay = 1000;
+							return;
+						}
+						typed.typeSpeed = Math.max(typed.typeSpeed - 30, 10);
+						typed.backSpeed = Math.max(typed.backSpeed - 10, 20);
+						typed.backDelay = Math.max(typed.backDelay - 300, 300);
+					}
 				});
 			},500);
 		},1000);

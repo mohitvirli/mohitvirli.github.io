@@ -579,8 +579,8 @@ a:hover{
 	align-items: center;
 	height: 100%;
 }
-.skill-div, .about-div{
-	margin-bottom:40px;
+.skill-div:not(:last-child), .about-div:not(:last-child){
+	margin-bottom: 40px;
 }
 .about-sub{
 	color:#111;
