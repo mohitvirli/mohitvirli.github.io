@@ -74,6 +74,24 @@
         "Time": "October 2017 - May 2018"
       }
     },
+		{
+      "title": "Vaccine Slots Discord bot",
+      "subtitle": "Open Source Project",
+      "shortDesc": "A side project that I made to send a notification on any discord server if COVID vaccination slots are available according to PIN or district",
+      "externalLink": "https://github.com/mohitvirli/vaccine-slots-discord-bot",
+      "shortDescAlt": "A side project that I made to send a notification on any discord server if COVID vaccination slots are available according to PIN or district. Used the public API provided to poll and notify accordingly using plain old JavaScript.",
+      "details": [
+				{
+          "title": "Project Details",
+          "description": "As it was very difficult to get a vaccine slot when it was initially released, I thought we can use our discord server to notify whenever there was a slot available. As the public API was already available, made use of that to poll and notify accordingly."
+        }
+			],
+      "tools": {
+        "Tools": "JS, ES6, Node, DiscordJS",
+        "Type": "Open Source Project",
+        "Time": "May 2021"
+      }
+    },
     {
       "title": "Success Factory",
       "subtitle": "Freelance Project",
@@ -90,19 +108,6 @@
         "Tools": "SCSS, ES6, jQuery, Node, Express, Babel",
         "Type": "Freelance Project",
         "Time": "December 2017"
-      }
-    },
-		{
-      "title": "COVID Vaccine Discord bot",
-      "subtitle": "Open Source Project",
-      "shortDesc": "A side project that I made to send a notification on any discord server if COVID vaccination slots are available according to PIN or district",
-      "externalLink": "https://www.successfactory.in",
-      "shortDescAlt": "A side project that I made to send a notification on any discord server if COVID vaccination slots are available according to PIN or district. Used the public API provided to poll and notify accordingly using plain old JavaScript.",
-      "details": [],
-      "tools": {
-        "Tools": "JS, ES6, Node, DiscordJS",
-        "Type": "Open Source Project",
-        "Time": "May 2021"
       }
     },
     {

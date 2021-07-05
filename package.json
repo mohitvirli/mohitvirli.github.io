@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/mohitvirli/mohitvirli.github.io/issues"
   },
-  "homepage": "https://github.com/mohitvirli/mohitvirli.github.io#readme"
+  "homepage": "https://github.com/mohitvirli/mohitvirli.github.io#readme",
+  "dependencies": {
+    "serve": "^13.0.2"
+  }
 }
