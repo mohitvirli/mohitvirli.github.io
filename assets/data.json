@@ -92,6 +92,19 @@
         "Time": "December 2017"
       }
     },
+		{
+      "title": "Vaccine slots Discord bot",
+      "subtitle": "Open Source Project",
+      "shortDesc": "A side project that I made to send a notification on any discord server if vaccination slots are available according to PIN or district",
+      "externalLink": "https://www.successfactory.in",
+      "shortDescAlt": "A side project that I made to send a notification on any discord server if vaccination slots are available according to PIN or district. Used the public API provided to poll and notify accordingly using plain old JavaScript.",
+      "details": [],
+      "tools": {
+        "Tools": "JS, ES6, Node, DiscordJS",
+        "Type": "Open Source Project",
+        "Time": "May 2021"
+      }
+    },
     {
       "title": "Web App for XPrep®",
       "subtitle": "Internship",
