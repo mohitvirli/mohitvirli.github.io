@@ -3,10 +3,14 @@
     {
       "title": "Cohesity",
       "subtitle": "Work",
-      "shortDesc": "Cohesity is a software-defined platform which solves the existing data management problems. As a frontend engineer at Cohesity, I have worked on various features for the UI dashboard using Angular/AngularJS and the latest frontend technologies.",
-      "shortDescAlt": "At Cohesity, we delivered multiple features for the Cohesity UI dashboard using Angular/AngularJS. Working closely with my teammates, I often had the opportunity to own the complete UI side of many projects. Multitenancy, localization, Data Tiering are some of the major features that I contributed to, using numerous web development libraries/utilities/technologies.",
+      "shortDesc": "Cohesity is a software-defined platform which solves the existing data management problems. As a Senior Member of Technical Staff at Cohesity, I have worked on various features for the UI dashboard using Angular and the latest frontend technologies.",
+      "shortDescAlt": "As a Senior Member of Technical Staff at Cohesity, we delivered multiple features for the Cohesity UI dashboard using Angular/AngularJS and other latest Frontend Tech. Working closely with my teammates, I often had the opportunity to own the complete UI side of many projects.",
       "externalLink": "https://www.cohesity.com/",
       "details": [
+        {
+          "title": "Cohesity Views",
+          "description": "Initiated and executed the effort to refactor the core Cohesity Views CRUD workflows due to a huge influx of Customer issues with the existing code implementation.<br>• Accomplished near zero customer issues to date.<br>• Supervised and collaborated with two contractors to ensure the code is optimal, reusable, and well-documented with maximum test coverage using UTs & E2E tests.<br>• Created a new in-house library to solve open issues we faced with a third-party library."
+        },
         {
           "title": "Multitenancy",
           "description": "Multitenancy is a feature that provides the ability for an admin to have multiple tenants and each tenant can have different features depending on their needs. We integrated this feature on top of our existing product from managing the organization to maintaining user profiles. "
@@ -21,13 +25,13 @@
         }
       ],
       "tools": {
-        "Tools": "Angular, Webpack, AngularJS, SCSS, TypeScript, Jest",
+        "Tools": "Angular, TypeScript, AngularJS, SCSS, Jest, Cypress",
         "Type": "Work",
         "Time": "June 2018 - Current"
       }
     },
     {
-      "title": "Web app for Headout",
+      "title": "Headout",
       "subtitle": "Internship",
       "shortDesc": "Worked on Headout's desktop/mobile web app written in React, Redux bundled with webpack. Worked along with the mentors on creating new flow and refactoring deprecated code. Wrote unit tests on Jest using Enzyme.",
       "shortDescAlt": "  At Headout, ​I was given the opportunity to work on the Front end side of the progressive\n                      web apps. The main goal was to increase the ROI using enhanced UI/UX. The projects\n                      varied along the line. The project follows the same architecture as Facebook's <a href=\"https://github.com/facebookincubator/create-react-app\">create-react-app</a> which is an starter project for React which also uses\n                      Webpack which is extensible for using Redux.",
@@ -93,6 +97,7 @@
       }
     },
     {
+      "hidden": true,
       "title": "Success Factory",
       "subtitle": "Freelance Project",
       "shortDesc": "Success Factory is an organization that helps connect mentors with mentees. Developed the given designs using basic frontend technologies including SCSS and ES6. Also implemented server side rendering using Node, Express and EJS.",
@@ -111,7 +116,7 @@
       }
     },
     {
-      "title": "Web App for XPrep®",
+      "title": "XPrep",
       "subtitle": "Internship",
       "shortDesc": "Created and Designed an app for Tutor Side using AngularJS and Gulp. The design was implemented using Angular-Material.",
       "externalLink": "https://xprep.co/",
@@ -137,7 +142,7 @@
       }
     },
     {
-      "title": "Chat Module for Tagbin®",
+      "title": "Chat Module for Tagbin",
       "subtitle": "Freelance Project",
       "shortDesc": "A messaging module which included normal messaging and group messaging. This was implemented using StropheJS which uses XMPP protocol. AngularJS was the framework used.",
       "externalLink": "",
@@ -150,7 +155,7 @@
       }
     },
     {
-      "title": "Web App for GreyNexus®",
+      "title": "Web App for GreyNexus",
       "subtitle": "Freelance Project",
       "shortDesc": "This product is a social and business networking solution for teachers and educators. This app used AngularJS and basic frontend technologies.",
       "externalLink": "",
@@ -163,6 +168,7 @@
       }
     },
     {
+      "hidden": true,
       "title": "Website for SMP",
       "subtitle": "College Group",
       "shortDesc": "Developed and designed a static website for college group called Student Mentorship Program, IIT Roorkee.",

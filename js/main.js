@@ -1,6 +1,6 @@
 
 $(document).ready(function() {
-	console.log('Why you looking at my log boi?');
+	console.log('Why you looking at my logs 👀');
 	if(window.location.hash === '#work/details'){
 		window.location = '#work';
 	}
@@ -10,6 +10,7 @@ $(document).ready(function() {
 
 	$.getJSON('../assets/data.json', function(json) {
 		json.data.forEach(function (res, index) {
+			if (res.hidden) return;
 			$('#gallery-main')
 				.append(`<div class="gallery-cell" data='${index}'>
 				<div class="card-header">
@@ -78,8 +79,10 @@ $(document).ready(function() {
 	if ($(window).width() > 768) {
 		anchors = ['main','work', 'about'];
 		$('.section.skills').remove();
+		$('.bg-lines').remove();
 	} else {
 		anchors = ['main','work', 'skills', 'about'];
+		$('.animation-container').remove();
 	}
 	$('#fullpage').fullpage(
 		{
@@ -147,7 +150,7 @@ $(document).ready(function() {
 		setTimeout(function(){
 			$('.typed-text').fadeIn(300);
 			setTimeout(function(){
-				var strings = ['Frontend Engineer', 'Designer', 'JavaScript Developer', 'Memer', 'Footballer', 'Cinephile', 'Gamer', 'Optimist', 'Nihilist', 'Audiophile', '^1000Human, ^1000being^1000.^1000'];
+				var strings = ['Frontend Engineer', 'Designer', 'JavaScript conois', 'JavaScript connosier', 'JavaScript connoissie', 'JavaScript ^1500Developer'];
 				// var strings = ['frontedn', 'Human being']
 				var options = {
 					typeSpeed: 120,
@@ -156,24 +159,23 @@ $(document).ready(function() {
 					backDelay: 1000,
 					startDelay: 0,
 					loop: true,
+					smartBackspace: true,
 				};
 				var typed = new Typed('#element', {
 					strings: strings,
 					...options,
 					onStringTyped: (index) => {
-						if (index === strings.length - 2) {
-							typed.typeSpeed = 120;
-							return;
-						}
-						if (index === strings.length - 1) {
-							typed.backSpeed = 50;
+						if (index === 2) {
 							typed.startDelay = 0;
-							typed.backDelay = 1000;
+							typed.backDelay = 0;
 							return;
 						}
-						typed.typeSpeed = Math.max(typed.typeSpeed - 30, 10);
-						typed.backSpeed = Math.max(typed.backSpeed - 10, 20);
-						typed.backDelay = Math.max(typed.backDelay - 300, 300);
+						if (index === 0 || index === strings.length - 1) {
+							typed.typeSpeed = options.typeSpeed;
+							typed.backSpeed = options.backSpeed;
+							typed.backDelay = options.backDelay;
+							return;
+						}
 					}
 				});
 			},500);
@@ -258,3 +260,40 @@ $(document).ready(function() {
 	}
 
 });
+
+/**
+ * Animation for the dots.
+ */
+const container = document.querySelector(".animation-container");
+const dots = [];
+for (let i = 0; i < 200; i++) {
+	const dot = document.createElement("div");
+	dot.classList.add("dot");
+	container.appendChild(dot);
+	dots.push(dot);
+}
+
+const util = (x1, y1, x2, y2) => {
+  const distance = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+
+  const degree = (Math.atan2(y2 - y1, x2 - x1) * 180) / Math.PI;
+
+  return { distance, degree };
+};
+
+container.onmousemove = function (event) {
+  const { clientX: x1, clientY: y1 } = event;
+  dots.forEach((dot) => {
+    const { x, y, width, height } = dot.getBoundingClientRect();
+    const { distance, degree } = util(x + width / 2, y + height / 2, x1, y1);
+    const scaleX = `scaleX(${Math.max(1, Math.min(10, distance / 60))})`;
+    const rotate = `rotate(${degree}deg)`;
+    dot.style.transform = `${rotate} ${scaleX}`;
+  });
+};
+
+container.onmouseout = function () {
+  dots.forEach((dot) => {
+    dot.style.transform = ``;
+  });
+};

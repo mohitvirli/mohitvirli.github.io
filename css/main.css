@@ -379,7 +379,7 @@ a:hover{
 	margin:10px 20px 10px 0;
 	color:#111;
 }
-.social-icon:hover{
+.social-icon:hover, .social-icon:visited{
 	color:#333;
 }
 .m-t-40{
@@ -763,10 +763,12 @@ a:hover{
 		width: calc(100% - 32px);
 	}
 	.typed-text{
-		font-size: 36px;
+		font-size: 3em;
 	}
 	.element-wrapper{
 		display: block;
+		height: 3em;
+		width: 50%;
 	}
 	.details-container{
 		padding: 8px;
@@ -799,3 +801,24 @@ a:hover{
 	background-color: #333;
 }
 
+
+.animation-container {
+  width: 40vw;
+	opacity: 0.2;
+  height: 100vh;
+	display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+	position: absolute;
+	right: 0;
+	top: 50px;
+	z-index: 100;
+}
+
+.dot {
+  background-color: #ED2;
+  width: 5px;
+  height: 5px;
+  border-radius: 15%;
+	transition-duration: 500ms;
+}
