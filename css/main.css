@@ -373,10 +373,8 @@ a:hover{
 	margin: 4px;
 	display: inline-block;
 }
-.tags{
-}
 .social-icon{
-	margin:10px 20px 10px 0;
+	margin:12px 20px 10px 0;
 	color:#111;
 }
 .social-icon:hover, .social-icon:visited{
@@ -785,16 +783,11 @@ a:hover{
 	.view-gallery{
 		display: none;
 	}
-    .download-resume{
-        margin-top: 10px !important;
-        margin-left: 0px !important;
-    }
 }
 .download-resume, .download-resume:visited, .download-resume:focus{
-	margin-top: -15px;
-    margin-left: 10px;
-    color: #ED2;
-    background-color: #111;
+	margin-left: 10px;
+	color: #ED2;
+	background-color: #111;
 }
 .download-resume:hover{
 	color:#ED2;
@@ -821,4 +814,9 @@ a:hover{
   height: 5px;
   border-radius: 15%;
 	transition-duration: 500ms;
+}
+
+.social-icons {
+	display: flex;
+	align-items: center;
 }
