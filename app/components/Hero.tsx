@@ -36,7 +36,7 @@ const Hero = () => {
           overflow: "hidden",
         }}
         >
-           <Suspense fallback={null}>
+          <Suspense fallback={null}>
             <Environment preset="sunset" />
             <ambientLight intensity={1} />
 
@@ -44,15 +44,15 @@ const Hero = () => {
 
             <ScrollControls pages={2} damping={0.3}>
               <CloudContainer/>
-                <group position={[0, -25, 5.69]}>
-                  <WindowModel/>
-                  <TextWindow/>
-                </group>
+              <group position={[0, -25, 5.69]}>
+                <WindowModel/>
+                <TextWindow/>
+              </group>
               {/* <Scroll html>
                 <h1 style={ { height: '100vh '}}>html in here (optional)</h1>
               </Scroll> */}
             </ScrollControls>
-           </Suspense>
+          </Suspense>
       </Canvas>
     </div>
   );
