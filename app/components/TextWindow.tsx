@@ -5,22 +5,21 @@ import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import * as THREE from "three";
 
-const TextWindow = (props) => {
-const data = useScroll();
-  const windowRef = useRef(null);
+const TextWindow = (props: any) => {
+  const data = useScroll();
+  const windowRef = useRef<THREE.Group>(null);
 
   useFrame((state, delta) => {
-      const c = data.range(2/3, 1 / 4);
-      // state.camera.position.z = 10 - 10* b;
-      // windowRef.current.rotation.z = Math.PI * c;
-      // windowRef.current.rotation.y = Math.PI * c;
+    const c = data.range(2/3, 1 / 4);
+
+    if (windowRef.current) {
       windowRef.current.setRotationFromAxisAngle(new THREE.Vector3(0, -1, 0), 0.5 *Math.PI * c);
       windowRef.current.position.x =  -0.6 * c;
       // windowRef.current.position.y =  c;
       windowRef.current.position.z = -0.6 * c;
+    }
+  });
 
-      // textRef.current.position.x = Math.sin(state.clock.elapsedTime) * 2;
-    });
   return (
     <group position={[0, -0.4, 0]} ref={windowRef}>
 

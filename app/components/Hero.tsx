@@ -1,18 +1,14 @@
 'use client';
 
 import { useGSAP } from "@gsap/react";
-import { CameraControls, Cloud, Clouds, Text, Environment, GradientTexture, OrbitControls, PerspectiveCamera, ScrollControls, Sky, useScroll, Scroll, Html } from "@react-three/drei";
+import { Environment, ScrollControls } from "@react-three/drei";
 
-import { Canvas, useFrame } from '@react-three/fiber'
-import { stat } from "fs";
+import { Canvas } from '@react-three/fiber';
 import gsap from "gsap";
-import { Suspense, use, useRef, useState } from "react";
-import * as THREE from "three";
-import CanvasLoader from "./CanvasLoader";
-import Random from "./Random";
-import Model from "./model";
+import { Suspense } from "react";
 import CloudContainer from "./Cloud";
-import TextWindow from "./Random";
+import TextWindow from "./TextWindow";
+import WindowModel from "./WindowModel";
 
 const Hero = () => {
   useGSAP(() => {
@@ -49,7 +45,7 @@ const Hero = () => {
             <ScrollControls pages={2} damping={0.3}>
               <CloudContainer/>
                 <group position={[0, -25, 5.69]}>
-                  <Model/>
+                  <WindowModel/>
                   <TextWindow/>
                 </group>
               {/* <Scroll html>

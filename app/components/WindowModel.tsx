@@ -12,52 +12,32 @@ import { RenderTexture, useGLTF, useScroll, Text, MeshPortalMaterial } from '@re
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
-const Model = (props) => {
-  // const textRef = useRef(null)
-  const handleRef = useRef(null);
-  const windowRef = useRef(null);
+const WindowModel = (props: any) => {
+  const handleRef = useRef<THREE.Mesh>(null);
+  const windowRef = useRef<THREE.Mesh>(null);
+
   const { nodes, materials } = useGLTF('/window.glb');
   const data = useScroll();
   useFrame((state, delta) => {
       const b = data.range(1/ 3, 1/ 6);
       const c = data.range(1 / 2, 1 / 9);
       // state.camera.position.z = 10 - 10* b;
-      handleRef.current.rotation.y = -0.5 * Math.PI * b;
-      windowRef.current.rotation.z = 0.5 * Math.PI * c;
+      if (handleRef.current) {
+        handleRef.current.rotation.y = -0.5 * Math.PI * b;
+      }
+      if (windowRef.current) {
+        windowRef.current.rotation.z = 0.5 * Math.PI * c;
+      }
 
       // textRef.current.position.x = Math.sin(state.clock.elapsedTime) * 2;
     });
   return (
     <group {...props} dispose={null}>
       <group rotation={[0, Math.PI, Math.PI]}>
-        {/* <mesh
-          castShadow
-          receiveShadow
-          // add color
-          material={new THREE.MeshBasicMaterial({ color: '#ffffff' })}
-          position={[-0.1, -0.1, -0.1]}
-        /> */}
-        {/* <mesh position={[0, 0.8, 0.7]}>
-          <boxGeometry/>
-          <meshStandardMaterial>
-            <RenderTexture attach="map" anisotropy={16}>
-              <color attach="background" args={['orange']} />
-              <Text ref={textRef} fontSize={10} color="#FFF">
-                hello
-              </Text>
-            </RenderTexture>
-        </meshStandardMaterial>
-        </mesh> */}
-        {/* <group>
-
-          <Text color="white" anchorX="center" anchorY="middle">
-            hello world!
-          </Text>
-        </group> */}
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes['#WIN0003_Frame_#WIN0003_Textures_0'].geometry}
+          geometry={(nodes['#WIN0003_Frame_#WIN0003_Textures_0'] as THREE.Mesh).geometry}
           material={materials.WIN0003_Textures}
         />
         <group position={[0.441, -0.039, 0.082]}
@@ -65,14 +45,14 @@ const Model = (props) => {
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes['#WIN0003_Window_#WIN0003_Textures_0'].geometry}
+            geometry={(nodes['#WIN0003_Window_#WIN0003_Textures_0'] as THREE.Mesh).geometry}
             material={materials.WIN0003_Textures}
           />
           <mesh
             ref={handleRef}
             castShadow
             receiveShadow
-            geometry={nodes['#WIN0003_Handle_#WIN0003_Textures_0'].geometry}
+            geometry={(nodes['#WIN0003_Handle_#WIN0003_Textures_0'] as THREE.Mesh).geometry}
             material={materials.WIN0003_Textures}
             position={[-0.84, -0.018, 0.55]}
           />
@@ -84,4 +64,4 @@ const Model = (props) => {
 
 useGLTF.preload('/window.glb');
 
-export default Model;
+export default WindowModel;
