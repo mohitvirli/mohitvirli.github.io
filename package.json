@@ -1,19 +1,33 @@
 {
-  "name": "mohitvirli.github.io",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "portfolio",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mohitvirli/mohitvirli.github.io.git"
+  "dependencies": {
+    "@gsap/react": "^2.1.2",
+    "@react-three/drei": "^10.0.0-rc.0",
+    "@react-three/fiber": "^9.0.0-alpha.8",
+    "@types/three": "^0.173.0",
+    "gsap": "^3.12.7",
+    "next": "15.1.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "three": "^0.173.0"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mohitvirli/mohitvirli.github.io/issues"
-  },
-  "homepage": "https://github.com/mohitvirli/mohitvirli.github.io#readme"
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.1.6",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
 }
