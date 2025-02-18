@@ -4,13 +4,13 @@ import * as THREE from "three";
 
 const CloudContainer = () => {
   const data = useScroll();
-  useFrame((state) => {
+  useFrame((state, delta) => {
     const a = data.range(0, 1 / 6);
     const b = data.range(1 / 6, 1 / 2);
     const c = data.range(2/3, 1/3);
 
 
-    state.camera.rotation.x = -0.5 * Math.PI * a;
+    state.camera.rotation.x = THREE.MathUtils.damp(state.camera.rotation.x, -0.5 * Math.PI * a, 10, delta);
 
     if (b < 0.5) {
       state.camera.position.y = - 30 * b;
