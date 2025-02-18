@@ -12,7 +12,8 @@ import WindowModel from "./WindowModel";
 
 const Hero = () => {
   useGSAP(() => {
-    gsap.fromTo('.base-canvas', { opacity: 0 }, { opacity: 1, duration: 2.5, delay: 1.5 });
+    gsap.fromTo('.min-h-screen', { opacity: 0 }, { opacity: 1, duration: 1, delay: 0 });
+    gsap.fromTo('.base-canvas', { opacity: 0 }, { opacity: 1, duration: 2, delay: 0.5 });
   }, []);
 
   const fontProps = {
