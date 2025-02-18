@@ -5,11 +5,11 @@ import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import * as THREE from "three";
 
-const TextWindow = (props: any) => {
+const TextWindow = () => {
   const data = useScroll();
   const windowRef = useRef<THREE.Group>(null);
 
-  useFrame((state, delta) => {
+  useFrame(() => {
     const c = data.range(2/3, 1 / 4);
 
     if (windowRef.current) {

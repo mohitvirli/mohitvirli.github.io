@@ -4,7 +4,7 @@ import * as THREE from "three";
 
 const CloudContainer = () => {
   const data = useScroll();
-  useFrame((state, delta) => {
+  useFrame((state) => {
     const a = data.range(0, 1 / 6);
     const b = data.range(1 / 6, 1 / 2);
     const c = data.range(2/3, 1/3);

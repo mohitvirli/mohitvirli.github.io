@@ -7,30 +7,29 @@ Title: Residential Window
 */
 'use client';
 
-import React, { useRef } from 'react'
-import { RenderTexture, useGLTF, useScroll, Text, MeshPortalMaterial } from '@react-three/drei'
+import { useGLTF, useScroll } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
+import { useRef } from 'react';
 import * as THREE from 'three';
 
-const WindowModel = (props: any) => {
+const WindowModel = (props: object) => {
   const handleRef = useRef<THREE.Mesh>(null);
   const windowRef = useRef<THREE.Mesh>(null);
 
   const { nodes, materials } = useGLTF('/window.glb');
   const data = useScroll();
-  useFrame((state, delta) => {
+  useFrame(() => {
       const b = data.range(1/ 3, 1/ 6);
       const c = data.range(1 / 2, 1 / 9);
-      // state.camera.position.z = 10 - 10* b;
+
       if (handleRef.current) {
         handleRef.current.rotation.y = -0.5 * Math.PI * b;
       }
       if (windowRef.current) {
         windowRef.current.rotation.z = 0.5 * Math.PI * c;
       }
-
-      // textRef.current.position.x = Math.sin(state.clock.elapsedTime) * 2;
     });
+
   return (
     <group {...props} dispose={null}>
       <group rotation={[0, Math.PI, Math.PI]}>

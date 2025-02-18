@@ -1,8 +1,6 @@
 'use client';
 
-import { Canvas } from "@react-three/fiber";
 import Hero from "./components/Hero";
-import { Box } from "@react-three/drei";
 
 export default function Home() {
   return (
