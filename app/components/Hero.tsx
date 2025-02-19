@@ -1,7 +1,7 @@
 'use client';
 
 import { useGSAP } from "@gsap/react";
-import { ScrollControls, Text } from "@react-three/drei";
+import { Preload, ScrollControls, Text } from "@react-three/drei";
 
 import { Canvas } from '@react-three/fiber';
 import gsap from "gsap";
@@ -40,22 +40,24 @@ const Hero = () => {
           ...noiseOverlayStyle,
         }}
         >
-          <Suspense fallback={null}>
-            <ambientLight intensity={4} />
-            <pointLight position={[0, -25, 2]} intensity={2} />
+        {/* <Perf /> */}
+        <Suspense fallback={null}>
+          <ambientLight intensity={4} />
+          <pointLight position={[0, -25, 2]} intensity={2} />
 
-            <ScrollControls pages={2} damping={0.3}>
-              <Text position={[0, 2, -10]} {...fontProps}>Hi, I am Mohit Virli.</Text>
-              <CloudContainer/>
-              <group position={[0, -25, 5.69]}>
-                <WindowModel/>
-                <TextWindow/>
-              </group>
-              {/* <Scroll html>
-                <h1 style={ { height: '100vh '}}>html in here (optional)</h1>
-              </Scroll> */}
-            </ScrollControls>
-          </Suspense>
+          <ScrollControls pages={2} damping={0.3}>
+            <Text position={[0, 2, -10]} {...fontProps}>Hi, I am Mohit Virli.</Text>
+            <CloudContainer/>
+            <group position={[0, -25, 5.69]}>
+              <WindowModel/>
+              <TextWindow/>
+            </group>
+            {/* <Scroll html>
+              <h1 style={ { height: '100vh '}}>html in here (optional)</h1>
+            </Scroll> */}
+          </ScrollControls>
+          <Preload all />
+        </Suspense>
       </Canvas>
     </div>
   );
