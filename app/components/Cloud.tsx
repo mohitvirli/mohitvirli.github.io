@@ -1,28 +1,11 @@
-import { Cloud, Clouds, useScroll } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
+import { Cloud, Clouds } from "@react-three/drei";
 import * as THREE from "three";
 
 const CloudContainer = () => {
-  const data = useScroll();
-  useFrame((state, delta) => {
-    const a = data.range(0, 1 / 6);
-    const b = data.range(1 / 6, 1 / 2);
-    const c = data.range(2/3, 1/3);
-
-
-    state.camera.rotation.x = THREE.MathUtils.damp(state.camera.rotation.x, -0.5 * Math.PI * a, 10, delta);
-
-    if (b < 0.5) {
-      state.camera.position.y = - 30 * b;
-    } else if (b < 1){
-      state.camera.position.y = - 15 -  20 * (b - 0.5);
-    } else {
-      state.camera.position.y = - 25 - 10 * (c);
-    }
-  });
-
   return (
-    <Clouds material={THREE.MeshBasicMaterial} position={[0, -3.5, 0]} frustumCulled={false}>
+    <Clouds material={THREE.MeshBasicMaterial}
+      position={[0, -3.5, 0]}
+      frustumCulled={false}>
       <Cloud seed={1}
         segments={1}
         concentrate="inside"
@@ -79,7 +62,7 @@ const CloudContainer = () => {
         concentrate="outside"
         bounds={[5, 5, 5]}
         growth={2}
-        position={[0, -15, 20]}
+        position={[0, -20, 20]}
         smallestVolume={2}
         scale={4}
         volume={3}
@@ -92,9 +75,9 @@ const CloudContainer = () => {
         concentrate="outside"
         bounds={[5, 5, 5]}
         growth={2}
-        position={[10, -20, -10]}
+        position={[10, -15, -5]}
         smallestVolume={2}
-        scale={4}
+        scale={3}
         volume={3}
         fade={0.1}
         speed={0.1}/>

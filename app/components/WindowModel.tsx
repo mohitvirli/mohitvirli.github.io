@@ -19,16 +19,16 @@ const WindowModel = (props: object) => {
   const { nodes, materials } = useGLTF('/window.glb');
   const data = useScroll();
   useFrame(() => {
-      const b = data.range(1/ 3, 1/ 6);
-      const c = data.range(1 / 2, 1 / 9);
+    const b = data.range(1/ 6, 1/ 6);
+    const c = data.range(1 / 4, 1 / 9);
 
-      if (handleRef.current) {
-        handleRef.current.rotation.y = -0.5 * Math.PI * b;
-      }
-      if (windowRef.current) {
-        windowRef.current.rotation.z = 0.5 * Math.PI * c;
-      }
-    });
+    if (handleRef.current) {
+      handleRef.current.rotation.y = -0.5 * Math.PI * b;
+    }
+    if (windowRef.current) {
+      windowRef.current.rotation.z = 0.5 * Math.PI * c;
+    }
+  });
 
   return (
     <group {...props} dispose={null}>

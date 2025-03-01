@@ -1,11 +1,18 @@
 'use client';
 
+import CanvasLoader from "./components/CanvasLoader";
 import Hero from "./components/Hero";
+import Projects from "./components/Projects";
+import ScrollWrapper from "./components/ScrollWrapper";
 
-export default function Home() {
+const Home = () => {
   return (
-    <div className="min-h-screen relative">
-      <Hero />
-    </div>
+    <CanvasLoader>
+      <ScrollWrapper>
+        <Hero />
+        <Projects />
+      </ScrollWrapper>
+    </CanvasLoader>
   );
-}
+};
+export default Home;
