@@ -26,10 +26,12 @@ const Projects = () => {
   useFrame (() => {
 
     const d = data.range(3.1 / 5, 1 / 4);
-    if (d > 0) {
-      groupRef.current.position.z = 0;
-    } else {
-      groupRef.current.position.z = 40;
+    if (groupRef.current) {
+      if (d > 0) {
+        groupRef.current.position.z = 0;
+      } else {
+        groupRef.current.position.z = 40;
+      }
     }
   })
 
@@ -39,7 +41,14 @@ const Projects = () => {
         <planeGeometry args={[20, 20, 1]} />
         <meshStandardMaterial color="white" />
       </mesh>
-      <group rotation={[0, 0, Math.PI / 2]} position={[-5, 0, 0]}>
+      <group rotation={[0, 0, Math.PI / 2]} position={[-7, 0, 0]}>
+
+        <Text color="#0284c7" anchorX="center" anchorY="top"
+          {...fontProps}
+          position={[0, 2, 1]}
+          fontSize={1}>
+          work
+        </Text>
         <group ref={carousel}>
           <mesh>
             <planeGeometry args={[2, 3, 1]} />
@@ -71,12 +80,6 @@ const Projects = () => {
         </group>
       </group>
 
-       {/* <Text color="white" anchorX="right" anchorY="middle"
-        {...fontProps}
-        fontSize={0.8}
-        rotation={[0, -Math.PI / 2,  -Math.PI / 2]}>
-        GAMER. CREATIVE.
-      </Text> */}
 
     </group>
   );
