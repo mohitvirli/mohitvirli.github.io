@@ -3,7 +3,7 @@ import { useFrame } from "@react-three/fiber";
 import gsap from "gsap";
 import { useRef } from "react";
 import * as THREE from 'three';
-import Tea from "./Tea";
+// import Tea from "./Tea";
 
 // TODO:
 const Projects = () => {

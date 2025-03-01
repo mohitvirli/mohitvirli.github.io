@@ -6,7 +6,7 @@ import { Canvas } from "@react-three/fiber";
 import gsap from "gsap";
 import { Suspense } from "react";
 
-const CanvasLoader = (props: any) => {
+const CanvasLoader = (props: { children: React.ReactNode }) => {
 
   // TODO: Main screen animation
   useGSAP(() => {
