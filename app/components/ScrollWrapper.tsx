@@ -4,7 +4,7 @@ import { Scroll, useScroll } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 
-const ScrollWrapper = (props: any) => {
+const ScrollWrapper = (props: { children: React.ReactNode | React.ReactNode[]}) => {
 
   const { camera } = useThree();
 
@@ -31,10 +31,10 @@ const ScrollWrapper = (props: any) => {
     }
   });
 
-  const children = props.children.length ? props.children : [props.children];
+  const children = Array.isArray(props.children) ? props.children : [props.children];
 
   return <>
-    {children.map((child: any, index: number) => {
+    {children.map((child, index) => {
       return <Scroll key={index}>
         {child}
       </Scroll>
