@@ -2,13 +2,16 @@
 
 import { Scroll, useScroll } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
+import { useLayoutEffect } from "react";
 import * as THREE from "three";
 
 const ScrollWrapper = (props: { children: React.ReactNode | React.ReactNode[]}) => {
-
-  const { camera } = useThree();
-
+  const { gl, scene, camera } = useThree();
   const data = useScroll();
+
+  // Precompile to improve framerate
+  useLayoutEffect(() => void gl.compile(scene, camera), []);
+
   useFrame((state, delta) => {
     if (data) {
 
