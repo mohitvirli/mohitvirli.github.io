@@ -16,10 +16,10 @@ const Hero = () => {
         <Text position={[0, 2, -10]} {...fontProps}>Hi, I am Mohit Virli.</Text>
         <CloudContainer/>
         <group position={[0, -25, 5.69]}>
-          <WindowModel/>
+          <pointLight castShadow position={[1, 1, -2.5]} intensity={60} distance={10}/>
+          <WindowModel receiveShadow/>
           <TextWindow/>
         </group>
-
     </>
   );
 };

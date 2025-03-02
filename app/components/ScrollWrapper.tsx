@@ -25,7 +25,7 @@ const ScrollWrapper = (props: { children: React.ReactNode | React.ReactNode[]}) 
       }
 
       if ( d > 0) {
-        camera.position.y = - 40 - 10 *d;
+        camera.position.y = - 40 - 8 *d;
         camera.rotation.x = THREE.MathUtils.damp(0, 0, 10, delta);
       }
     }

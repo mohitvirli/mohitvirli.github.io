@@ -12,7 +12,7 @@ import { useFrame } from '@react-three/fiber';
 import { useRef } from 'react';
 import * as THREE from 'three';
 
-const WindowModel = (props: object) => {
+const WindowModel = (props: Partial<THREE.Object3D>) => {
   const handleRef = useRef<THREE.Mesh>(null);
   const windowRef = useRef<THREE.Mesh>(null);
 

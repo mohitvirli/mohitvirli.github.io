@@ -7,7 +7,6 @@ import gsap from "gsap";
 import { Suspense } from "react";
 
 const CanvasLoader = (props: { children: React.ReactNode }) => {
-
   // TODO: Main screen animation
   useGSAP(() => {
     gsap.fromTo('.min-h-screen', { opacity: 0 }, { opacity: 1, duration: 1, delay: 0 });
@@ -25,6 +24,7 @@ const CanvasLoader = (props: { children: React.ReactNode }) => {
     <div className="min-h-screen relative">
       <div className="min-h-screen bg-sky-600 relative">
         <Canvas className="w-full h-full base-canvas bg-sky-600"
+          shadows
           style={{
             position: "absolute",
             top: 0,
@@ -33,10 +33,11 @@ const CanvasLoader = (props: { children: React.ReactNode }) => {
             right: 0,
             overflow: "hidden",
             ...noiseOverlayStyle,
-          }}>
+          }}
+          dpr={[1, 2]}>
+          {/* <Perf/> */}
           <Suspense fallback={null}>
-            <ambientLight intensity={4} />
-            <pointLight position={[0, -25, 2]} intensity={2} />
+            <ambientLight intensity={0.5} />
 
             <ScrollControls pages={4} damping={0.3}>
               {props.children}
