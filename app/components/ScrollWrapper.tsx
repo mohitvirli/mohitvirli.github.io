@@ -3,6 +3,7 @@
 import { Scroll, useScroll } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import { useLayoutEffect } from "react";
+import { isMobile } from "react-device-detect";
 import * as THREE from "three";
 
 const ScrollWrapper = (props: { children: React.ReactNode | React.ReactNode[]}) => {
@@ -30,6 +31,11 @@ const ScrollWrapper = (props: { children: React.ReactNode | React.ReactNode[]}) 
       if ( d > 0) {
         camera.position.y = - 40 - 8 *d;
         camera.rotation.x = THREE.MathUtils.damp(0, 0, 10, delta);
+      }
+
+      // Move camera slightly on mouse movement.
+      if (!isMobile) {
+        camera.rotation.y = THREE.MathUtils.lerp(camera.rotation.y, -(state.pointer.x * Math.PI) / 90, 0.05);
       }
     }
   });

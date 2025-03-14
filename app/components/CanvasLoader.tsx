@@ -39,7 +39,7 @@ const CanvasLoader = (props: { children: React.ReactNode }) => {
           <Suspense fallback={null}>
             <ambientLight intensity={0.5} />
 
-            <ScrollControls pages={4} damping={0.3}>
+            <ScrollControls pages={4} damping={0.3} maxSpeed={1}>
               {props.children}
             </ScrollControls>
 

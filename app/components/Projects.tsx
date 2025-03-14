@@ -1,23 +1,19 @@
-import { MeshPortalMaterial, Text, useScroll } from "@react-three/drei";
+import { Text, useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import gsap from "gsap";
 import { useRef } from "react";
 import * as THREE from 'three';
+import useProjectStore from "../store/store";
+import GridTile from "./GridTile";
+import PaperPlane from "./models/PaperPlane";
 // import Tea from "./Tea";
+
 
 // TODO:
 const Projects = () => {
   const groupRef = useRef<THREE.Group>(null);
-  const carousel = useRef<THREE.Group>(null);
   const data = useScroll();
-  const onNavigation = (direction: string) => {
-    if (carousel.current) {
-      gsap.to(carousel.current.position, {
-        x: carousel.current.position.x + (direction === 'right' ? 1 : -1),
-        duration: 0.5,
-      });
-    }
-  };
+
+  const allProjects = useProjectStore(state => state.projects);
 
   const fontProps = {
     font: "./soria-font.ttf",
@@ -28,59 +24,50 @@ const Projects = () => {
     const d = data.range(3.1 / 5, 1 / 4);
     if (groupRef.current) {
       if (d > 0) {
-        groupRef.current.position.z = 0;
+        groupRef.current.visible = true;
       } else {
-        groupRef.current.position.z = 40;
+        groupRef.current.visible = false;
       }
     }
   })
 
+  const getGrid = () => {
+    return allProjects.map((grid, index) => {
+      return <GridTile key={index} grid={grid} index={index}/>
+    });
+  }
+
   return (
-    <group position={[0, -68, 40]} ref={groupRef} rotation={[0 , 0 , -Math.PI / 2]}>
-      <mesh>
+    <group position={[0, -67, 0]} ref={groupRef} rotation={[0 , 0 , -Math.PI / 2]}>
+      {/* <mesh receiveShadow>
         <planeGeometry args={[20, 20, 1]} />
-        <meshStandardMaterial color="white" />
+        <meshBasicMaterial color="white"></meshBasicMaterial>
+      </mesh> */}
+      <mesh receiveShadow position={[0, 0, 0.1]}>
+        <planeGeometry args={[20, 20, 1]} />
+        <shadowMaterial opacity={0.1} />
       </mesh>
       <group rotation={[0, 0, Math.PI / 2]} position={[-7, 0, 0]}>
 
-        <Text color="#0284c7" anchorX="center" anchorY="top"
+        <Text color="white" anchorX="center" anchorY="top"
+          castShadow
           {...fontProps}
           position={[0, 2, 1]}
           fontSize={1}>
-          work
+          experience
         </Text>
-        <group ref={carousel}>
-          <mesh>
-            <planeGeometry args={[2, 3, 1]} />
-            <MeshPortalMaterial resolution={0} blur={0}>
-              <color attach="background" args={[0.5, 0.5, 0.5]} />
-              {/* <Tea position={[0, -2, 0]} /> */}
-            </MeshPortalMaterial>
-          </mesh>
-          <mesh position={[-2,0,0]}>
-            <planeGeometry args={[2, 3, 1]} />
-            <MeshPortalMaterial resolution={0} blur={0}>
-              {/* <Tea position={[0, -2, 0]} /> */}
-            </MeshPortalMaterial>
-          </mesh>
+
+        <group position={[-1, 4, 3.5]} >
+          <PaperPlane scale={new THREE.Vector3(2, 2, 2)}/>
         </group>
-        <group onClick={() => onNavigation('right')}>
-          <Text {...fontProps}
-            color={'#0284c7'}
-            position={[3, 0, 1]}>
-            {">"}
-          </Text>
+
+        <group position={[-3, -2, 0]}>
+          {getGrid()}
         </group>
-        <group onClick={() => onNavigation('left')}>
-          <Text {...fontProps}
-            color={'#0284c7'}
-            position={[-3, 0, 1]}>
-            {"<"}
-          </Text>
-        </group>
+
       </group>
 
-
+      <pointLight castShadow position={[-8, 0, 4]} intensity={1}></pointLight>
     </group>
   );
 };
