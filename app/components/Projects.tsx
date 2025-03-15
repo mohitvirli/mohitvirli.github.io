@@ -61,7 +61,7 @@ const Projects = () => {
           <PaperPlane scale={new THREE.Vector3(2, 2, 2)}/>
         </group>
 
-        <group position={[-3, -2, 0]}>
+        <group position={[-2, -1.5, 0]}>
           {getGrid()}
         </group>
 

@@ -16,19 +16,19 @@ const GridTile = (props: GridTileProps) => {
   const portalRef = useRef(null);
   const data = useScroll();
   const { grid, index } = props;
-  const position = new THREE.Vector3(index * 2, 0, 0);
+  const position = new THREE.Vector3(index * 4, 0, 0);
   const { camera } = useThree();
   const isActive = useProjectStore((state) => state.activeProjectId === grid.id);
   const setActiveProject = useProjectStore((state) => state.setActiveProject);
   const activeProjectId = useProjectStore((state) => state.activeProjectId);
 
   useFrame(() => {
-
     const d = data.range(2/3, 1 / 4);
     if (d === 0 && isActive) {
       exitPortal();
     }
   });
+
   const portalInto = () => {
     if (isActive || activeProjectId) return;
     setActiveProject(grid);
@@ -40,8 +40,9 @@ const GridTile = (props: GridTileProps) => {
 
       duration: 1,
     });
+
     gsap.to(portalRef.current, {
-      blend: 0.99,
+      blend: 1,
       duration: 1,
       // ease: 'power2.in'
     });
@@ -50,7 +51,6 @@ const GridTile = (props: GridTileProps) => {
   const exitPortal = () => {
     if (!isActive) return;
     setActiveProject(null);
-    // isAnyGridActive = false;
 
     gsap.to(camera.position, {
       x: 0,
@@ -65,13 +65,17 @@ const GridTile = (props: GridTileProps) => {
     });
   }
 
+  const fontProps = {
+    font: "./soria-font.ttf",
+  };
+
   return (<mesh position={position} key={index} castShadow onClick={portalInto}>
-    <planeGeometry args={[2, 4, 1]} />
+    <planeGeometry args={[4, 4, 1]} />
+    <Text maxWidth={2} position={[0, -1.8, 0.2]} {...fontProps} fontSize={0.7} castShadow anchorX="center" anchorY={'bottom'} textAlign={grid.textAlign}>
+      {grid.title}
+    </Text>
     <MeshPortalMaterial ref={portalRef} blend={0} resolution={0} blur={0}>
       <color attach="background" args={[grid.color]} />
-      <group onClick={exitPortal} >
-        <Text position={[2, 0, 0]}>Hello</Text>
-      </group>
       {grid.component}
     </MeshPortalMaterial>
   </mesh>)

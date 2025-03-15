@@ -16,3 +16,4 @@ Cheers till then!
 - Disable Zoom
 - Add SEO
 - Add favicon & meta tags
+- Remove unused Models

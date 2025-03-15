@@ -1,3 +1,4 @@
+import { TextProps } from "@react-three/drei";
 
 export interface Project {
   id?: string;
@@ -5,6 +6,7 @@ export interface Project {
   component: React.ReactNode;
   color: string;
   active?: boolean;
+  textAlign?: TextProps['textAlign'];
 }
 export interface ProjectStore {
   projects: Project[];
