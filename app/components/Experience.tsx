@@ -41,11 +41,15 @@ const Experience = () => {
       setIsRightSide(isRight);
 
       if (hovered && hoverBoxRef.current) {
+        gsap.to(hoverBoxRef.current.scale, { x: 1, y: 1, z: 1, duration: 0.4 });
+        gsap.to(hoverBoxRef.current, { visible: true, duration: 0.25 });
+
         gsap.to(hoverBoxRef.current?.position, {
           x: isRightSide ? 4 : 0,
           duration: 0.5,
           ease: "sine",
         });
+
         if (gridRef1.current && gridRef2.current) {
           gsap.to(gridRef1.current?.position, {
             z: isRightSide ? 0 : 0.25,
@@ -60,6 +64,16 @@ const Experience = () => {
         }
         document.body.style.cursor = !isActive ? 'pointer' : 'auto';
       } else {
+        if (hoverBoxRef.current) {
+          gsap.to(hoverBoxRef.current.scale, { x: 0, y: 0, z: 0, duration: 0.4 });
+          gsap.to(hoverBoxRef.current, { visible: false, duration: 0.4 });
+        }
+
+        if (gridRef1.current && gridRef2.current) {
+          gsap.to(gridRef1.current?.position, { z: 0, duration: 1, ease: "sine" });
+          gsap.to(gridRef2.current?.position, { z: 0, duration: 1, ease: "sine" });
+        }
+
         document.body.style.cursor = 'auto';
       }
     };
@@ -94,8 +108,8 @@ const Experience = () => {
         <group position={[-2, -1.5, 0]}
           onPointerOver={() => setHovered(true)}
           onPointerOut={() => setHovered(false)}>
-          <mesh ref={hoverBoxRef} position={[0, 0, 0.25]}>
-            <boxGeometry args={[4, 4, 0.5]} />
+          <mesh ref={hoverBoxRef} position={[0, 0, 0]}>
+            <boxGeometry args={[4, 4, 1]} />
 
             <meshPhysicalMaterial
               color="rgba(0, 0, 0, 0.2)"
