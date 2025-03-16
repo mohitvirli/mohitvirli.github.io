@@ -5,12 +5,26 @@ import { Preload, ScrollControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import gsap from "gsap";
 import { Suspense } from "react";
+import { isMobile } from "react-device-detect";
 
 const CanvasLoader = (props: { children: React.ReactNode }) => {
   // TODO: Main screen animation
   useGSAP(() => {
     gsap.fromTo('.min-h-screen', { opacity: 0 }, { opacity: 1, duration: 1, delay: 0 });
     gsap.fromTo('.base-canvas', { opacity: 0 }, { opacity: 1, duration: 2, delay: 0.5 });
+
+    // Add border to desktop views
+    if (!isMobile) {
+      gsap.to('.base-canvas', {
+        inset: '1rem',
+        width: 'calc(100% - 2rem)',
+        height: 'calc(100% - 2rem)',
+        border: "1px solid white",
+        delay: 0,
+        duration: 0,
+      });
+    }
+
   }, []);
 
   const noiseOverlayStyle = {
@@ -23,7 +37,7 @@ const CanvasLoader = (props: { children: React.ReactNode }) => {
   return (
     <div className="min-h-screen relative">
       <div className="min-h-screen bg-sky-600 relative">
-        <Canvas className="w-full h-full base-canvas bg-sky-600"
+        <Canvas className="base-canvas bg-sky-600"
           shadows
           style={{
             position: "absolute",

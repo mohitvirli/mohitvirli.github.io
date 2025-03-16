@@ -20,3 +20,48 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+:root {
+  --shadow: #FFF;
+  --scrollbarBG: rgba(0, 0, 0, 0);
+}
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--scrollbarBG);
+}
+::-webkit-scrollbar-thumb {
+  border-bottom: 100vh solid var(--shadow);
+}
+
+.close {
+  position: absolute;
+  left: 32px;
+  top: 32px;
+  width: 48px;
+  height: 48px;
+  opacity: 0.3;
+  cursor: pointer;
+}
+
+.close:hover {
+  opacity: 1;
+}
+
+.close:before, .close:after {
+  position: absolute;
+  left: 2rem;
+  content: ' ';
+  height: 48px;
+  width: 2px;
+  background-color: #FFF;
+}
+
+.close:before {
+  transform: rotate(45deg);
+}
+
+.close:after {
+  transform: rotate(-45deg);
+}

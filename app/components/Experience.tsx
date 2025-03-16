@@ -1,17 +1,24 @@
-import { Text, useScroll } from "@react-three/drei";
+import { Edges, Text, useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { useRef } from "react";
+import gsap from "gsap";
+import { useEffect, useRef, useState } from "react";
 import * as THREE from 'three';
+import usePortalStore from "../store/store";
 import GridTile from "./GridTile";
 import PaperPlane from "./models/PaperPlane";
 import Projects from "./Projects";
 import Work from "./Work";
-// import Tea from "./Tea";
 
 // TODO:
 const Experience = () => {
   const groupRef = useRef<THREE.Group>(null);
+  const hoverBoxRef = useRef<THREE.Mesh>(null);
+  const [isRightSide, setIsRightSide] = useState(false);
+  const gridRef1 = useRef<THREE.Group>(null);
+  const gridRef2 = useRef<THREE.Group>(null);
   const data = useScroll();
+  const [hovered, setHovered] = useState(false);
+  const isActive = usePortalStore((state) => !!state.activePortalId);
 
   const fontProps = {
     font: "./soria-font.ttf",
@@ -27,6 +34,42 @@ const Experience = () => {
       }
     }
   });
+
+  useEffect(() => {
+    const handleMouseMove = (event: MouseEvent) => {
+      const isRight = event.clientX > window.innerWidth / 2;
+      setIsRightSide(isRight);
+
+      if (hovered && hoverBoxRef.current) {
+        gsap.to(hoverBoxRef.current?.position, {
+          x: isRightSide ? 4 : 0,
+          duration: 0.5,
+          ease: "sine",
+        });
+        if (gridRef1.current && gridRef2.current) {
+          gsap.to(gridRef1.current?.position, {
+            z: isRightSide ? 0 : 0.25,
+            duration: 1,
+            ease: "sine",
+          });
+          gsap.to(gridRef2.current?.position, {
+            z: isRightSide ? 0.25 : 0,
+            duration: 1,
+            ease: "sine",
+          })
+        }
+        document.body.style.cursor = !isActive ? 'pointer' : 'auto';
+      } else {
+        document.body.style.cursor = 'auto';
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, [hovered, isRightSide, isActive]);
+
 
   return (
     <group position={[0, -67, 0]} ref={groupRef} rotation={[0 , 0 , -Math.PI / 2]}>
@@ -48,25 +91,42 @@ const Experience = () => {
           <PaperPlane scale={new THREE.Vector3(2, 2, 2)}/>
         </group>
 
-        <group position={[-2, -1.5, 0]}>
+        <group position={[-2, -1.5, 0]}
+          onPointerOver={() => setHovered(true)}
+          onPointerOut={() => setHovered(false)}>
+          <mesh ref={hoverBoxRef} position={[0, 0, 0.25]}>
+            <boxGeometry args={[4, 4, 0.5]} />
+
+            <meshPhysicalMaterial
+              color="rgba(0, 0, 0, 0.2)"
+              transparent={true}
+              opacity={0.3}
+            />
+            <Edges
+              color="white"
+              threshold={15} // Angle in degrees, edges with angles greater than this threshold are rendered
+              lineWidth={3}
+            />
+          </mesh>
+
           <GridTile title='WORK AND EDUCATION'
             id="work"
+            ref={gridRef1 as React.RefObject<THREE.Group>}
             color='#b9c6d6'
-            textAlign='right'
+            textAlign='left'
             position={new THREE.Vector3(0, 0, 0)}>
             <Work/>
           </GridTile>
           <GridTile title='SIDE PROJECTS'
+            ref={gridRef2 as React.RefObject<THREE.Group>}
             id="side-projects"
             color='#bdd1e3'
-            textAlign='left'
+            textAlign='right'
             position={new THREE.Vector3(4, 0, 0)}>
             <Projects/>
           </GridTile>
         </group>
-
       </group>
-
       <pointLight castShadow position={[-8, 0, 4]} intensity={1}></pointLight>
     </group>
   );

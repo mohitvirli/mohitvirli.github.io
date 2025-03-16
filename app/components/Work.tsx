@@ -1,10 +1,9 @@
-import { Text } from "@react-three/drei";
-import { Memory } from "./models/Memory";
-import * as THREE from "three";
-import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
-import usePortalStore from "../store/store";
 import gsap from "gsap";
+import { useRef } from "react";
+import * as THREE from "three";
+import usePortalStore from "../store/store";
+import { Memory } from "./models/Memory";
 
 const Work = () => {
   const groupRef = useRef<THREE.Group>(null);
@@ -27,14 +26,22 @@ const Work = () => {
     }
   });
 
-  const fontProps = {
-    font: "./soria-font.ttf",
-  };
+  // const fontProps = {
+  //   font: "./soria-font.ttf",
+  // };
 
   return (
     <group>
+      <mesh receiveShadow>
+        <planeGeometry args={[4, 4, 1]} />
+        <shadowMaterial opacity={0.1} />
+      </mesh>
       <Memory scale={new THREE.Vector3(5, 5, 5)} position={new THREE.Vector3(0, -6, 1)}/>
-      <Text color={'white'} maxWidth={2} fontSize={1} {...fontProps}>WORK AND EDUCATION</Text>
+      {/* <Text color={'white'}
+        maxWidth={2}
+        fontSize={0.3}
+        castShadow
+        {...fontProps}>/WORK AND EDUCATION</Text> */}
       <group ref={groupRef}>
         {/* <Text color={'white'} fontSize={1} {...fontProps}>WORK</Text> */}
         {/* <Text color={'white'} fontSize={1} {...fontProps}>AND</Text> */}
