@@ -8,10 +8,3 @@ export interface Project {
   active?: boolean;
   textAlign?: TextProps['textAlign'];
 }
-export interface ProjectStore {
-  projects: Project[];
-  activeProjectId: string | null;
-  addProject: (project: Project) => void;
-  setActiveProject: (project: Project | null) => void;
-  isActive: (project: Project) => boolean;
-}

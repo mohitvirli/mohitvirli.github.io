@@ -6,21 +6,26 @@ import { useRef } from 'react';
 import * as THREE from 'three';
 import useProjectStore from '../store/store';
 import { Project } from '../types';
+import usePortalStore from '../store/store';
 
 interface GridTileProps {
-  grid: Project;
-  index: number;
+  // grid: Project;
+  id: string;
+  title: string;
+  textAlign: any;
+  children: React.ReactNode;
+  color: string;
+  position: any;
 }
 
+// TODO: Rename this
 const GridTile = (props: GridTileProps) => {
   const portalRef = useRef(null);
   const data = useScroll();
-  const { grid, index } = props;
-  const position = new THREE.Vector3(index * 4, 0, 0);
+  const { title, textAlign, children, color, position, id } = props;
   const { camera } = useThree();
-  const isActive = useProjectStore((state) => state.activeProjectId === grid.id);
-  const setActiveProject = useProjectStore((state) => state.setActiveProject);
-  const activeProjectId = useProjectStore((state) => state.activeProjectId);
+  const setActivePortal = usePortalStore((state) => state.setActivePortal);
+  const isActive = usePortalStore((state) => state.activePortalId === id);
 
   useFrame(() => {
     const d = data.range(2/3, 1 / 4);
@@ -30,35 +35,31 @@ const GridTile = (props: GridTileProps) => {
   });
 
   const portalInto = () => {
-    if (isActive || activeProjectId) return;
-    setActiveProject(grid);
-    // isAnyGridActive = true;
+    if (isActive) return;
+    setActivePortal(id);
+
     gsap.to(camera.position, {
       x: camera.position.x - 2 + position.x ,
-      // y: position.y,
       z: 3,
-
       duration: 1,
     });
 
     gsap.to(portalRef.current, {
       blend: 1,
       duration: 1,
-      // ease: 'power2.in'
     });
   };
 
   const exitPortal = () => {
     if (!isActive) return;
-    setActiveProject(null);
+    setActivePortal(null);
 
     gsap.to(camera.position, {
       x: 0,
-      // y: position.y,
       z: 5,
-
       duration: 1,
     });
+
     gsap.to(portalRef.current, {
       blend: 0,
       duration: 1,
@@ -69,14 +70,14 @@ const GridTile = (props: GridTileProps) => {
     font: "./soria-font.ttf",
   };
 
-  return (<mesh position={position} key={index} castShadow onClick={portalInto}>
+  return (<mesh position={position} castShadow onClick={portalInto}>
     <planeGeometry args={[4, 4, 1]} />
-    <Text maxWidth={2} position={[0, -1.8, 0.2]} {...fontProps} fontSize={0.7} castShadow anchorX="center" anchorY={'bottom'} textAlign={grid.textAlign}>
-      {grid.title}
+    <Text maxWidth={2} position={[0, -1.8, 0.2]} {...fontProps} fontSize={0.7} castShadow anchorX="center" anchorY={'bottom'} textAlign={textAlign}>
+      {title}
     </Text>
     <MeshPortalMaterial ref={portalRef} blend={0} resolution={0} blur={0}>
-      <color attach="background" args={[grid.color]} />
-      {grid.component}
+      <color attach="background" args={[color]} />
+      {children}
     </MeshPortalMaterial>
   </mesh>)
 }
