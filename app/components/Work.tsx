@@ -34,8 +34,9 @@ const Work = () => {
   return (
     <group>
       <Memory scale={new THREE.Vector3(5, 5, 5)} position={new THREE.Vector3(0, -6, 1)}/>
+      <Text color={'white'} maxWidth={2} fontSize={1} {...fontProps}>WORK AND EDUCATION</Text>
       <group ref={groupRef}>
-        <Text color={'white'} fontSize={1} {...fontProps}>WORK</Text>
+        {/* <Text color={'white'} fontSize={1} {...fontProps}>WORK</Text> */}
         {/* <Text color={'white'} fontSize={1} {...fontProps}>AND</Text> */}
       </group>
     </group>

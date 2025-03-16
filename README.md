@@ -17,3 +17,4 @@ Cheers till then!
 - Add SEO
 - Add favicon & meta tags
 - Remove unused Models
+- OnResize

@@ -1,21 +1,19 @@
 
-import { MeshPortalMaterial, Text, useScroll } from '@react-three/drei';
+import { MeshPortalMaterial, Text, TextProps, useScroll } from '@react-three/drei';
 import { useFrame, useThree } from '@react-three/fiber';
 import gsap from "gsap";
 import { useRef } from 'react';
-import * as THREE from 'three';
-import useProjectStore from '../store/store';
-import { Project } from '../types';
 import usePortalStore from '../store/store';
+import * as THREE from 'three';
 
 interface GridTileProps {
   // grid: Project;
   id: string;
   title: string;
-  textAlign: any;
+  textAlign: TextProps['textAlign'];
   children: React.ReactNode;
   color: string;
-  position: any;
+  position: THREE.Vector3;
 }
 
 // TODO: Rename this

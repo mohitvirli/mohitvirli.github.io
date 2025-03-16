@@ -1,14 +1,12 @@
-import { Grid, Text, useScroll } from "@react-three/drei";
-import { useFrame, useThree } from "@react-three/fiber";
-import { useRef, useState } from "react";
+import { Text, useScroll } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
+import { useRef } from "react";
 import * as THREE from 'three';
-import useProjectStore from "../store/store";
 import GridTile from "./GridTile";
 import PaperPlane from "./models/PaperPlane";
-import Work from "./Work";
 import Projects from "./Projects";
+import Work from "./Work";
 // import Tea from "./Tea";
-
 
 // TODO:
 const Experience = () => {

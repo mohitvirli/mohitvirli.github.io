@@ -1,6 +1,5 @@
-import { Text } from "@react-three/drei";
-import { Wanderer } from "./models/Wanderer";
 import * as THREE from "three";
+import { Wanderer } from "./models/Wanderer";
 
 const Projects = () => {
   return (
