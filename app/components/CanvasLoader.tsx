@@ -5,11 +5,14 @@ import { Preload, ScrollControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { useThemeStore } from "@stores";
 import gsap from "gsap";
-import { Suspense } from "react";
+import { Suspense, useRef } from "react";
 import { isMobile } from "react-device-detect";
 import ThemeSwitcher from "./ThemeSwitcher";
+// import {Perf} from "r3f-perf"
 
 const CanvasLoader = (props: { children: React.ReactNode }) => {
+  const ref= useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
   const backgroundColor = useThemeStore((state) => state.color);
 
   // TODO: Main screen animation
@@ -31,6 +34,18 @@ const CanvasLoader = (props: { children: React.ReactNode }) => {
 
   }, []);
 
+  useGSAP(() => {
+    gsap.to(ref.current, {
+      backgroundColor: backgroundColor,
+      duration: 1,
+    });
+    gsap.to(canvasRef.current, {
+      backgroundColor: backgroundColor,
+      duration: 1,
+      ...noiseOverlayStyle,
+    });
+  }, [backgroundColor]);
+
   const noiseOverlayStyle = {
     backgroundBlendMode: "soft-light",
     backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3C/svg%3E\")",
@@ -40,7 +55,7 @@ const CanvasLoader = (props: { children: React.ReactNode }) => {
 
   return (
     <div className="min-h-screen relative">
-      <div className="min-h-screen relative" style={{ backgroundColor }}>
+      <div className="min-h-screen relative" ref={ref}>
         <Canvas className="base-canvas"
           shadows
           style={{
@@ -50,9 +65,8 @@ const CanvasLoader = (props: { children: React.ReactNode }) => {
             left: 0,
             right: 0,
             overflow: "hidden",
-            backgroundColor,
-            ...noiseOverlayStyle,
           }}
+          ref={canvasRef}
           dpr={[1, 2]}>
           {/* <Perf/> */}
           <Suspense fallback={null}>

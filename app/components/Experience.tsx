@@ -87,8 +87,8 @@ const Experience = () => {
 
   return (
     <group position={[0, -67, 0]} ref={groupRef} rotation={[0 , 0 , -Math.PI / 2]}>
-      <mesh receiveShadow position={[0, 0, 0.1]}>
-        <planeGeometry args={[20, 20, 1]} />
+      <mesh receiveShadow position={[-5, 0, 0.1]}>
+        <planeGeometry args={[10, 5, 1]} />
         <shadowMaterial opacity={0.1} />
       </mesh>
       <group rotation={[0, 0, Math.PI / 2]} position={[-7, 0, 0]}>

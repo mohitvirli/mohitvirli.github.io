@@ -2,19 +2,15 @@
 
 import { Scroll, useScroll } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
-import { useLayoutEffect } from "react";
+import { useThemeStore } from "@stores";
 import { isMobile } from "react-device-detect";
 import * as THREE from "three";
-import { useThemeStore } from "@stores";
 
 const ScrollWrapper = (props: { children: React.ReactNode | React.ReactNode[]}) => {
-  const { gl, scene, camera } = useThree();
+  const { camera } = useThree();
   const data = useScroll();
   const showThemeSwitcher = useThemeStore((state) => state.showThemeSwitcher);
   const setShowThemeSwitcher = useThemeStore((state) => state.setShowThemeSwitcher);
-
-  // Precompile to improve framerate
-  useLayoutEffect(() => void gl.compile(scene, camera), []);
 
   useFrame((state, delta) => {
     if (data) {
@@ -27,9 +23,9 @@ const ScrollWrapper = (props: { children: React.ReactNode | React.ReactNode[]}) 
 
       // Hide theme switcher after first screen
       if (a !== 1) {
-        !showThemeSwitcher && setShowThemeSwitcher(true);
+        if (!showThemeSwitcher) setShowThemeSwitcher(true);
       } else {
-        showThemeSwitcher && setShowThemeSwitcher(false);
+        if (showThemeSwitcher) setShowThemeSwitcher(false);
       }
 
       if (b < 0.5) {
