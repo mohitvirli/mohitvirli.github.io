@@ -1,9 +1,9 @@
 
 import { MeshPortalMaterial, Text, TextProps, useScroll } from '@react-three/drei';
 import { useFrame, useThree } from '@react-three/fiber';
+import { usePortalStore } from '@stores';
 import gsap from "gsap";
 import { RefObject, useRef } from 'react';
-import usePortalStore from '../store/store';
 import * as THREE from 'three';
 
 interface GridTileProps {

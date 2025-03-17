@@ -5,9 +5,7 @@ interface PortalStore {
   setActivePortal: (activePortalId: string | null) => void;
 }
 
-const usePortalStore = create<PortalStore>((set) => ({
+export const usePortalStore = create<PortalStore>((set) => ({
   activePortalId: null,
   setActivePortal: (activePortalId) => set(() => ({ activePortalId })),
 }))
-
-export default usePortalStore;

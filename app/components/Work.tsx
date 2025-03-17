@@ -2,7 +2,7 @@ import { useFrame } from "@react-three/fiber";
 import gsap from "gsap";
 import { useRef } from "react";
 import * as THREE from "three";
-import usePortalStore from "../store/store";
+import { usePortalStore } from "@stores";
 import { Memory } from "./models/Memory";
 
 const Work = () => {

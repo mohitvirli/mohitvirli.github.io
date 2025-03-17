@@ -1,9 +1,9 @@
 import { Edges, Text, useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
+import { usePortalStore } from "@stores";
 import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
 import * as THREE from 'three';
-import usePortalStore from "../store/store";
 import GridTile from "./GridTile";
 import PaperPlane from "./models/PaperPlane";
 import Projects from "./Projects";
@@ -112,7 +112,7 @@ const Experience = () => {
             <boxGeometry args={[4, 4, 1]} />
 
             <meshPhysicalMaterial
-              color="rgba(0, 0, 0, 0.2)"
+              color="rgba(0, 0, 0)"
               transparent={true}
               opacity={0.3}
             />

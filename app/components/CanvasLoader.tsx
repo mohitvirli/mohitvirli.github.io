@@ -3,11 +3,15 @@
 import { useGSAP } from "@gsap/react";
 import { Preload, ScrollControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
+import { useThemeStore } from "@stores";
 import gsap from "gsap";
 import { Suspense } from "react";
 import { isMobile } from "react-device-detect";
+import ThemeSwitcher from "./ThemeSwitcher";
 
 const CanvasLoader = (props: { children: React.ReactNode }) => {
+  const backgroundColor = useThemeStore((state) => state.color);
+
   // TODO: Main screen animation
   useGSAP(() => {
     gsap.fromTo('.min-h-screen', { opacity: 0 }, { opacity: 1, duration: 1, delay: 0 });
@@ -36,8 +40,8 @@ const CanvasLoader = (props: { children: React.ReactNode }) => {
 
   return (
     <div className="min-h-screen relative">
-      <div className="min-h-screen bg-sky-600 relative">
-        <Canvas className="base-canvas bg-sky-600"
+      <div className="min-h-screen relative" style={{ backgroundColor }}>
+        <Canvas className="base-canvas"
           shadows
           style={{
             position: "absolute",
@@ -46,6 +50,7 @@ const CanvasLoader = (props: { children: React.ReactNode }) => {
             left: 0,
             right: 0,
             overflow: "hidden",
+            backgroundColor,
             ...noiseOverlayStyle,
           }}
           dpr={[1, 2]}>
@@ -61,6 +66,8 @@ const CanvasLoader = (props: { children: React.ReactNode }) => {
           </Suspense>
         </Canvas>
       </div>
+      {/*  */}
+      <ThemeSwitcher />
     </div>
   );
 };

@@ -18,3 +18,4 @@ Cheers till then!
 - Add favicon & meta tags
 - Remove unused Models
 - OnResize
+- Free Control Enabled
