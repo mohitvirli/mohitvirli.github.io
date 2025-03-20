@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
 import * as THREE from 'three';
 import GridTile from "./GridTile";
-import PaperPlane from "./models/PaperPlane";
+// import PaperPlane from "./models/PaperPlane";
 import Projects from "./Projects";
 import Work from "./Work";
 
@@ -24,17 +24,14 @@ const Experience = () => {
     font: "./soria-font.ttf",
   };
 
-  useFrame (() => {
-    const d = data.range(3.1 / 5, 1 / 4);
-    if (groupRef.current) {
-      if (d > 0) {
-        groupRef.current.visible = true;
-      } else {
-        groupRef.current.visible = false;
-      }
+  useFrame ((sate, delta) => {
+    const d = data.range(0.57, 1 / 4);
+    if (groupRef.current && !isActive) {
+      groupRef.current.position.z = THREE.MathUtils.damp(groupRef.current.position.z, d > 0 ? 12 : 50, 7, delta);
     }
   });
 
+  // TODO: Handle hover being set to false.
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
       const isRight = event.clientX > window.innerWidth / 2;
@@ -45,7 +42,7 @@ const Experience = () => {
         gsap.to(hoverBoxRef.current, { visible: true, duration: 0.25 });
 
         gsap.to(hoverBoxRef.current?.position, {
-          x: isRightSide ? 4 : 0,
+          x: isRightSide ? 2 : -2,
           duration: 0.5,
           ease: "sine",
         });
@@ -86,30 +83,30 @@ const Experience = () => {
 
 
   return (
-    <group position={[0, -67, 0]} ref={groupRef} rotation={[0 , 0 , -Math.PI / 2]}>
-      <mesh receiveShadow position={[-5, 0, 0.1]}>
+    <group position={[0, -45, 100]} rotation={[-Math.PI / 2, 0 ,-Math.PI / 2]} ref={groupRef}>
+      {/* <mesh receiveShadow position={[-5, 0, 0.1]}>
         <planeGeometry args={[10, 5, 1]} />
         <shadowMaterial opacity={0.1} />
-      </mesh>
-      <group rotation={[0, 0, Math.PI / 2]} position={[-7, 0, 0]}>
+      </mesh> */}
+      <group rotation={[0, 0, Math.PI / 2]}>
 
         <Text color="white" anchorX="center" anchorY="top"
           castShadow
           {...fontProps}
-          position={[0, 2, 1]}
+          position={[0, 4, 1]}
           fontSize={1}>
           experience
         </Text>
 
-        <group position={[-1, 4, 3.5]} >
+        {/* <group position={[-1, 4, 3.5]} >
           <PaperPlane scale={new THREE.Vector3(2, 2, 2)}/>
-        </group>
+        </group> */}
 
-        <group position={[-2, -1.5, 0]}
+        <group
           onPointerOver={() => setHovered(true)}
           onPointerOut={() => setHovered(false)}>
-          <mesh ref={hoverBoxRef} position={[0, 0, 0]}>
-            <boxGeometry args={[4, 4, 1]} />
+          <mesh ref={hoverBoxRef} position={[-2, 0, 0]}>
+            <boxGeometry args={[4.5, 4.5, 1]} />
 
             <meshPhysicalMaterial
               color="rgba(0, 0, 0)"
@@ -128,7 +125,7 @@ const Experience = () => {
             ref={gridRef1 as React.RefObject<THREE.Group>}
             color='#b9c6d6'
             textAlign='left'
-            position={new THREE.Vector3(0, 0, 0)}>
+            position={new THREE.Vector3(-2, 0, 0)}>
             <Work/>
           </GridTile>
           <GridTile title='SIDE PROJECTS'
@@ -136,7 +133,7 @@ const Experience = () => {
             id="side-projects"
             color='#bdd1e3'
             textAlign='right'
-            position={new THREE.Vector3(4, 0, 0)}>
+            position={new THREE.Vector3(2, 0, 0)}>
             <Projects/>
           </GridTile>
         </group>

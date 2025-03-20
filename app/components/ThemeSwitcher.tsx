@@ -10,21 +10,20 @@ const ThemeSwitcher = () => {
   const themeSwitcherRef = useRef<HTMLDivElement>(null);
   const nextColor = useThemeStore((state) => state.nextColor);
   const toggleTheme = () => nextColor();
-  const showThemeSwitcher = useThemeStore((state) => state.showThemeSwitcher);
 
   useGSAP(() => {
-    // TODO: Maybe hide it after scroll.
     gsap.to(themeSwitcherRef.current, {
-      opacity: showThemeSwitcher ? 1 : 0,
-      duration: 1,
+      opacity: 1,
+      duration: 2,
+      delay: 0.5,
     });
-  }, [showThemeSwitcher]);
+  }, []);
 
   return (
     <div className="fixed right-5 bottom-5" ref={themeSwitcherRef} style={{ opacity: 0 }}>
       <div className="flex items-center justify-center gap-2">
         <a className="hover:cursor-pointer" onClick={toggleTheme}>
-          <Image src="/night-mode.svg" width={24} height={24} alt="night mode" />
+          <Image src="/night-mode.svg" width={24} height={24} alt="night mode" loading="lazy" />
         </a>
       </div>
     </div>

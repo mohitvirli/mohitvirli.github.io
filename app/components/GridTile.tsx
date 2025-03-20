@@ -1,6 +1,6 @@
 
-import { MeshPortalMaterial, Text, TextProps, useScroll } from '@react-three/drei';
-import { useFrame, useThree } from '@react-three/fiber';
+import { MeshPortalMaterial, Text, TextProps } from '@react-three/drei';
+import { useThree } from '@react-three/fiber';
 import { usePortalStore } from '@stores';
 import gsap from "gsap";
 import { RefObject, useRef } from 'react';
@@ -20,19 +20,11 @@ interface GridTileProps {
 // TODO: Rename this
 const GridTile = (props: GridTileProps) => {
   const portalRef = useRef(null);
-  const data = useScroll();
   const { title, textAlign, children, color, position, id } = props;
   const { camera } = useThree();
   const setActivePortal = usePortalStore((state) => state.setActivePortal);
   const isActive = usePortalStore((state) => state.activePortalId === id);
   const activePortalId = usePortalStore((state) => state.activePortalId);
-
-  useFrame(() => {
-    const d = data.range(2/3, 1 / 4);
-    if (d === 0 && isActive) {
-      exitPortal();
-    }
-  });
 
   const portalInto = () => {
     if (isActive || activePortalId) return;
@@ -55,8 +47,8 @@ const GridTile = (props: GridTileProps) => {
     }
 
     gsap.to(camera.position, {
-      x: camera.position.x - 2 + position.x ,
-      z: 3,
+      x: camera.position.x + position.x ,
+      y: camera.position.y - 2,
       duration: 1,
     });
 
@@ -68,11 +60,10 @@ const GridTile = (props: GridTileProps) => {
 
   const exitPortal = (force = false) => {
     if (!force && !activePortalId) return;
-    setActivePortal(null);
+    setActivePortal(null)
 
     gsap.to(camera.position, {
-      x: 0,
-      z: 5,
+      x: camera.position.x - position.x,
       duration: 1,
     });
 
