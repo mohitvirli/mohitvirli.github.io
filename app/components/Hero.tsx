@@ -2,7 +2,7 @@
 
 import { Text } from "@react-three/drei";
 
-import CloudContainer from "./Cloud";
+import CloudContainer from "./models/Cloud";
 import TextWindow from "./TextWindow";
 import WindowModel from "./models/WindowModel";
 

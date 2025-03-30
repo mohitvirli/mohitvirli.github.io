@@ -11,18 +11,16 @@ const ScrollWrapper = (props: { children: React.ReactNode | React.ReactNode[]}) 
   const data = useScroll();
   const isActive = usePortalStore((state) => !!state.activePortalId);
 
-
   useFrame((state, delta) => {
     if (data) {
-      // TODO: Make this values readable.
-      const a = data.range(0, 1 / 6);
-      const b = data.range(1/6, 0.57 - 1/6);
-      const d = data.range(0.57, 0.43);
+      const a = data.range(0, 0.3);
+      const b = data.range(0.3, 0.5);
+      const d = data.range(0.85, 0.15);
 
       if (!isActive) {
         camera.rotation.x = THREE.MathUtils.damp(camera.rotation.x, -0.5 * Math.PI * a, 5, delta);
-        camera.position.y = THREE.MathUtils.damp(camera.position.y, -40 * b, 7, delta);
-        camera.position.z = 5 + 15 * d;
+        camera.position.y = THREE.MathUtils.damp(camera.position.y, -37 * b, 7, delta);
+        camera.position.z = THREE.MathUtils.damp(camera.position.z, 5 + 10 * d, 7, delta);
       }
 
       // Move camera slightly on mouse movement.

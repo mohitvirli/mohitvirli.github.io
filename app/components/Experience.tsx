@@ -24,8 +24,8 @@ const Experience = () => {
     font: "./soria-font.ttf",
   };
 
-  useFrame ((sate, delta) => {
-    const d = data.range(0.57, 1 / 4);
+  useFrame((sate, delta) => {
+    const d = data.range(0.8, 0.1);
     if (groupRef.current && !isActive) {
       groupRef.current.position.z = THREE.MathUtils.damp(groupRef.current.position.z, d > 0 ? 12 : 50, 7, delta);
     }
@@ -83,7 +83,7 @@ const Experience = () => {
 
 
   return (
-    <group position={[0, -45, 100]} rotation={[-Math.PI / 2, 0 ,-Math.PI / 2]} ref={groupRef}>
+    <group position={[0, -41.5, 100]} rotation={[-Math.PI / 2, 0 ,-Math.PI / 2]} ref={groupRef}>
       {/* <mesh receiveShadow position={[-5, 0, 0.1]}>
         <planeGeometry args={[10, 5, 1]} />
         <shadowMaterial opacity={0.1} />

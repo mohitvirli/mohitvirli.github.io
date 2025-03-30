@@ -10,12 +10,11 @@ const TextWindow = () => {
   const windowRef = useRef<THREE.Group>(null);
 
   useFrame(() => {
-    const c = data.range(5/12, 1 / 8);
+    const c = data.range(0.65, 0.15);
 
     if (windowRef.current) {
       windowRef.current.setRotationFromAxisAngle(new THREE.Vector3(0, -1, 0), 0.5 *Math.PI * c);
       windowRef.current.position.x =  -0.6 * c;
-      // windowRef.current.position.y =  c;
       windowRef.current.position.z = -0.6 * c;
     }
   });
