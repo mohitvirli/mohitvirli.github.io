@@ -1,10 +1,9 @@
-import * as THREE from "three";
-import { Wanderer } from "./models/Wanderer";
-import { Box, Scroll, ScrollControls, useScroll } from "@react-three/drei";
+import { Box } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import { useEffect, useState } from "react";
-import gsap from "gsap";
+import * as THREE from "three";
 import { usePortalStore } from "../stores";
+import { Wanderer } from "./models/Wanderer";
 
 const Projects = () => {
   const { camera } = useThree();
