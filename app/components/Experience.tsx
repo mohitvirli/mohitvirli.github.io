@@ -130,7 +130,7 @@ const Experience = () => {
           </GridTile>
           <GridTile title='SIDE PROJECTS'
             ref={gridRef2 as React.RefObject<THREE.Group>}
-            id="side-projects"
+            id="projects"
             color='#bdd1e3'
             textAlign='right'
             position={new THREE.Vector3(2, 0, 0)}>

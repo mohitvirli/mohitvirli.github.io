@@ -1,5 +1,5 @@
 
-import { MeshPortalMaterial, Text, TextProps } from '@react-three/drei';
+import { MeshPortalMaterial, ScrollControls, Text, TextProps } from '@react-three/drei';
 import { useThree } from '@react-three/fiber';
 import { usePortalStore } from '@stores';
 import gsap from "gsap";
@@ -41,6 +41,7 @@ const GridTile = (props: GridTileProps) => {
 
       gsap.to(div, {
         opacity: 1,
+        zIndex: 10,
         transform: 'rotateX(0deg)',
         duration: 1,
       })
@@ -49,6 +50,7 @@ const GridTile = (props: GridTileProps) => {
     gsap.to(camera.position, {
       x: camera.position.x + position.x ,
       y: camera.position.y - 2,
+      z: 12,
       duration: 1,
     });
 
@@ -63,7 +65,7 @@ const GridTile = (props: GridTileProps) => {
     setActivePortal(null)
 
     gsap.to(camera.position, {
-      x: camera.position.x - position.x,
+      x: 0,
       duration: 1,
     });
 
@@ -97,7 +99,9 @@ const GridTile = (props: GridTileProps) => {
     </group>
     <MeshPortalMaterial ref={portalRef} blend={0} resolution={0} blur={0}>
       <color attach="background" args={[color]} />
-      {children}
+      <ScrollControls style={{ zIndex: -1 }} pages={2} damping={0.4} maxSpeed={0.4} distance={1}>
+        {children}
+      </ScrollControls>
     </MeshPortalMaterial>
   </mesh>)
 }
