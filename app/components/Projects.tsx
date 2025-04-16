@@ -15,7 +15,7 @@ const Projects = () => {
   const handleToucheMove = (e: TouchEvent) => {
 
     const x = (e.touches[0].clientX / window.innerWidth) * 2 - 1;
-    const y =(e.touches[0].clientY / window.innerHeight) * 2 - 1;
+    // const y =(e.touches[0].clientY / window.innerHeight) * 2 - 1;
 
     camera.rotation.y = THREE.MathUtils.lerp(camera.rotation.y, (x * Math.PI) / 4, 0.1);
     // camera.position.y = THREE.MathUtils.damp(camera.position.y, d, 7, delta);
