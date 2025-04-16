@@ -5,7 +5,7 @@ import { isMobile } from "react-device-detect";
 import * as THREE from "three";
 import { usePortalStore } from "../stores";
 import { Wanderer } from "./models/Wanderer";
-import ProjectsCaraousel from "./ProjectCaraousel";
+import ProjectsCaraousel from "./ProjectsCaraousel";
 
 const Projects = () => {
   const { camera } = useThree();

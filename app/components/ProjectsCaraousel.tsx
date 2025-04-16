@@ -59,36 +59,41 @@ const ProjectTile = ({ project, isHovered, index }: ProjectProps) => {
       .to(title.position, { y: isHovered ? 0.7 : -0.8, delay: 0.6 }, 0)
       .to(textBox.position, { y: isHovered ? 0.7 : 0, delay: 0.3 }, 0)
       .to(textBox.scale, { y: isHovered ? 1 : 0, x: isHovered ? 1 : 0, delay: 0.5 }, 0)
-      .to(dateGroup.position, { y: isHovered ? 1.2 : 0, delay: 0.4 }, 0)
+      .to(dateGroup.position, { y: isHovered ? 2.6 : 1.4, delay: 0.4 }, 0)
+      .to(dateGroup.position, { x: isHovered ? 1.2 : -1.3, delay: 0.8 }, 0)
       .to(mesh.scale, { y: isHovered ? 2 : 1 }, 0)
       .to(mesh.position, { y: isHovered ? 1 : 0 }, 0)
+      // .to(languages.scale, { y: isHovered ? 1 : 0, delay: 0.4 }, 0)
 
   }, [isHovered]);
 
   return (
     <group ref={projectRef}>
-      <mesh >
+      <mesh>
         <planeGeometry args={[4.2, 2, 1]} />
-        <meshBasicMaterial color={'black'} opacity={0.1} wireframe/>
-        <Edges color="black" lineWidth={2} />
+        <meshPhysicalMaterial
+          transmission={1}
+          roughness={0.3}
+        />
+        <Edges color="black" lineWidth={1.5} />
       </mesh>
       <Text {...titleProps}
-        position={[-1.9, -0.8, 0.1]}
+        position={[-1.9, -0.8, 0.01]}
         anchorX={'left'}
         anchorY={'bottom'}
         maxWidth={4}
         fontSize={0.8}>
         {project.title}
       </Text>
-      <group>
-        <mesh position={[-1.3, 1.4, 0]}>
+      <group position={[-1.3, 1.4, 0.01]}>
+        <mesh position={[0, 0, 0]}>
           <planeGeometry args={[1.6, 0.4, 1]} />
           <meshBasicMaterial color={'#777'} wireframe opacity={0}/>
-          <Edges color="black" lineWidth={1.5} />
+          <Edges color="black" lineWidth={1} />
         </mesh>
         <Text
           {...subtitleProps}
-          position={[-2, 1.6, 0.1]}
+          position={[-0.7, 0.2, 0]}
           fontSize={0.3}>
           {project.date.toUpperCase()}
         </Text>
@@ -99,6 +104,19 @@ const ProjectTile = ({ project, isHovered, index }: ProjectProps) => {
         fontSize={0.2}>
         {project.subtext}
       </Text>
+      {/* <group position={[-1.3, -1.4, 0.01]}>
+        <mesh position={[0, 0, 0]}>
+          <planeGeometry args={[1.6, 0.4, 1]} />
+          <meshBasicMaterial color={'#777'} wireframe opacity={0}/>
+          <Edges color="black" lineWidth={1} />
+        </mesh>
+        <Text
+          {...subtitleProps}
+          position={[-0.7, 0.2, 0]}
+          fontSize={0.3}>
+          {project.date.toUpperCase()}
+        </Text>
+      </group> */}
     </group>
   );
 }
