@@ -24,7 +24,7 @@ const ScrollWrapper = (props: { children: React.ReactNode | React.ReactNode[]}) 
       }
 
       // Move camera slightly on mouse movement.
-      if (!isMobile) {
+      if (!isMobile && !isActive) {
         camera.rotation.y = THREE.MathUtils.lerp(camera.rotation.y, -(state.pointer.x * Math.PI) / 90, 0.05);
       }
     }

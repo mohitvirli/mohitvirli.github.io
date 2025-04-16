@@ -1,87 +1,57 @@
-import { Box } from "@react-three/drei";
+import { useScroll } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import { useEffect, useState } from "react";
+import { isMobile } from "react-device-detect";
 import * as THREE from "three";
 import { usePortalStore } from "../stores";
 import { Wanderer } from "./models/Wanderer";
+import ProjectsCaraousel from "./ProjectCaraousel";
 
 const Projects = () => {
   const { camera } = useThree();
   const isActive = usePortalStore((state) => state.activePortalId === "projects");
-  const [scroll, setScroll] = useState<Event | null>(null);
-  const handleScroll = (event: Event) => setScroll(event);
+  const [scrollTop, setScrollTop] = useState<number>(0);
+  const data = useScroll();
+  const handleToucheMove = (e: TouchEvent) => {
 
-  // Hack: If the portal is active, add the scroll event listener to the scroll
-  // wrapper div. If the portal is not active, remove the scroll event listener.
-  // ScrollControls doesn't work out of the box, so we have to manually handle
-  // the scroll event.
+    const x = (e.touches[0].clientX / window.innerWidth) * 2 - 1;
+    const y =(e.touches[0].clientY / window.innerHeight) * 2 - 1;
+
+    camera.rotation.y = THREE.MathUtils.lerp(camera.rotation.y, (x * Math.PI) / 4, 0.1);
+    // camera.position.y = THREE.MathUtils.damp(camera.position.y, d, 7, delta);
+    // console.log(x, y);
+  }
+
   useEffect(() => {
-    if (isActive) {
-      const scrollWrapper = document.querySelector('div[style*="z-index: -1"]') as HTMLElement;
-      scrollWrapper.addEventListener('scroll', handleScroll)
-      scrollWrapper.scrollTo({ top: 1650 / 2, behavior: 'instant'})
-      scrollWrapper.style.zIndex = '1';
-    } else {
-      const scrollWrapper = document.querySelector('div[style*="z-index: 1"]') as HTMLElement;
-      if (scrollWrapper) {
-        setScroll(null);
-        scrollWrapper.removeEventListener('scroll', handleScroll);
-        scrollWrapper.style.zIndex = '-1';
+    setScrollTop(data.el.scrollTop);
+
+    // TODO: Mobile changes?
+    if (isMobile) {
+      if (isActive) {
+        data.el.addEventListener('touchmove', handleToucheMove);
+      } else {
+        data.el.removeEventListener('touchmove', handleToucheMove)
       }
     }
   }, [isActive]);
 
-  useFrame(() => {
-    if (scroll && isActive) {
-      const target = scroll.target as HTMLElement;
-      const scrollTop = target.scrollTop;
-      const scrollHeight = target.scrollHeight - target.clientHeight;
-
-      const progress = 0.6 - Math.min(Math.max(scrollTop / scrollHeight, 0), 1);
-
-      camera.position.x = THREE.MathUtils.lerp(
-        camera.position.x,
-        2 + progress * 4,
-        0.05,
-      );
-
-      camera.rotation.y = THREE.MathUtils.lerp(
-        camera.rotation.y,
-        Math.PI * progress,
-        0.05,
-      );
+  useFrame((state, delta) => {
+    if (isActive) {
+      // console.log(state);
+      if (!isMobile) {
+        camera.rotation.y = THREE.MathUtils.lerp(camera.rotation.y, -(state.pointer.x * Math.PI) / 4, 0.03);
+        // console.log(camera.position.z);
+        camera.position.z = THREE.MathUtils.damp(camera.position.z, 11 - state.pointer.y, 7, delta);
+      }
+      // camera.position.y = THREE.MathUtils.damp(camera.position.y, d, 7, delta);
+      data.el.scrollTo({ top: scrollTop, behavior: 'instant' });
     }
   });
-
-
-
-  // TODO:
-  const getBox = (position: THREE.Vector3, key: number) => {
-    return (
-      <Box position={position} key={key}>
-        <meshBasicMaterial color={'red'} />
-      </Box>);
-  }
-
-  const getBoxes = () => {
-    const projects = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,  12, 13, 14];
-
-    const length = projects.length;
-    return projects.map((p, i) => {
-      const fov =  Math.PI;
-      const angle =  (fov / length)* (i + 1);
-      const distance = 15;
-      const z = - distance * Math.sin(angle);
-      const x = distance * Math.cos(angle);
-
-      return getBox(new THREE.Vector3(x, 0, z), i);
-    });
-  }
 
   return (
     <group>
       <Wanderer rotation={new THREE.Euler(0, Math.PI / 6, 0)} scale={new THREE.Vector3(1.5, 1.5, 1.5)} position={new THREE.Vector3(0, -1, -1)}/>
-      {getBoxes()}
+      <ProjectsCaraousel />
     </group>
   );
 };
