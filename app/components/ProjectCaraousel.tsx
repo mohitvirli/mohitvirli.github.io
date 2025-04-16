@@ -19,8 +19,9 @@ interface ProjectProps {
 /**
  * Project Tile.
  */
-const ProjectTile = ({ project, isHovered }: ProjectProps) => {
+const ProjectTile = ({ project, isHovered, index }: ProjectProps) => {
   const projectRef = useRef<THREE.Group>(null);
+  const isActive = usePortalStore((state) => state.activePortalId === "projects");
 
   const titleProps = {
     font: "./soria-font.ttf",
@@ -33,6 +34,16 @@ const ProjectTile = ({ project, isHovered }: ProjectProps) => {
     anchorX: "left",
     anchorY: "top",
   };
+
+  useEffect(() => {
+    if (projectRef.current) {
+      gsap.to(projectRef.current?.position, {
+        y: isActive ? 0 : -10,
+        duration: 1,
+        delay: isActive ? index * 0.1 : 0,
+      });
+    }
+  }, [isActive]);
 
   // TODO: Cursor?
   useEffect(() => {
@@ -93,19 +104,7 @@ const ProjectTile = ({ project, isHovered }: ProjectProps) => {
 }
 
 const ProjectsCaraousel = () => {
-  const containerRef = useRef<THREE.Group>(null);
   const [activeHoverId, setActiveHoverId] = useState<number | null>(null);
-  const isActive = usePortalStore((state) => state.activePortalId === "projects");
-
-  useEffect(() => {
-    if (containerRef.current) {
-      gsap.to(containerRef.current?.position, {
-        y: isActive ? 0 : -10,
-        duration: 1,
-        delay: isActive ? 0.3 : 0,
-      });
-    }
-  }, [isActive]);
 
   const getProjects = () => {
     const onPointerOver = (id: number) => setActiveHoverId(id);
@@ -139,7 +138,7 @@ const ProjectsCaraousel = () => {
   };
 
   return (
-    <group rotation={[0, -Math.PI / 12, 0]} ref={containerRef}>
+    <group rotation={[0, -Math.PI / 12, 0]}>
       { getProjects() }
     </group>
   );
