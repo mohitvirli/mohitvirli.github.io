@@ -8,11 +8,6 @@ export const PROJECTS: Project[] = [
     subtext: 'This is a project that I started in 2016. It is a seed project for Angular and Gulp. It has a lot of features that I use in my projects.',
   },
   {
-    title: 'Channel I',
-    date: 'Oct 2017',
-    subtext: 'This is a project that I started in 2017. It is a seed project for Angular and Gulp. It has a lot of features that I use in my projects.',
-  },
-  {
     title: 'State.js',
     date: 'Jul 2020',
     subtext: 'This is a project that I started in 2020. It is a seed project for Angular and Gulp. It has a lot of features that I use in my projects.',
@@ -32,12 +27,22 @@ export const PROJECTS: Project[] = [
     date: 'Aug 2024',
     subtext: 'This is a project that I started in 2024. It is a seed project for Angular and Gulp. It has a lot of features that I use in my projects.',
   },
-  // {
-  //   title: 'Chat bot',
-  //   date: 'Aug 2024',
-  // },
-  // {
-  //   title: 'Chat bot',
-  //   date: 'Aug 2024',
-  // },
+  {
+    title: 'Word Game',
+    date: 'Oct 2024',
+    subtext: 'This is a project that I started in 2024. It is a seed project for Angular and Gulp. It has a lot of features that I use in my projects.',
+    url: 'https://github.com/mohitvirli/word-game',
+  },
+  {
+    title: 'DJ Gig',
+    date: 'Mar 2025',
+    subtext: 'This is a project that I started in 2025. It is a seed project for Angular and Gulp. It has a lot of features that I use in my projects.',
+    url: 'https://github.com/mohitvirli/DJ-Gig',
+  },
+  {
+    title: 'This portfolio',
+    date: 'Apr 2025',
+    subtext: 'lmao',
+    url: '',
+  },
 ];
