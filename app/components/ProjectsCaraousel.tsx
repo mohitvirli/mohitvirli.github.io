@@ -84,7 +84,7 @@ const ProjectTile = ({ project, isHovered, index }: ProjectProps) => {
 
     // Clean up function will clear the timeout if isHovered changes before 200ms
     return () => {
-      if (timerRef) {
+      if (isHovered && timerRef) {
         clearTimeout(timerRef);
       }
     };
