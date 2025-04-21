@@ -46,7 +46,6 @@ const ProjectTile = ({ project, isHovered, index }: ProjectProps) => {
     }
   }, [isActive]);
 
-  // TODO: Cursor?
   // Fake debounce 200ms.
   useEffect(() => {
     // Create a timer reference
@@ -103,7 +102,7 @@ const ProjectTile = ({ project, isHovered, index }: ProjectProps) => {
     setTimeout(() => {
       window.open(project.url, '_blank');
     }, 200);
-  }
+  };
 
   return (
     <group ref={projectRef}>
@@ -145,7 +144,9 @@ const ProjectTile = ({ project, isHovered, index }: ProjectProps) => {
       </Text>
       { project.url ? <group position={[1.3, -0.7, -1]}
         scale={[1, 0, 1]}
-        onClick={handleClick}>
+        onClick={handleClick}
+        onPointerOver={() => document.body.style.cursor = 'pointer'}
+        onPointerOut={() => document.body.style.cursor = 'auto'}>
         <mesh>
           <boxGeometry args={[1.1, 0.4, 0.2]} />
           <meshBasicMaterial color={'#222'}/>
