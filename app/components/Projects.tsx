@@ -41,7 +41,7 @@ const Projects = () => {
       if (!isMobile) {
         camera.rotation.y = THREE.MathUtils.lerp(camera.rotation.y, -(state.pointer.x * Math.PI) / 4, 0.03);
         // console.log(camera.position.z);
-        camera.position.z = THREE.MathUtils.damp(camera.position.z, 11 - state.pointer.y, 7, delta);
+        camera.position.z = THREE.MathUtils.damp(camera.position.z, 11.5 - state.pointer.y, 7, delta);
       }
       // camera.position.y = THREE.MathUtils.damp(camera.position.y, d, 7, delta);
       data.el.scrollTo({ top: scrollTop, behavior: 'instant' });
