@@ -1,8 +1,8 @@
-import { Edges, Text, useScroll } from "@react-three/drei";
+import { Text, useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { usePortalStore } from "@stores";
-import gsap from "gsap";
-import { useEffect, useRef, useState } from "react";
+// import gsap from "gsap";
+import { useRef } from "react";
 import * as THREE from 'three';
 import GridTile from "./GridTile";
 // import PaperPlane from "./models/PaperPlane";
@@ -12,12 +12,12 @@ import Work from "./Work";
 // TODO:
 const Experience = () => {
   const groupRef = useRef<THREE.Group>(null);
-  const hoverBoxRef = useRef<THREE.Mesh>(null);
-  const [isRightSide, setIsRightSide] = useState(false);
+  // const hoverBoxRef = useRef<THREE.Mesh>(null);
+  // const [isRightSide, setIsRightSide] = useState(false);
   const gridRef1 = useRef<THREE.Group>(null);
   const gridRef2 = useRef<THREE.Group>(null);
   const data = useScroll();
-  const [hovered, setHovered] = useState(false);
+  // const [hovered, setHovered] = useState(false);
   const isActive = usePortalStore((state) => !!state.activePortalId);
 
   const fontProps = {
@@ -32,54 +32,54 @@ const Experience = () => {
   });
 
   // TODO: Handle hover being set to false.
-  useEffect(() => {
-    const handleMouseMove = (event: MouseEvent) => {
-      const isRight = event.clientX > window.innerWidth / 2;
-      setIsRightSide(isRight);
+  // useEffect(() => {
+  //   const handleMouseMove = (event: MouseEvent) => {
+  //     const isRight = event.clientX > window.innerWidth / 2;
+  //     setIsRightSide(isRight);
 
-      if (hovered && hoverBoxRef.current) {
-        gsap.to(hoverBoxRef.current.scale, { x: 1, y: 1, z: 1, duration: 0.4 });
-        gsap.to(hoverBoxRef.current, { visible: true, duration: 0.25 });
+  //     if (hovered && hoverBoxRef.current) {
+  //       gsap.to(hoverBoxRef.current.scale, { x: 1, y: 1, z: 1, duration: 0.4 });
+  //       gsap.to(hoverBoxRef.current, { visible: true, duration: 0.25 });
 
-        gsap.to(hoverBoxRef.current?.position, {
-          x: isRightSide ? 2 : -2,
-          duration: 0.5,
-          ease: "sine",
-        });
+  //       gsap.to(hoverBoxRef.current?.position, {
+  //         x: isRightSide ? 2 : -2,
+  //         duration: 0.5,
+  //         ease: "sine",
+  //       });
 
-        if (gridRef1.current && gridRef2.current) {
-          gsap.to(gridRef1.current?.position, {
-            z: isRightSide ? 0 : 0.25,
-            duration: 1,
-            ease: "sine",
-          });
-          gsap.to(gridRef2.current?.position, {
-            z: isRightSide ? 0.25 : 0,
-            duration: 1,
-            ease: "sine",
-          })
-        }
-        document.body.style.cursor = !isActive ? 'pointer' : 'auto';
-      } else {
-        if (hoverBoxRef.current) {
-          gsap.to(hoverBoxRef.current.scale, { x: 0, y: 0, z: 0, duration: 0.4 });
-          gsap.to(hoverBoxRef.current, { visible: false, duration: 0.4 });
-        }
+  //       if (gridRef1.current && gridRef2.current) {
+  //         gsap.to(gridRef1.current?.position, {
+  //           z: isRightSide ? 0 : 0.25,
+  //           duration: 1,
+  //           ease: "sine",
+  //         });
+  //         gsap.to(gridRef2.current?.position, {
+  //           z: isRightSide ? 0.25 : 0,
+  //           duration: 1,
+  //           ease: "sine",
+  //         })
+  //       }
+  //       document.body.style.cursor = !isActive ? 'pointer' : 'auto';
+  //     } else {
+  //       if (hoverBoxRef.current) {
+  //         gsap.to(hoverBoxRef.current.scale, { x: 0, y: 0, z: 0, duration: 0.4 });
+  //         gsap.to(hoverBoxRef.current, { visible: false, duration: 0.4 });
+  //       }
 
-        if (gridRef1.current && gridRef2.current) {
-          gsap.to(gridRef1.current?.position, { z: 0, duration: 1, ease: "sine" });
-          gsap.to(gridRef2.current?.position, { z: 0, duration: 1, ease: "sine" });
-        }
+  //       if (gridRef1.current && gridRef2.current) {
+  //         gsap.to(gridRef1.current?.position, { z: 0, duration: 1, ease: "sine" });
+  //         gsap.to(gridRef2.current?.position, { z: 0, duration: 1, ease: "sine" });
+  //       }
 
-        document.body.style.cursor = 'auto';
-      }
-    };
+  //       document.body.style.cursor = 'auto';
+  //     }
+  //   };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, [hovered, isRightSide, isActive]);
+  //   window.addEventListener('mousemove', handleMouseMove);
+  //   return () => {
+  //     window.removeEventListener('mousemove', handleMouseMove);
+  //   };
+  // }, [hovered, isRightSide, isActive]);
 
 
   return (
