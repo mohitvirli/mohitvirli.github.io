@@ -1,38 +1,50 @@
 'use client';
 
 import { useGSAP } from "@gsap/react";
-import { Preload, ScrollControls } from "@react-three/drei";
+import { Preload, ScrollControls, useProgress } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { useThemeStore } from "@stores";
 import gsap from "gsap";
-import { Suspense, useRef } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { isMobile } from "react-device-detect";
 import ThemeSwitcher from "./ThemeSwitcher";
+import ProgressLoader from "./ProgressLoader";
 // import {Perf} from "r3f-perf"
 
 const CanvasLoader = (props: { children: React.ReactNode }) => {
   const ref= useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const backgroundColor = useThemeStore((state) => state.color);
+  const { progress } = useProgress();
+  const [canvasStyle, setCanvasStyle] = useState<React.CSSProperties>({
+    position: "absolute",
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    opacity: 0,
+    overflow: "hidden",
+  });
 
-  // TODO: Main screen animation
-  useGSAP(() => {
-    gsap.fromTo('.min-h-screen', { opacity: 0 }, { opacity: 1, duration: 1, delay: 0 });
-    gsap.fromTo('.base-canvas', { opacity: 0 }, { opacity: 1, duration: 2, delay: 0.5 });
-
-    // Add border to desktop views
+  useEffect(() => {
     if (!isMobile) {
-      gsap.to('.base-canvas', {
+      const borderStyle = {
         inset: '1rem',
         width: 'calc(100% - 2rem)',
         height: 'calc(100% - 2rem)',
-        border: "1px solid white",
-        delay: 0,
-        duration: 0,
-      });
+      };
+      setCanvasStyle({ ...canvasStyle, ...borderStyle})
     }
+  }, [isMobile]);
 
-  }, []);
+  useGSAP(() => {
+    if (progress === 0) {
+      gsap.fromTo('.min-h-screen', { opacity: 0 }, { opacity: 1, duration: 1, delay: 0 });
+    }
+    if (progress === 100) {
+      gsap.to('.base-canvas', { opacity: 1, duration: 2, delay: 1 });
+    }
+  }, [progress]);
 
   useGSAP(() => {
     gsap.to(ref.current, {
@@ -58,14 +70,7 @@ const CanvasLoader = (props: { children: React.ReactNode }) => {
       <div className="min-h-screen relative" ref={ref}>
         <Canvas className="base-canvas"
           shadows
-          style={{
-            position: "absolute",
-            top: 0,
-            bottom: 0,
-            left: 0,
-            right: 0,
-            overflow: "hidden",
-          }}
+          style={canvasStyle}
           ref={canvasRef}
           dpr={[1, 2]}>
           {/* <Perf/> */}
@@ -79,8 +84,8 @@ const CanvasLoader = (props: { children: React.ReactNode }) => {
             <Preload all />
           </Suspense>
         </Canvas>
+        <ProgressLoader progress={progress} />
       </div>
-      {/*  */}
       <ThemeSwitcher />
     </div>
   );

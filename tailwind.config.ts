@@ -13,7 +13,8 @@ export default {
         foreground: "var(--foreground)",
       },
       fontFamily: {
-        sans: ['var(--font-soria)']
+        serif: ['var(--font-soria)'],
+        sans: ['var(--font-vercetti)'],
       }
     },
   },
