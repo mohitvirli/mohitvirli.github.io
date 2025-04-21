@@ -129,7 +129,7 @@ const Timeline = ({ progress }: { progress: number }) => {
   };
 
   return (
-    <group>
+    <group position={[0, -0.1, -0.1]}>
       <Line
         points={visibleCurvePoints}
         color="white"
