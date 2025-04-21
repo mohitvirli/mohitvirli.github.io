@@ -102,10 +102,10 @@ const Experience = () => {
           <PaperPlane scale={new THREE.Vector3(2, 2, 2)}/>
         </group> */}
 
-        <group
-          onPointerOver={() => setHovered(true)}
-          onPointerOut={() => setHovered(false)}>
-          <mesh ref={hoverBoxRef} position={[-2, 0, 0]}>
+        <group>
+          {/* onPointerOver={() => setHovered(true)}
+          onPointerOut={() => setHovered(false)}> */}
+          {/* <mesh ref={hoverBoxRef} position={[-2, 0, 0]}>
             <boxGeometry args={[4.5, 4.5, 1]} />
 
             <meshPhysicalMaterial
@@ -118,7 +118,7 @@ const Experience = () => {
               threshold={15} // Angle in degrees, edges with angles greater than this threshold are rendered
               lineWidth={3}
             />
-          </mesh>
+          </mesh> */}
 
           <GridTile title='WORK AND EDUCATION'
             id="work"

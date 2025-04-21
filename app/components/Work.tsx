@@ -26,15 +26,14 @@ const Work = () => {
       const scrollWrapper = document.querySelector('div[style*="z-index: -1"]') as HTMLElement;
       const originalScrollWrapper = document.querySelector('div[style*="z-index: 1"]') as HTMLElement;
       scrollWrapper.addEventListener('scroll', handleScroll)
-      scrollWrapper.scrollTo({ top: 0, behavior: 'instant' });
       scrollWrapper.style.zIndex = '1';
-      scrollWrapper.classList.add('red');
       originalScrollWrapper.style.zIndex = '-1';
     } else {
       const scrollWrapper = document.querySelector('div[style*="z-index: 1"]') as HTMLElement;
       const originalScrollWrapper = document.querySelector('div[style*="z-index: -1"]') as HTMLElement;
 
       if (scrollWrapper) {
+        scrollWrapper.scrollTo({ top: 0, behavior: 'smooth' });
         setScrollProgress(0);
         scrollWrapper.removeEventListener('scroll', handleScroll);
         scrollWrapper.style.zIndex = '-1';
