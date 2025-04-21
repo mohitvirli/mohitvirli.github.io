@@ -42,7 +42,7 @@ const CanvasLoader = (props: { children: React.ReactNode }) => {
       gsap.fromTo('.min-h-screen', { opacity: 0 }, { opacity: 1, duration: 1, delay: 0 });
     }
     if (progress === 100) {
-      gsap.to('.base-canvas', { opacity: 1, duration: 2, delay: 1 });
+      gsap.to('.base-canvas', { opacity: 1, duration: 3, delay: 1 });
     }
   }, [progress]);
 
