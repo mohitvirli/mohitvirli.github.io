@@ -55,7 +55,7 @@ const Experience = () => {
         <shadowMaterial opacity={0.1} />
       </mesh> */}
       <group rotation={[0, 0, Math.PI / 2]}>
-        <group ref={titleRef} position={[-3.5, 2, -2]}>
+        <group ref={titleRef} position={[-3.6, 2, -2]}>
           {getTitle()}
         </group>
 

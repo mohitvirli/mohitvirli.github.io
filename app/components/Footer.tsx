@@ -1,7 +1,40 @@
-import { Text, useScroll } from "@react-three/drei";
+import { Text, useCursor, useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { useRef } from "react";
+import gsap from "gsap";
+import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
+import { FOOTER_LINKS } from "../constants";
+import { FooterLink } from "../types";
+
+const FooterLinkItem = ({ link }: { link: FooterLink }) => {
+  const textRef = useRef<THREE.Group>(null);
+  const [hovered, setHovered] = useState(false);
+  const onPointerOver = () => setHovered(true);
+  const onPointerOut = () => setHovered(false);
+  const fontProps = {
+    font: "./Vercetti-Regular.woff",
+    fontSize: 0.2,
+    color: 'white',
+    onPointerOver,
+    onPointerOut,
+    onClick: () => window.open(link.url, '_blank'),
+  };
+
+  useEffect(() => {
+    gsap.to(textRef.current, {
+      letterSpacing: hovered ? 0.3 : 0,
+      duration: 0.3,
+    });
+  }, [hovered]);
+
+  useCursor(hovered);
+
+  return (
+    <Text ref={textRef} {...fontProps} >
+      {link.name.toUpperCase()}
+    </Text>
+  )
+}
 
 const Footer = () => {
   const groupRef = useRef<THREE.Group>(null);
@@ -13,58 +46,20 @@ const Footer = () => {
       groupRef.current.visible = d > 0;
     }
   });
-  const links = [
-    // {
-    //   name: '© 2023 Mohit Virli'
-    // },
-    {
-      name: 'LinkedIn',
-      url: 'https://www.linkedin.com/in/mohit-virli-b3b1a01a3/',
-    },
-    {
-      name: 'GitHub',
-      url: 'https://github.com/mohitvirli',
-    },
-    {
-      name: 'Spotify',
-      url: 'https://open.spotify.com/user/mohitvirli',
-    },
-    {
-      name: 'Instagram',
-      url: 'https://www.instagram.com/mohitvirli/',
-    },
-    {
-      name: 'Resume',
-      url: 'https://mohitvirli.github.io/resume/',
-    }
-  ];
 
-  const fontProps = {
-    // font: "./soria-font.ttf",
-    font: "./Vercetti-Regular.woff",
-  };
   const getLinks = () => {
-    return links.map((link, i) => {
+    return FOOTER_LINKS.map((link, i) => {
       return (
-        <Text key={i} fontSize={0.2} {...fontProps} color="white" position={[i * 2, 0, 0]}>
-          {link.name.toUpperCase()}
-        </Text>
+        <group key={i} position={[i * 2, 0, 0]}>
+          <FooterLinkItem link={link}/>
+        </group>
       );
     });
   };
+
   return (
     <group position={[0, -44, 18]} rotation={[-Math.PI / 2, 0, 0]} ref={groupRef}>
-      {/* <Scroll html>
-        <div style={{ height: '285vh', width: '100%' }}>
-        </div>
-        <div className="flex items-center justify-center w-screen">
-          Hello
-        </div>
-      </Scroll> */}
-      {/* <Box args={[1, 1, 1]} position={[0, 0, -0.1]} scale={[1, 1, 1]}/> */}
-
       <group position={[-4, 0, 0]}>
-
         { getLinks() }
       </group>
     </group>
