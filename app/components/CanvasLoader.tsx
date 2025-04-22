@@ -39,7 +39,7 @@ const CanvasLoader = (props: { children: React.ReactNode }) => {
 
   useGSAP(() => {
     if (progress === 0) {
-      gsap.fromTo('.min-h-screen', { opacity: 0 }, { opacity: 1, duration: 1, delay: 0 });
+      gsap.fromTo('.wrapper', { opacity: 0 }, { opacity: 1, duration: 1, delay: 0 });
     }
     if (progress === 100) {
       gsap.to('.base-canvas', { opacity: 1, duration: 3, delay: 1 });
@@ -66,7 +66,7 @@ const CanvasLoader = (props: { children: React.ReactNode }) => {
   };
 
   return (
-    <div className="h-[100dvh] relative">
+    <div className="h-[100dvh] wrapper relative">
       <div className="h-[100dvh] relative" ref={ref}>
         <Canvas className="base-canvas"
           shadows
