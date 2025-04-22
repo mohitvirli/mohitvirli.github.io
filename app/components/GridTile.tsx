@@ -5,6 +5,8 @@ import { usePortalStore } from '@stores';
 import gsap from "gsap";
 import { useRef } from 'react';
 import * as THREE from 'three';
+import { TriangleGeometry } from './Triangle';
+import { isMobile } from 'react-device-detect';
 
 interface GridTileProps {
   id: string;
@@ -27,7 +29,8 @@ const GridTile = (props: GridTileProps) => {
   const isActive = usePortalStore((state) => state.activePortalId === id);
   const activePortalId = usePortalStore((state) => state.activePortalId);
 
-  const portalInto = () => {
+  const portalInto = (e: React.MouseEvent) => {
+    e.stopPropagation();
     if (isActive || activePortalId) return;
     setActivePortal(id);
     document.body.style.cursor = 'auto';
@@ -98,7 +101,7 @@ const GridTile = (props: GridTileProps) => {
   };
 
   const onPointerOver = () => {
-    if (isActive) return;
+    if (isActive || isMobile) return;
     document.body.style.cursor = 'pointer';
     gsap.to(titleRef.current, {
       fillOpacity: 1
@@ -110,6 +113,7 @@ const GridTile = (props: GridTileProps) => {
   };
 
   const onPointerOut = () => {
+    if (isMobile) return;
     document.body.style.cursor = 'auto';
     gsap.to(titleRef.current, {
       fillOpacity: 0
@@ -120,13 +124,26 @@ const GridTile = (props: GridTileProps) => {
     }
   };
 
+  const getGeometry = () => {
+    if (!isMobile) {
+      return <planeGeometry args={[4, 4, 1]} />
+    }
+
+    const isWork = id === 'work';
+    const points = isWork ?
+      [[0, 2, 0], [0, -2, 0], [4, -2, 0]] :
+      [[-2, 2, 0], [2, -2, 0], [2, 2, 0]];
+
+    return <primitive object={TriangleGeometry({ points })} attach="geometry" />
+  };
+
   return (
     <mesh ref={gridRef}
       position={position}
       onClick={portalInto}
       onPointerOver={onPointerOver}
       onPointerOut={onPointerOut}>
-      <planeGeometry args={[4, 4, 1]} />
+      { getGeometry() }
       <group>
         <mesh position={[0, 0, -0.01]} ref={hoverBoxRef} scale={[0, 0, 0]}>
           <boxGeometry args={[4, 4, 0.5]}/>
