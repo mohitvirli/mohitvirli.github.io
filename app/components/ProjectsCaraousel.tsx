@@ -51,6 +51,7 @@ const ProjectTile = ({ project, isHovered, index }: ProjectProps) => {
   // Fake debounce 200ms.
   useEffect(() => {
     // Set a timeout to only execute the animation after 200ms
+    // TODO: Cleanup
     const timerRef = setTimeout(() => {
       const projectGroup = projectRef.current;
       if (!projectGroup) return;
@@ -79,7 +80,7 @@ const ProjectTile = ({ project, isHovered, index }: ProjectProps) => {
           .to(button.position, { z: isHovered ? 0.3 : -1, delay: 0.4 }, 0)
           .to(button.position, { x: isHovered ? -1.3 : 1.3, delay: 0.8 }, 0);
       }
-    }, 200);
+    }, isMobile ? 0 : 200);
 
     // Clean up function will clear the timeout if isHovered changes before 200ms
     return () => {

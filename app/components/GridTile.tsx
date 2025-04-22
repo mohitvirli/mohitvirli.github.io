@@ -54,6 +54,7 @@ const GridTile = (props: GridTileProps) => {
     gsap.to(camera.position, {
       x: camera.position.x + position.x ,
       y: camera.position.y - 2,
+      z: camera.position.z - (id === 'projects' ? 1.5 : 0),
       duration: 1,
     });
 
@@ -137,8 +138,8 @@ const GridTile = (props: GridTileProps) => {
 
     const isWork = id === 'work';
     const points = isWork ?
-      [[0, 2, 0], [0, -2, 0], [4, -2, 0]] :
-      [[-2, 2, 0], [2, -2, 0], [2, 2, 0]];
+      [[-1, 2, 0], [-1, -2, 0], [3, -2, 0]] :
+      [[-3, 2, 0], [1, -2, 0], [1, 2, 0]];
 
     return <primitive object={TriangleGeometry({ points })} attach="geometry" />
   };

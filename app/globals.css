@@ -45,6 +45,15 @@ body {
   cursor: pointer;
 }
 
+@media screen and (max-width: 768px) {
+  .close {
+    left: 16px;
+    top: 16px;
+    width: 32px;
+    height: 32px;
+  }
+}
+
 .close:hover {
   opacity: 1;
 }
@@ -55,7 +64,7 @@ body {
   content: ' ';
   height: 48px;
   width: 2px;
-  background-color: #FFF;
+  background-color: #0a0a0a;
 }
 
 .close:before {
