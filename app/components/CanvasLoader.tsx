@@ -66,8 +66,8 @@ const CanvasLoader = (props: { children: React.ReactNode }) => {
   };
 
   return (
-    <div className="min-h-screen relative">
-      <div className="min-h-screen relative" ref={ref}>
+    <div className="h-[100dvh] relative">
+      <div className="h-[100dvh] relative" ref={ref}>
         <Canvas className="base-canvas"
           shadows
           style={canvasStyle}

@@ -7,6 +7,7 @@ import GridTile from "./GridTile";
 // import PaperPlane from "./models/PaperPlane";
 import Projects from "./Projects";
 import Work from "./Work";
+import { isMobile } from "react-device-detect";
 
 // TODO:
 const Experience = () => {
@@ -42,8 +43,9 @@ const Experience = () => {
   const getTitle = () => {
     const title = 'experience'.toUpperCase();
     return title.split('').map((char, i) => {
+      const diff = isMobile ? 0.4 : 0.8;
       return (
-        <Text key={i} {...fontProps} position={[i * 0.8, 2, 1]}>{char}</Text>
+        <Text key={i} {...fontProps} position={[i * diff, 2, 1]}>{char}</Text>
       );
     });
   };
@@ -55,7 +57,7 @@ const Experience = () => {
         <shadowMaterial opacity={0.1} />
       </mesh> */}
       <group rotation={[0, 0, Math.PI / 2]}>
-        <group ref={titleRef} position={[-3.6, 2, -2]}>
+        <group ref={titleRef} position={[isMobile ? -1.8 : -3.6, 2, -2]}>
           {getTitle()}
         </group>
 
