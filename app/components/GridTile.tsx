@@ -30,8 +30,8 @@ const GridTile = (props: GridTileProps) => {
   const activePortalId = usePortalStore((state) => state.activePortalId);
 
   const portalInto = (e: React.MouseEvent) => {
-    e.stopPropagation();
     if (isActive || activePortalId) return;
+    e.stopPropagation();
     setActivePortal(id);
     document.body.style.cursor = 'auto';
     const div = document.createElement('div');
@@ -69,6 +69,12 @@ const GridTile = (props: GridTileProps) => {
 
     gsap.to(camera.position, {
       x: 0,
+      duration: 1,
+    });
+
+    gsap.to(camera.rotation, {
+      x: -Math.PI / 2,
+      y: 0,
       duration: 1,
     });
 

@@ -2,6 +2,7 @@ import { Text, useCursor, useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
+import { isMobile } from "react-device-detect";
 import * as THREE from "three";
 import { FOOTER_LINKS } from "../constants";
 import { FooterLink } from "../types";
@@ -50,7 +51,7 @@ const Footer = () => {
   const getLinks = () => {
     return FOOTER_LINKS.map((link, i) => {
       return (
-        <group key={i} position={[i * 2, 0, 0]}>
+        <group key={i} position={[i * (isMobile ? 1.2 : 2), 0, 0]}>
           <FooterLinkItem link={link}/>
         </group>
       );
@@ -59,7 +60,7 @@ const Footer = () => {
 
   return (
     <group position={[0, -44, 18]} rotation={[-Math.PI / 2, 0, 0]} ref={groupRef}>
-      <group position={[-4, 0, 0]}>
+      <group position={[isMobile ? -2 : -4, 0, 0]} scale={isMobile ? 0.9 : 1}>
         { getLinks() }
       </group>
     </group>

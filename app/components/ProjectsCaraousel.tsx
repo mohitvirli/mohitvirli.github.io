@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { ThreeEvent } from "@react-three/fiber";
 import gsap from "gsap";
+import { isMobile } from "react-device-detect";
 import * as THREE from "three";
 import { PROJECTS } from "../constants";
 import { usePortalStore } from "../stores";
@@ -176,10 +177,17 @@ const ProjectsCaraousel = () => {
   const getProjects = () => {
     // Hacky way to set the active hover id with a delay.
     const onPointerOver = (id: number) => {
+      if (isMobile) return;
       setTimeout(() => setActiveHoverId(id), 100);
     };
 
+    const onClick = (id: number) => {
+      if (!isMobile) return;
+      setActiveHoverId(activeHoverId === id ? null : id);
+    }
+
     const onPointerOut = (e: ThreeEvent<MouseEvent>) => {
+      if (isMobile) return;
       e.stopPropagation();
       setActiveHoverId(null);
     }
@@ -204,6 +212,7 @@ const ProjectsCaraousel = () => {
         <group key={i}
           position={[x, 1, z]}
           rotation={[0, rotationY, 0]}
+          onClick={() => onClick(i)}
           onPointerOver={() => onPointerOver(i)}
           onPointerOut={onPointerOut}>
           <ProjectTile {...props} />
