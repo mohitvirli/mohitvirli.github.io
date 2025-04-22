@@ -3,7 +3,7 @@ import { WorkTimelinePoint } from "../types";
 
 export const WORK_TIMELINE: WorkTimelinePoint[] = [
   {
-    point: new THREE.Vector3(0, -1, 0),
+    point: new THREE.Vector3(0, 0, 0),
     year: '2014',
     title: 'IIT Roorkee',
     subtitle: 'Electrical Engineering',

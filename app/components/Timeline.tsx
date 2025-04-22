@@ -1,11 +1,12 @@
 import { Box, Edges, Line, Text, TextProps } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
+import gsap from "gsap";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { isMobile } from "react-device-detect";
 import * as THREE from "three";
 import { WORK_TIMELINE } from "../constants";
 import { usePortalStore } from "../stores";
 import { WorkTimelinePoint } from "../types";
-import gsap from "gsap";
 
 const TimelinePoint = ({ point, diff }: { point: WorkTimelinePoint, diff: number }) => {
   const getPoint = useMemo(() => (direction: WorkTimelinePoint['position']) => {
@@ -33,7 +34,7 @@ const TimelinePoint = ({ point, diff }: { point: WorkTimelinePoint, diff: number
   };
 
   return (
-    <group position={point.point}>
+    <group position={point.point} scale={isMobile ? 0.35 : 0.6}>
       <Box args={[0.2, 0.2, 0.2]} position={[0, 0, -0.1]} scale={[1 - diff, 1 - diff, 1 - diff]}>
         <meshBasicMaterial color="white" wireframe/>
         <Edges color="white" lineWidth={1.5} />
