@@ -17,6 +17,7 @@ interface GridTileProps {
 
 // TODO: Rename this
 const GridTile = (props: GridTileProps) => {
+  const titleRef = useRef<THREE.Group>(null);
   const gridRef = useRef<THREE.Group>(null);
   const hoverBoxRef = useRef<THREE.Mesh>(null);
   const portalRef = useRef(null);
@@ -93,11 +94,15 @@ const GridTile = (props: GridTileProps) => {
     fontSize: 0.7,
     color: 'white',
     textAlign: textAlign,
+    fillOpacity: 0,
   };
 
   const onPointerOver = () => {
     if (isActive) return;
     document.body.style.cursor = 'pointer';
+    gsap.to(titleRef.current, {
+      fillOpacity: 1
+    });
     if (gridRef.current && hoverBoxRef.current) {
       gsap.to(gridRef.current.position, { z: 0.5, duration: 0.4});
       gsap.to(hoverBoxRef.current.scale, { x: 1, y: 1, z: 1, duration: 0.4 });
@@ -106,6 +111,9 @@ const GridTile = (props: GridTileProps) => {
 
   const onPointerOut = () => {
     document.body.style.cursor = 'auto';
+    gsap.to(titleRef.current, {
+      fillOpacity: 0
+    });
     if (gridRef.current && hoverBoxRef.current) {
       gsap.to(gridRef.current.position, { z: 0, duration: 0.4});
       gsap.to(hoverBoxRef.current.scale, { x: 0, y: 0, z: 0, duration: 0.4 });
@@ -129,7 +137,7 @@ const GridTile = (props: GridTileProps) => {
           />
           <Edges color="white" lineWidth={3}/>
         </mesh>
-        <Text position={[0, -1.7, 0.4]} {...fontProps}>
+        <Text position={[0, -1.7, 0.4]} {...fontProps} ref={titleRef}>
           {title}
         </Text>
       </group>
