@@ -7,6 +7,7 @@ export const ScrollHint = () => {
   const { showScrollHint, hintText } = useScrollHintStore();
 
   useEffect(() => {
+    console.log(showScrollHint);
     if (showScrollHint) {
       gsap.to('.scroll-hint', {
         opacity: 1,
@@ -14,6 +15,7 @@ export const ScrollHint = () => {
         delay: 1.5,
       });
     } else {
+      gsap.killTweensOf('.scroll-hint');
       gsap.to('.scroll-hint', {
         opacity: 0,
         duration: 0.5,
