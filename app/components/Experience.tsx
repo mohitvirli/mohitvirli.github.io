@@ -27,6 +27,7 @@ const Experience = () => {
     const e = data.range(0.7, 0.2);
 
     if (groupRef.current && !isActive) {
+      groupRef.current.position.y = d > 0 ? -1 : -30;
       groupRef.current.visible = d > 0;
     }
 

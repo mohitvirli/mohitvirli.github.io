@@ -1,7 +1,7 @@
 'use client';
 
 import { useGSAP } from "@gsap/react";
-import { Preload, ScrollControls, useProgress } from "@react-three/drei";
+import { AdaptiveDpr, Preload, ScrollControls, useProgress } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { useThemeStore } from "@stores";
 import gsap from "gsap";
@@ -84,6 +84,7 @@ const CanvasLoader = (props: { children: React.ReactNode }) => {
 
             <Preload all />
           </Suspense>
+          <AdaptiveDpr pixelated/>
         </Canvas>
         <ProgressLoader progress={progress} />
       </div>
