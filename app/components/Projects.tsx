@@ -16,6 +16,8 @@ const Projects = () => {
 
   useEffect(() => {
     setScrollTop(data.el.scrollTop);
+    // Hide scrollbar when active.
+    data.el.style.overflow = isActive ? 'hidden' : 'auto';
   }, [isActive]);
 
   useFrame((state, delta) => {
