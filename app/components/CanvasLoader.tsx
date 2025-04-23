@@ -7,8 +7,9 @@ import { useThemeStore } from "@stores";
 import gsap from "gsap";
 import { Suspense, useEffect, useRef, useState } from "react";
 import { isMobile } from "react-device-detect";
-import ThemeSwitcher from "./ThemeSwitcher";
 import ProgressLoader from "./ProgressLoader";
+import { ScrollHint } from "./ScrollHint";
+import ThemeSwitcher from "./ThemeSwitcher";
 // import {Perf} from "r3f-perf"
 
 const CanvasLoader = (props: { children: React.ReactNode }) => {
@@ -87,6 +88,7 @@ const CanvasLoader = (props: { children: React.ReactNode }) => {
         <ProgressLoader progress={progress} />
       </div>
       <ThemeSwitcher />
+      <ScrollHint />
     </div>
   );
 };

@@ -6,7 +6,7 @@ import gsap from "gsap";
 import { isMobile } from "react-device-detect";
 import * as THREE from "three";
 import { PROJECTS } from "../constants";
-import { usePortalStore } from "../stores";
+import { usePortalStore, useScrollHintStore } from "../stores";
 import { Project } from "../types";
 
 /**
@@ -169,10 +169,15 @@ const ProjectTile = ({ project, isHovered, index }: ProjectProps) => {
 
 const ProjectsCaraousel = () => {
   const [activeHoverId, setActiveHoverId] = useState<number | null>(null);
+  const { showScrollHint, setScrollHint } = useScrollHintStore();
   const isActive = usePortalStore((state) => state.activePortalId === "projects");
 
   useEffect(() => {
-    if (!isActive) { setActiveHoverId(null); }
+    if (!isActive) {
+      setActiveHoverId(null);
+    } else if (!showScrollHint) {
+      setScrollHint(true, 'PAN');
+    }
   }, [isActive]);
 
   const getProjects = () => {

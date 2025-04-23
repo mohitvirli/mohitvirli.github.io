@@ -1,11 +1,11 @@
 import { Box, Edges, Line, Text, TextProps } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
+import { usePortalStore, useScrollHintStore } from "@stores";
 import gsap from "gsap";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { isMobile } from "react-device-detect";
 import * as THREE from "three";
 import { WORK_TIMELINE } from "../constants";
-import { usePortalStore } from "../stores";
 import { WorkTimelinePoint } from "../types";
 
 const TimelinePoint = ({ point, diff }: { point: WorkTimelinePoint, diff: number }) => {
@@ -64,6 +64,7 @@ const TimelinePoint = ({ point, diff }: { point: WorkTimelinePoint, diff: number
 const Timeline = ({ progress }: { progress: number }) => {
   const { camera } = useThree();
   const isActive = usePortalStore((state) => state.activePortalId === 'work');
+  const { showScrollHint, setScrollHint } = useScrollHintStore();
   const timeline = [...WORK_TIMELINE];
   const curve = useMemo(() => new THREE.CatmullRomCurve3(timeline.map((p) => p.point), false), [timeline]);
   const curvePoints = useMemo(() => curve.getPoints(1000), [curve]);
@@ -121,6 +122,18 @@ const Timeline = ({ progress }: { progress: number }) => {
       setVisibleDashedCurvePoints([]);
     }
   }, [isActive]);
+
+  // Show scroll hint on screen when scroll is at 0.
+  useEffect(() => {
+    if (isActive) {
+      if (!showScrollHint && progress === 0) {
+        setScrollHint(true, 'SCROLL');
+      }
+      if (showScrollHint && progress > 0) {
+        setScrollHint(false);
+      }
+    }
+  }, [isActive, progress]);
 
   const getVisibleTimelinePoints = () => {
     return visibleTimelinePoints.map((point, i) => {

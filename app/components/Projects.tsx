@@ -16,7 +16,6 @@ const Projects = () => {
 
   useEffect(() => {
     setScrollTop(data.el.scrollTop);
-
   }, [isActive]);
 
   useFrame((state, delta) => {

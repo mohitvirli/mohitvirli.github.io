@@ -5,8 +5,6 @@ interface ThemeStore {
   activeColorIndex: number;
   color: string;
   nextColor: () => void;
-  showThemeSwitcher: boolean;
-  setShowThemeSwitcher: (showThemeSwitcher: boolean) => void;
 }
 
 export const useThemeStore = create<ThemeStore>((set, get) => ({
@@ -15,8 +13,6 @@ export const useThemeStore = create<ThemeStore>((set, get) => ({
   get color() {
     return get().colors[get().activeColorIndex];
   },
-  showThemeSwitcher: false,
-  setShowThemeSwitcher: (showThemeSwitcher) => set(() => ({ showThemeSwitcher })),
   nextColor: () => {
     const colors = get().colors;
     const activeColorIndex = (get().activeColorIndex + 1) % colors.length;
