@@ -32,9 +32,9 @@ export const WORK_TIMELINE: WorkTimelinePoint[] = [
   },
   {
     point: new THREE.Vector3(1, 1, -12),
-    year: '2025',
-    title: 'This portfolio',
-    subtitle: '???',
+    year: new Date().toLocaleDateString('default', { year: 'numeric' }),
+    title: '?',
+    subtitle: '??',
     position: 'right',
   }
 ]

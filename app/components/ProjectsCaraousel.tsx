@@ -137,14 +137,14 @@ const ProjectTile = ({ project, isHovered, index }: ProjectProps) => {
             {project.date.toUpperCase()}
           </Text>
         </group>
-        <Text maxWidth={4}
+        <Text maxWidth={3.8}
           {...subtitleProps}
           position={[-1.9, 2.3, 0.1]}
           scale={[0, 0, 1]}
           fontSize={0.2}>
           {project.subtext}
         </Text>
-        { project.url ? <group position={[1.3, -0.7, -1]}
+        { project.url ? <group position={[1.3, -0.6, -1]}
           scale={[1, 0, 1]}
           onClick={handleClick}
           onPointerOver={() => document.body.style.cursor = 'pointer'}
