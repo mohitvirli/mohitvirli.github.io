@@ -7,7 +7,6 @@ export const ScrollHint = () => {
   const { showScrollHint, hintText } = useScrollHintStore();
 
   useEffect(() => {
-    console.log(showScrollHint);
     if (showScrollHint) {
       gsap.to('.scroll-hint', {
         opacity: 1,

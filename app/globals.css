@@ -31,17 +31,19 @@ body {
 }
 
 :root {
-  --shadow: #FFF;
-  --scrollbarBG: rgba(0, 0, 0, 0);
+  --scrollbarColor: #FFF;
+  --scrollbarBackground: rgba(0, 0, 0, 0);
 }
+
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 7px;
 }
+
 ::-webkit-scrollbar-track {
-  background: var(--scrollbarBG);
+  background: var(--scrollbarBackground);
 }
 ::-webkit-scrollbar-thumb {
-  border-bottom: 100vh solid var(--shadow);
+  border-bottom: 100vh solid var(--scrollbarColor);
 }
 
 .close {
