@@ -51,13 +51,6 @@ const GridTile = (props: GridTileProps) => {
       })
     }
 
-    gsap.to(camera.position, {
-      x: camera.position.x + position.x ,
-      y: camera.position.y - 2,
-      z: camera.position.z - (id === 'projects' ? 1.5 : 0),
-      duration: 1,
-    });
-
     gsap.to(portalRef.current, {
       blend: 1,
       duration: 0.5,

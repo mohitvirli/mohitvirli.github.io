@@ -60,7 +60,7 @@ const ProjectTile = ({ project, isHovered, index }: ProjectProps) => {
 
       const tl = gsap.timeline();
       tl.to(projectGroup.position, { z: isHovered ? 1 : 0, duration: 0.2}, 0)
-        .to(projectGroup.position, { y: isHovered ? 1 : 0, delay: 0.2 }, 0)
+        .to(projectGroup.position, { y: isHovered ? 0.5 : 0, delay: 0.2 }, 0)
         .to(projectGroup.scale, {
           x: isHovered ? 1.5 : 1,
           y: isHovered ? 1.5 : 1,

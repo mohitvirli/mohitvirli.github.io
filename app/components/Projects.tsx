@@ -1,5 +1,6 @@
 import { useScroll } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
+import gsap from "gsap";
 import { useEffect, useState } from "react";
 import { isMobile } from "react-device-detect";
 import * as THREE from "three";
@@ -15,20 +16,24 @@ const Projects = () => {
   const data = useScroll();
 
   useEffect(() => {
-    setScrollTop(data.el.scrollTop);
     // Hide scrollbar when active.
     data.el.style.overflow = isActive ? 'hidden' : 'auto';
+    if (isActive) {
+      setScrollTop(data.el.scrollTop);
+      if (isMobile) {
+        gsap.to(camera.position, { z: 11.5, y: -39, x: 1, duration: 1 });
+      } else {
+        gsap.to(camera.position, { y: -39, x: 2, duration: 1 });
+      }
+    }
   }, [isActive]);
 
   useFrame((state, delta) => {
     if (isActive) {
-      // console.log(state);
       if (!isMobile) {
         camera.rotation.y = THREE.MathUtils.lerp(camera.rotation.y, -(state.pointer.x * Math.PI) / 4, 0.03);
-        // console.log(camera.position.z);
         camera.position.z = THREE.MathUtils.damp(camera.position.z, 11.5 - state.pointer.y, 7, delta);
       }
-      // camera.position.y = THREE.MathUtils.damp(camera.position.y, d, 7, delta);
       data.el.scrollTo({ top: scrollTop, behavior: 'instant' });
     }
   });
