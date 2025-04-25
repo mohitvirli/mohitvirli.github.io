@@ -76,7 +76,7 @@ const ProjectTile = ({ project, isHovered, index }: ProjectProps) => {
         .to(mesh.position, { y: isHovered ? 1 : 0 }, 0);
 
       if (project.url) {
-        tl.to(button.scale, { y: isHovered ? 1 : 0, delay: 0.4 }, 0)
+        tl.to(button.scale, { y: isHovered ? 1 : 0, x: isHovered ? 1 : 0, delay: 0.4 }, 0)
           .to(button.position, { z: isHovered ? 0.3 : -1, delay: 0.4 }, 0)
           // .to(button.position, { x: isHovered ? -1.3 : 1.3, delay: 0.8 }, 0);
       }
@@ -145,7 +145,7 @@ const ProjectTile = ({ project, isHovered, index }: ProjectProps) => {
           {project.subtext}
         </Text>
         { project.url ? <group position={[1.3, -0.6, -1]}
-          scale={[1, 0, 1]}
+          scale={[0, 0, 1]}
           onClick={handleClick}
           onPointerOver={() => document.body.style.cursor = 'pointer'}
           onPointerOut={() => document.body.style.cursor = 'auto'}>

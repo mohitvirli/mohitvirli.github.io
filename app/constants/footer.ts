@@ -19,6 +19,6 @@ export const FOOTER_LINKS: FooterLink[] = [
   },
   {
     name: 'Resume',
-    url: 'https://mohitvirli.github.io/resume/',
+    url: './Mohit Virli - Resume.pdf',
   }
 ];

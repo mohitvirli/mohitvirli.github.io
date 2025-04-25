@@ -29,7 +29,7 @@ export const PROJECTS: Project[] = [
   {
     title: 'Chat bot',
     date: 'Aug 2024',
-    subtext: 'A chatbot that allows users to switch between different LLMs with custom API keys.',
+    subtext: 'A streaming chatbot that allows users to switch between different LLMs with custom API keys.',
     url: 'https://github.com/mohitvirli/chat-bot-vercel',
   },
   {
