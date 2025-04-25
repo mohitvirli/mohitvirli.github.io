@@ -71,14 +71,14 @@ const ProjectTile = ({ project, isHovered, index }: ProjectProps) => {
         .to(textBox.position, { y: isHovered ? 0.7 : 0, delay: 0.3 }, 0)
         .to(textBox.scale, { y: isHovered ? 1 : 0, x: isHovered ? 1 : 0, delay: 0.4 }, 0)
         .to(dateGroup.position, { y: isHovered ? 2.6 : 1.4, delay: 0.3 }, 0)
-        .to(dateGroup.position, { x: isHovered ? 1.1 : -1.25, delay: 0.7 }, 0)
+        // .to(dateGroup.position, { x: isHovered ? 1.1 : -1.25, delay: 0.7 }, 0)
         .to(mesh.scale, { y: isHovered ? 2 : 1 }, 0)
         .to(mesh.position, { y: isHovered ? 1 : 0 }, 0);
 
       if (project.url) {
         tl.to(button.scale, { y: isHovered ? 1 : 0, delay: 0.4 }, 0)
           .to(button.position, { z: isHovered ? 0.3 : -1, delay: 0.4 }, 0)
-          .to(button.position, { x: isHovered ? -1.3 : 1.3, delay: 0.8 }, 0);
+          // .to(button.position, { x: isHovered ? -1.3 : 1.3, delay: 0.8 }, 0);
       }
     }, isMobile ? 0 : 200);
 
