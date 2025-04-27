@@ -1,21 +1,24 @@
 # mohitvirli.github.io
-Hello there! This is the repo that has the code for my portfolio. The code is not maintained well and I am just adding to the old code.
-I know the code is a mess and the best thing is to create something new from scratch but I am not able to find the time to upgrade the full repo.
-So in all, I am just updating this old code and when I do feel I am done with doing this (almost 70%), you'd see the new code.
+Hello there! I'm Mohit Virli, frontend engineer by profession, a creative at heart.
 
-Cheers till then!
+This the updated version of my personal website which is now in 3D. LFG!
 
+Checkout the live version at [mohitvirli.github.io](https://mohitvirli.github.io/)
 
-# TODO
-- Perf issues
-- Mobile view
-- Figure out the plane movements
-- Add projects
-- use project store
-- Add Social links
-- Disable Zoom
-- Add SEO
-- Add favicon & meta tags
-- Remove unused Models
-- OnResize
-- Free Control Enabled
+## Tech Stack
+
+- Next.js
+- React
+- React-three-fiber
+- DREI
+- GSAP
+- Zustand
+- Tailwind
+
+## Preview
+Some sample images from the app. Better to check it out live!
+
+<img width="1242" alt="image" src="https://github.com/user-attachments/assets/877b0685-8d86-4f8b-b123-f3cc17d46fc7" />
+<img width="1241" alt="image" src="https://github.com/user-attachments/assets/09a92647-1781-4124-ba3f-1d6fb66f6974" />
+<img width="1241" alt="image" src="https://github.com/user-attachments/assets/a15017f4-f1f2-459e-b895-b3c14703635b" />
+
