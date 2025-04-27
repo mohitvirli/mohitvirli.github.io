@@ -7,7 +7,7 @@ name: Deploy Next.js site to Pages
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["master", "v2"]
+    branches: ["v2"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -28,6 +28,8 @@ jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
+    env:
+      GA_MEASUREMENT_ID: ${{ secrets.GA_MEASUREMENT_ID }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
