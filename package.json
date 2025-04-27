@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
+    "@next/third-parties": "^15.3.1",
     "@react-three/drei": "^10.0.3",
     "@react-three/fiber": "^9.0.4",
     "@types/three": "^0.173.0",

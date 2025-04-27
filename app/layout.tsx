@@ -1,3 +1,4 @@
+import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import localFont from 'next/font/local';
 import "./globals.css";
@@ -22,6 +23,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const gaMeasurementId = process.env.googleAnalyticsId ?? '';
   return (
     <html lang="en" className="overscroll-y-none">
       <body
@@ -29,6 +31,7 @@ export default function RootLayout({
       >
         {children}
       </body>
+      <GoogleAnalytics gaId={gaMeasurementId}/>
     </html>
   );
 }
