@@ -7,7 +7,7 @@ name: Deploy Next.js site to Pages
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["master", "v2"]
+    branches: ["v2"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -53,6 +53,9 @@ jobs:
         with:
           node-version: "20"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
+      - name: Environment Setup
+        env:
+          GA_MEASUREMENT_ID: ${{ secrets.GA_MEASUREMENT_ID }}
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
