@@ -28,6 +28,8 @@ jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
+    env:
+      GA_MEASUREMENT_ID: ${{ secrets.GA_MEASUREMENT_ID }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -53,9 +55,6 @@ jobs:
         with:
           node-version: "20"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
-      - name: Environment Setup
-        env:
-          GA_MEASUREMENT_ID: ${{ secrets.GA_MEASUREMENT_ID }}
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
