@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+* {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none;
+}
+
+body {
+  overscroll-behavior: none;
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+:root {
+  --scrollbarColor: #FFF;
+  --scrollbarBackground: rgba(0, 0, 0, 0);
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbarBackground);
+}
+::-webkit-scrollbar-thumb {
+  border-bottom: 100vh solid var(--scrollbarColor);
+}
+
+.close {
+  position: absolute;
+  left: 32px;
+  top: 32px;
+  width: 48px;
+  height: 48px;
+  opacity: 0.3;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .close {
+    left: 16px;
+    top: 16px;
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.close:hover {
+  opacity: 1;
+}
+
+.close:before, .close:after {
+  position: absolute;
+  left: 2rem;
+  content: ' ';
+  height: 48px;
+  width: 2px;
+  background-color: #0a0a0a;
+}
+
+.close:before {
+  transform: rotate(45deg);
+}
+
+.close:after {
+  transform: rotate(-45deg);
+}
