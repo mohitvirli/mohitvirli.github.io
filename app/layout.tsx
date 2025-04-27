@@ -23,8 +23,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  console.log(process.env);
-  const gaMeasurementId = process.env.googleAnalyticsId ?? '';
   return (
     <html lang="en" className="overscroll-y-none">
       <body
@@ -32,7 +30,7 @@ export default function RootLayout({
       >
         {children}
       </body>
-      <GoogleAnalytics gaId={gaMeasurementId}/>
+      <GoogleAnalytics gaId={'G-7WD4HM3XRE'}/>
     </html>
   );
 }
