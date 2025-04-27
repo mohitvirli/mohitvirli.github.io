@@ -23,6 +23,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  console.log(process.env);
   const gaMeasurementId = process.env.googleAnalyticsId ?? '';
   return (
     <html lang="en" className="overscroll-y-none">
