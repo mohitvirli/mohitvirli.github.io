@@ -13,48 +13,28 @@ export function Wanderer(props: Partial<THREE.Object3D>) {
   const { nodes, materials } = useGLTF('/wanderer_above_the_sea_of_fog.glb')
   return (
     <group {...props} dispose={null}>
-      <group rotation={[-Math.PI / 2, 0, 0]} scale={0.676}>
+      <group rotation={[-Math.PI / 2, 0, 0]}>
         <group rotation={[Math.PI / 2, 0, 0]}>
           <mesh
             castShadow
             receiveShadow
             geometry={(nodes.Object_4 as THREE.Mesh).geometry}
             material={materials.brush_Ink}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.Object_6 as THREE.Mesh).geometry}
-            material={materials.brush_Ink}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.Object_8 as THREE.Mesh).geometry}
-            material={materials.brush_Ink}
+            scale={0.676}
           />
           <mesh
             castShadow
             receiveShadow
             geometry={(nodes.Object_10 as THREE.Mesh).geometry}
             material={materials.brush_ThickPaint}
+            scale={0.676}
           />
           <mesh
             castShadow
             receiveShadow
             geometry={(nodes.Object_12 as THREE.Mesh).geometry}
             material={materials.brush_Marker}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.Object_14 as THREE.Mesh).geometry}
-            material={
-              materials['media_image_Caspar_David_Friedrich_-_Wanderer_above_the_sea_of_fog']
-            }
-            position={[-11.413, 3.033, 16.793]}
-            rotation={[0.082, -0.72, 0.054]}
-            scale={53.755}
+            scale={0.676}
           />
         </group>
       </group>

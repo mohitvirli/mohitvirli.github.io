@@ -6,424 +6,78 @@ Source: https://sketchfab.com/3d-models/dalithe-persistence-of-memory-ab3e99facb
 Title: Dali,The Persistence of Memory
 */
 
-import { useGLTF } from '@react-three/drei';
-import * as THREE from 'three';
+import { useGLTF } from '@react-three/drei'
+import * as THREE from 'three'
 
-export function Memory(props: Partial<THREE.Object3D>) {
+export const Memory = (props: Partial<THREE.Object3D>) => {
   const { nodes, materials } = useGLTF('/dalithe_persistence_of_memory.glb')
   return (
     <group {...props} dispose={null}>
-      <group rotation={[-Math.PI / 2, 0, 0]} scale={0.021}>
-        <group rotation={[Math.PI / 2, 0, 0]}>
-          <group position={[95.817, 132.222, -370.306]} rotation={[-Math.PI / 2, 0, 0]}>
-            <mesh
-              castShadow
-              receiveShadow
-              geometry={(nodes['Line006_05_-_Default_0'] as THREE.Mesh).geometry}
-              material={materials['05_-_Default']}
-              rotation={[Math.PI / 2, 0, 0]}
-              scale={3.204}
-            />
-          </group>
-          <group position={[3.696, 31.236, -116.985]}>
-            <mesh
-              castShadow
-              receiveShadow
-              geometry={(nodes['Line005_02_-_Default_0'] as THREE.Mesh).geometry}
-              material={materials['02_-_Default']}
-              position={[-3.696, -31.006, 116.985]}
-            />
-          </group>
-          <group position={[-15.308, 46.673, -99.964]} rotation={[0, 0, Math.PI / 2]}>
-            <mesh
-              castShadow
-              receiveShadow
-              geometry={(nodes['Box003_01_-_Default_0'] as THREE.Mesh).geometry}
-              material={materials['01_-_Default']}
-              position={[-15.929, 12.082, 22.086]}
-            />
-          </group>
-          <group position={[3.782, 34.368, -117.079]} rotation={[-1.222, 0, 0]}>
-            <mesh
-              castShadow
-              receiveShadow
-              geometry={(nodes['Cylinder004_01_-_Default_0'] as THREE.Mesh).geometry}
-              material={materials['01_-_Default']}
-              position={[0, 0, -0.733]}
-            />
-          </group>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['Extract2_04_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['04_-_Default']}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['jamdetal3_04_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['04_-_Default']}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['jamdetal_04_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['04_-_Default']}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['jamdetal3_2_04_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['04_-_Default']}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['jamdetal3_6_04_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['04_-_Default']}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['jamdetal3_3_04_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['04_-_Default']}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['jamdetal3_4_04_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['04_-_Default']}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['jamdetal3_8_04_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['04_-_Default']}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.Cylinder006_Ceramic_0 as THREE.Mesh).geometry}
-            material={materials.Ceramic}
-            position={[25.553, 0, 120.025]}
-            rotation={[-Math.PI / 2, 0, 0]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['Box001_05_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['05_-_Default']}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['jamdetal3_7_05_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['05_-_Default']}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['Cylinder002_05_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['05_-_Default']}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['Line007_05_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['05_-_Default']}
-            position={[-80.276, 99.678, -333.54]}
-            rotation={[0, -Math.PI / 2, 0]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['Cylinder002_002_02_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['02_-_Default']}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['jamdetal3_1_02_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['02_-_Default']}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['Cylinder003_01_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['01_-_Default']}
-            position={[-27.563, 31.093, -75.283]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['Line031_01_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['01_-_Default']}
-            position={[0.271, 14.316, -92.92]}
-            rotation={[-2.582, 0.192, -2.131]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['Cylinder005_01_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['01_-_Default']}
-            position={[-18.911, 68.947, -95.177]}
-            rotation={[-2.346, 0, -Math.PI]}
-            scale={1.29}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['Sphere003_03_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['03_-_Default']}
-            position={[-42.506, 15.61, -61.863]}
-            rotation={[-Math.PI / 2, 0, 0]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['Sphere004_03_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['03_-_Default']}
-            position={[-44.032, 16.613, -63.148]}
-            rotation={[-Math.PI / 2, 0, 0]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['Sphere005_03_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['03_-_Default']}
-            position={[-45.38, 17.374, -63.92]}
-            rotation={[-Math.PI / 2, 0, 0]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['Sphere006_03_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['03_-_Default']}
-            position={[-46.456, 15.61, -61.935]}
-            rotation={[-Math.PI / 2, 0, 0]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['Sphere007_03_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['03_-_Default']}
-            position={[-48.1, 13.841, -60.369]}
-            rotation={[-Math.PI / 2, 0, 0]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['Sphere008_03_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['03_-_Default']}
-            position={[-41.148, 16.726, -63.307]}
-            rotation={[-Math.PI / 2, 0, 0]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['Sphere009_03_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['03_-_Default']}
-            position={[-42.823, 17.676, -64.293]}
-            rotation={[-Math.PI / 2, 0, 0]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['Sphere010_03_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['03_-_Default']}
-            position={[-46.761, 17.677, -64.287]}
-            rotation={[-Math.PI / 2, 0, 0]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['Sphere011_03_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['03_-_Default']}
-            position={[-46.301, 19.303, -66.178]}
-            rotation={[-Math.PI / 2, 0, 0]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['Sphere012_03_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['03_-_Default']}
-            position={[-48.967, 16.405, -62.785]}
-            rotation={[-Math.PI / 2, 0, 0]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['Sphere013_03_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['03_-_Default']}
-            position={[-48.094, 18.384, -65.145]}
-            rotation={[-Math.PI / 2, 0, 0]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['Sphere014_03_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['03_-_Default']}
-            position={[-42.483, 13.949, -60.393]}
-            rotation={[-Math.PI / 2, 0, 0]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['Sphere015_03_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['03_-_Default']}
-            position={[-39.973, 17.615, -64.322]}
-            rotation={[-Math.PI / 2, 0, 0]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['Sphere016_03_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['03_-_Default']}
-            position={[-43.915, 18.451, -65.29]}
-            rotation={[-Math.PI / 2, 0, 0]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['Sphere017_03_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['03_-_Default']}
-            position={[-42.116, 19.929, -66.869]}
-            rotation={[-Math.PI / 2, 0, 0]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['Sphere018_03_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['03_-_Default']}
-            position={[-40.649, 19.072, -66.007]}
-            rotation={[-Math.PI / 2, 0, 0]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['Sphere019_03_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['03_-_Default']}
-            position={[-46.015, 20.439, -67.504]}
-            rotation={[-Math.PI / 2, 0, 0]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['Sphere020_03_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['03_-_Default']}
-            position={[-44.247, 20.941, -68.195]}
-            rotation={[-Math.PI / 2, 0, 0]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['Sphere021_03_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['03_-_Default']}
-            position={[-42.831, 20.59, -67.856]}
-            rotation={[-Math.PI / 2, 0, 0]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['Sphere022_03_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['03_-_Default']}
-            position={[-42.98, 21.69, -68.861]}
-            rotation={[-Math.PI / 2, 0, 0]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['Sphere023_03_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['03_-_Default']}
-            position={[-48.066, 20.165, -67.366]}
-            rotation={[-Math.PI / 2, 0, 0]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['Sphere024_03_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['03_-_Default']}
-            position={[-48.095, 21.406, -68.654]}
-            rotation={[-Math.PI / 2, 0, 0]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['Sphere025_03_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['03_-_Default']}
-            position={[-45.324, 22.245, -69.763]}
-            rotation={[-Math.PI / 2, 0, 0]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['Sphere026_03_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['03_-_Default']}
-            position={[-45.616, 21.565, -68.888]}
-            rotation={[-Math.PI / 2, 0, 0]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['Sphere027_03_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['03_-_Default']}
-            position={[-40.523, 21.729, -69.054]}
-            rotation={[-Math.PI / 2, 0, 0]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['Sphere028_03_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['03_-_Default']}
-            position={[-40.62, 20.75, -67.975]}
-            rotation={[-Math.PI / 2, 0, 0]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['Sphere029_03_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['03_-_Default']}
-            position={[-34.692, 33.821, -81.06]}
-            rotation={[-Math.PI / 2, 0, 0]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['Line032_03_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['03_-_Default']}
-            position={[-35.38, 34.218, -80.609]}
-            rotation={[-Math.PI / 2, 0, 0]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['Line033_03_-_Default_0'] as THREE.Mesh).geometry}
-            material={materials['03_-_Default']}
-            position={[-34.485, 33.579, -80.063]}
-            rotation={[-Math.PI / 2, 0, 0]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes['Line004_16_-_Matte_Plastic_0'] as THREE.Mesh).geometry}
-            material={materials['16_-_Matte_Plastic']}
-            rotation={[-Math.PI / 2, 0, 0]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.Cylinder007_Ceramic1_0 as THREE.Mesh).geometry}
-            material={materials.Ceramic1}
-            position={[25.553, 0, 120.025]}
-            rotation={[-Math.PI / 2, 0, 0]}
-            scale={1.046}
-          />
-          {/* <mesh scale={[5, 5, 5]} position={[10, -80, 10]}>
-            <planeGeometry args={[20, 20, 1]} />
-            <meshStandardMaterial color="#1d1416"/>
-          </mesh> */}
-        </group>
-      </group>
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={(nodes['Extract2_04_-_Default_0'] as THREE.Mesh).geometry}
+        material={materials['04_-_Default']}
+        scale={0.021}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={(nodes.Cylinder006_Ceramic_0 as THREE.Mesh).geometry}
+        material={materials.Ceramic}
+        position={[0.541, 0, 2.543]}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={0.021}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={(nodes['Box001_05_-_Default_0'] as THREE.Mesh).geometry}
+        material={materials['05_-_Default']}
+        scale={0.021}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={(nodes['Line005_02_-_Default_0'] as THREE.Mesh).geometry}
+        material={materials['02_-_Default']}
+        position={[0, 0.005, 0]}
+        scale={0.021}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={(nodes['Cylinder003_01_-_Default_0'] as THREE.Mesh).geometry}
+        material={materials['01_-_Default']}
+        position={[-0.584, 0.659, -1.595]}
+        scale={0.021}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={(nodes['Sphere003_03_-_Default_0'] as THREE.Mesh).geometry}
+        material={materials['03_-_Default']}
+        position={[-0.901, 0.331, -1.311]}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={0.021}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={(nodes['Line004_16_-_Matte_Plastic_0'] as THREE.Mesh).geometry}
+        material={materials['16_-_Matte_Plastic']}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={0.021}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={(nodes.Cylinder007_Ceramic1_0 as THREE.Mesh).geometry}
+        material={materials.Ceramic1}
+        position={[0.541, 0, 2.543]}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={0.022}
+      />
     </group>
   )
 }
