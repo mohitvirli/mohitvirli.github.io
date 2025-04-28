@@ -16,7 +16,7 @@ const WindowModel = (props: Partial<THREE.Object3D>) => {
   const handleRef = useRef<THREE.Mesh>(null);
   const windowRef = useRef<THREE.Mesh>(null);
 
-  const { nodes, materials } = useGLTF('/window.glb');
+  const { nodes, materials } = useGLTF('/window.glb', true);
   const data = useScroll();
   useFrame(() => {
     const b = data.range(0.4, 0.1);

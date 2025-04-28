@@ -10,7 +10,7 @@ import { useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
 
 export function Wanderer(props: Partial<THREE.Object3D>) {
-  const { nodes, materials } = useGLTF('/wanderer_above_the_sea_of_fog.glb')
+  const { nodes, materials } = useGLTF('/wanderer_above_the_sea_of_fog.glb', true);
   return (
     <group {...props} dispose={null}>
       <group rotation={[-Math.PI / 2, 0, 0]}>

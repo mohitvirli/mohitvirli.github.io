@@ -10,7 +10,7 @@ import { useGLTF } from '@react-three/drei'
 import * as THREE from 'three'
 
 export const Memory = (props: Partial<THREE.Object3D>) => {
-  const { nodes, materials } = useGLTF('/dalithe_persistence_of_memory.glb')
+  const { nodes, materials } = useGLTF('/dalithe_persistence_of_memory.glb', true)
   return (
     <group {...props} dispose={null}>
       <mesh
