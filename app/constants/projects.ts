@@ -42,7 +42,7 @@ export const PROJECTS: Project[] = [
     title: 'DJ Gig',
     date: 'Mar 2025',
     subtext: 'Hosted a Sundowner event which was recorded and is out on YouTube. Furthermore, I performed a UKG/140 DJ set at a local club.',
-    url: 'https://www.youtube.com/watch?v=oauQSEySkoQ&t=3128s',
+    url: 'https://www.youtube.com/watch?v=oauQSEySkoQ',
   },
   {
     title: 'Portfolio',
