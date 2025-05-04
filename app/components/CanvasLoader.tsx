@@ -7,6 +7,7 @@ import { useThemeStore } from "@stores";
 import gsap from "gsap";
 import { Suspense, useEffect, useRef, useState } from "react";
 import { isMobile } from "react-device-detect";
+import Preloader from "./Preloader";
 import ProgressLoader from "./ProgressLoader";
 import { ScrollHint } from "./ScrollHint";
 import ThemeSwitcher from "./ThemeSwitcher";
@@ -39,9 +40,6 @@ const CanvasLoader = (props: { children: React.ReactNode }) => {
   }, [isMobile]);
 
   useGSAP(() => {
-    if (progress === 0) {
-      gsap.fromTo('.wrapper', { opacity: 0 }, { opacity: 1, duration: 1, delay: 0 });
-    }
     if (progress === 100) {
       gsap.to('.base-canvas', { opacity: 1, duration: 3, delay: 1 });
     }
@@ -80,6 +78,7 @@ const CanvasLoader = (props: { children: React.ReactNode }) => {
 
             <ScrollControls pages={3} damping={0.4} maxSpeed={1} distance={1} style={{ zIndex: 1 }}>
               {props.children}
+              <Preloader />
             </ScrollControls>
 
             <Preload all />
