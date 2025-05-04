@@ -1,123 +1,115 @@
 import { Edges, Text, TextProps } from "@react-three/drei";
 import { ThreeEvent } from "@react-three/fiber";
 import gsap from "gsap";
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { isMobile } from "react-device-detect";
 import * as THREE from "three";
+
 import { usePortalStore } from "../stores";
 import { Project } from "../types";
 
-/**
- * Project Props.
- */
-interface ProjectProps {
-  project: Project,
-  isHovered: boolean,
-  index: number,
+interface ProjectTileProps {
+  project: Project;
+  index: number;
+  position: [number, number, number];
+  rotation: [number, number, number];
+  activeId: number | null;
+  onClick: () => void;
 }
 
-/**
- * Project Tile.
- */
-const ProjectTile = ({ project, isHovered, index }: ProjectProps) => {
+const ProjectTile = ({ project, index, position, rotation, activeId, onClick }: ProjectTileProps) => {
   const projectRef = useRef<THREE.Group>(null);
-  const projectWrapperRef = useRef<THREE.Group>(null);
-  const isActive = usePortalStore((state) => state.activePortalId === "projects");
+  const hoverAnimRef = useRef<gsap.core.Timeline | null>(null);
+  const [hovered, setHovered] = useState(false);
+  const isProjectSectionActive = usePortalStore((state) => state.activePortalId === "projects");
 
-  const titleProps = {
+  const titleProps = useMemo(() => ({
     font: "./soria-font.ttf",
-    color: 'black',
-  };
+    color: "black",
+  }), []);
 
-  const subtitleProps: Partial<TextProps> = {
+  const subtitleProps: Partial<TextProps> = useMemo(() => ({
     font: "./Vercetti-Regular.woff",
     color: "black",
     anchorX: "left",
     anchorY: "top",
-  };
+  }), []);
 
   useEffect(() => {
-    if (projectWrapperRef.current) {
-      gsap.to(projectWrapperRef.current?.position, {
-        y: isActive ? 0 : -10,
+    if (!projectRef.current) return;
+    hoverAnimRef.current?.kill();
+
+    const [mesh, title, dateGroup, textBox, button] = projectRef.current.children;
+
+    hoverAnimRef.current = gsap.timeline();
+    hoverAnimRef.current
+      .to(projectRef.current.position, { z: hovered ? 1 : 0, duration: 0.2 }, 0)
+      .to(projectRef.current.position, { y: hovered ? 0.4 : 0 }, 0)
+      .to(projectRef.current.scale, {
+        x: hovered ? 1.3 : 1,
+        y: hovered ? 1.3 : 1,
+        z: hovered ? 1.3 : 1,
+      }, 0)
+      .to(title.position, { y: hovered ? 0.7 : -0.8 }, 0)
+      .to(textBox.position, { y: hovered ? 0.7 : 0 }, 0)
+      // .to(textBox.scale, { y: hovered ? 1 : 0, x: hovered ? 1 : 0 }, 0)
+      .to(textBox, { fillOpacity: hovered ? 1 : 0, duration: 0.4 }, 0)
+      .to(dateGroup.position, { y: hovered ? 2.6 : 1.4 }, 0)
+      .to(mesh.scale, { y: hovered ? 2 : 1 }, 0)
+      .to((mesh as THREE.Mesh).material, { opacity: hovered ? 0.5 : 0.3 }, 0)
+      .to(mesh.position, { y: hovered ? 1 : 0 }, 0);
+
+    if (project.url) {
+      hoverAnimRef.current
+        .to(button.scale, { y: hovered ? 1 : 0, x: hovered ? 1 : 0 }, 0)
+        .to(button.position, { z: hovered ? 0.3 : -1 }, 0);
+    }
+  }, [hovered]);
+
+  useEffect(() => {
+    if (isMobile) {
+      setHovered(activeId === index);
+    }
+  }, [isMobile, activeId]);
+
+  useEffect(() => {
+    if (projectRef.current) {
+      gsap.to(projectRef.current.position, {
+        y: isProjectSectionActive ? 0 : -10,
         duration: 1,
-        delay: isActive ? index * 0.1 : 0,
+        delay: isProjectSectionActive ? index * 0.1 : 0,
       });
     }
-  }, [isActive]);
+  }, [isProjectSectionActive]);
 
-  // Fake debounce 200ms.
-  useEffect(() => {
-    // Set a timeout to only execute the animation after 200ms
-    // TODO: Cleanup
-    const timerRef = setTimeout(() => {
-      const projectGroup = projectRef.current;
-      if (!projectGroup) return;
-
-      const [mesh, title, dateGroup, textBox, button] = projectGroup.children;
-
-      const tl = gsap.timeline();
-      tl.to(projectGroup.position, { z: isHovered ? 1 : 0, duration: 0.2}, 0)
-        .to(projectGroup.position, { y: isHovered ? 0.5 : 0, delay: 0.2 }, 0)
-        .to(projectGroup.scale, {
-          x: isHovered ? 1.5 : 1,
-          y: isHovered ? 1.5 : 1,
-          z: isHovered ? 1.5 : 1,
-          delay: 0.1
-        }, 0)
-        .to(title.position, { y: isHovered ? 0.7 : -0.8, delay: 0.5 }, 0)
-        .to(textBox.position, { y: isHovered ? 0.7 : 0, delay: 0.3 }, 0)
-        .to(textBox.scale, { y: isHovered ? 1 : 0, x: isHovered ? 1 : 0, delay: 0.4 }, 0)
-        .to(dateGroup.position, { y: isHovered ? 2.6 : 1.4, delay: 0.3 }, 0)
-        // .to(dateGroup.position, { x: isHovered ? 1.1 : -1.25, delay: 0.7 }, 0)
-        .to(mesh.scale, { y: isHovered ? 2 : 1 }, 0)
-        .to(mesh.position, { y: isHovered ? 1 : 0 }, 0);
-
-      if (project.url) {
-        tl.to(button.scale, { y: isHovered ? 1 : 0, x: isHovered ? 1 : 0, delay: 0.4 }, 0)
-          .to(button.position, { z: isHovered ? 0.3 : -1, delay: 0.4 }, 0)
-          // .to(button.position, { x: isHovered ? -1.3 : 1.3, delay: 0.8 }, 0);
-      }
-    }, isMobile ? 0 : 200);
-
-    // Clean up function will clear the timeout if isHovered changes before 200ms
-    return () => {
-      if (isHovered && timerRef) {
-        clearTimeout(timerRef);
-      }
-    };
-  }, [isHovered]);
-
-  /**
-   * Handle click on project tile.
-   */
   const handleClick = (e: ThreeEvent<MouseEvent>) => {
     e.stopPropagation();
+    if (!project.url) return;
     const button = e.eventObject;
-    const tl = gsap.timeline();
-
-    tl.to(button.position, { z: 0, duration: 0.1, ease: 'bounce.inOut' })
-      .to(button.position, { z: 0.3, duration: 0.3});
-    setTimeout(() => {
-      window.open(project.url, '_blank');
-    }, 200);
+    gsap.to(button.position, { z: 0, duration: 0.1 })
+      .then(() => gsap.to(button.position, { z: 0.3, duration: 0.3 }));
+    setTimeout(() => window.open(project.url, '_blank'), 50);
   };
 
   return (
-    <group ref={projectWrapperRef}>
+    <group
+      position={position}
+      rotation={rotation}
+      onClick={onClick}
+      onPointerOver={() => !isMobile && setHovered(true)}
+      onPointerOut={() => !isMobile && setHovered(false)}>
       <group ref={projectRef}>
         <mesh>
           <planeGeometry args={[4.2, 2, 1]} />
-          <meshPhysicalMaterial
-            transmission={1}
-            roughness={0.3}
-          />
+          <meshBasicMaterial color="#FFF" transparent opacity={0.3}/>
+          {/* <meshPhysicalMaterial transmission={1} roughness={0.3} /> */}
           <Edges color="black" lineWidth={1.5} />
         </mesh>
-        <Text {...titleProps}
-          position={[-1.9, -0.8, 0.1]}
-          anchorX={'left'}
-          anchorY={'bottom'}
+        <Text
+          {...titleProps}
+          position={[-1.9, -0.8, 0.101]}
+          anchorX="left"
+          anchorY="bottom"
           maxWidth={4}
           fontSize={0.8}>
           {project.title}
@@ -125,7 +117,7 @@ const ProjectTile = ({ project, isHovered, index }: ProjectProps) => {
         <group position={[-1.25, 1.4, 0.01]}>
           <mesh>
             <planeGeometry args={[1.7, 0.4, 1]} />
-            <meshBasicMaterial color={'#777'} wireframe opacity={0}/>
+            <meshBasicMaterial color="#777" opacity={0} wireframe />
             <Edges color="black" lineWidth={1} />
           </mesh>
           <Text
@@ -135,34 +127,38 @@ const ProjectTile = ({ project, isHovered, index }: ProjectProps) => {
             {project.date.toUpperCase()}
           </Text>
         </group>
-        <Text maxWidth={3.8}
+        <Text
           {...subtitleProps}
+          maxWidth={3.8}
           position={[-1.9, 2.3, 0.1]}
-          scale={[0, 0, 1]}
+          // scale={[0, 0, 1]}
           fontSize={0.2}>
           {project.subtext}
         </Text>
-        { project.url ? <group position={[1.3, -0.6, -1]}
-          scale={[0, 0, 1]}
-          onClick={handleClick}
-          onPointerOver={() => document.body.style.cursor = 'pointer'}
-          onPointerOut={() => document.body.style.cursor = 'auto'}>
-          <mesh>
-            <boxGeometry args={[1.1, 0.4, 0.2]} />
-            <meshBasicMaterial color={'#222'}/>
-            <Edges color="white" lineWidth={1} />
-          </mesh>
-          <Text
-            {...subtitleProps}
-            color={'white'}
-            position={[-0.4, 0.15, 0.2]}
-            fontSize={0.25}>
-            VIEW ↗
-          </Text>
-        </group> : null }
+        {project.url && (
+          <group
+            position={[1.3, -0.6, -1]}
+            scale={[0, 0, 1]}
+            onClick={handleClick}
+            onPointerOver={() => document.body.style.cursor = 'pointer'}
+            onPointerOut={() => document.body.style.cursor = 'auto'}>
+            <mesh>
+              <boxGeometry args={[1.1, 0.4, 0.2]} />
+              <meshBasicMaterial color="#222" />
+              <Edges color="white" lineWidth={1} />
+            </mesh>
+            <Text
+              {...subtitleProps}
+              color="white"
+              position={[-0.4, 0.15, 0.2]}
+              fontSize={0.25}>
+              VIEW ↗
+            </Text>
+          </group>
+        )}
       </group>
     </group>
   );
-}
+};
 
 export default ProjectTile;
