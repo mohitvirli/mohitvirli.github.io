@@ -30,7 +30,7 @@ const WindowModel = (props: Partial<THREE.Object3D>) => {
   const handleRef = useRef<THREE.Mesh>(null);
   const windowRef = useRef<THREE.Mesh>(null);
 
-  const { nodes, materials } = useGLTF('/window.glb', true ) as GLTFResult
+  const { nodes, materials } = useGLTF('models/window.glb', true ) as GLTFResult
   const data = useScroll();
   useFrame(() => {
     const b = data.range(0.4, 0.1);
@@ -72,6 +72,6 @@ const WindowModel = (props: Partial<THREE.Object3D>) => {
   )
 }
 
-useGLTF.preload('/window.glb');
+useGLTF.preload('models/window.glb');
 
 export default WindowModel;

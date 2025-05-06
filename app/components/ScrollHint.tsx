@@ -22,7 +22,7 @@ export const ScrollHint = () => {
     }
   }, [showScrollHint]);
 
-  const svgSrc = hintText === 'PAN' ? '/chevrons-left-right.svg' : '/chevrons-up-down.svg';
+  const svgSrc = hintText === 'PAN' ? 'icons/chevrons-left-right.svg' : 'icons/chevrons-up-down.svg';
 
   return (
     <div className="fixed w-full bottom-5 scroll-hint" style={{ opacity: 0 }}>
