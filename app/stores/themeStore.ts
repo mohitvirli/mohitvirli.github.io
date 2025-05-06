@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-const AvailableColors = ['#2d84c7', '#111'];
+const AvailableColors = ['#0690d4', '#111'];
 
 interface ThemeStore {
   colors: string[];
