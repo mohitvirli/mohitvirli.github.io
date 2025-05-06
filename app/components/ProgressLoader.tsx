@@ -70,7 +70,7 @@ const ProgressLoader = ({ progress }: { progress: number }) => {
               backgroundColor: 'white',
             }}
           />
-          <div className='mt-2'>
+          <div className='mt-2 text-white'>
             {`${progress.toFixed(2)}%`}
           </div>
         </div>

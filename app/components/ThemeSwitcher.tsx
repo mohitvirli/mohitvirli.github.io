@@ -9,7 +9,7 @@ import { isMobile } from "react-device-detect";
 
 const ThemeSwitcher = () => {
   const themeSwitcherRef = useRef<HTMLDivElement>(null);
-  const nextColor = useThemeStore((state) => state.nextColor);
+  const { nextColor, color } = useThemeStore();
   const isActive = usePortalStore((state) => state.activePortalId);
   const [positionClass, setPositionClass] = useState<string>('');
   const toggleTheme = () => nextColor();
@@ -25,6 +25,14 @@ const ThemeSwitcher = () => {
   useEffect(() => {
     setPositionClass(isMobile ? 'bottom-2 left-2' : 'top-6 right-6');
   }, [isMobile]);
+
+  useEffect(() => {
+    const metaThemeColor = document.querySelector('meta[name="theme-color"]')
+
+    if (metaThemeColor) {
+      metaThemeColor.setAttribute('content', color);
+    }
+  }, [color]);
 
   return (
     <div className={`fixed ${positionClass}`} ref={themeSwitcherRef} style={{ opacity: 0, zIndex: 2 }}>
