@@ -6,8 +6,8 @@ import { useProgress } from "@react-three/drei";
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
-import CloudContainer from "./models/Cloud";
-import WindowModel from "./models/WindowModel";
+import CloudContainer from "../models/Cloud";
+import WindowModel from "../models/WindowModel";
 import TextWindow from "./TextWindow";
 
 const Hero = () => {

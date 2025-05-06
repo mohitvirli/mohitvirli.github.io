@@ -2,7 +2,7 @@ import { ScrollControls } from "@react-three/drei";
 import { usePortalStore } from "@stores";
 import { useEffect, useState } from "react";
 import * as THREE from "three";
-import { Memory } from "./models/Memory";
+import { Memory } from "../../models/Memory";
 import Timeline from "./Timeline";
 
 const Work = () => {

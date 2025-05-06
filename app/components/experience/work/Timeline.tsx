@@ -5,8 +5,9 @@ import gsap from "gsap";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { isMobile } from "react-device-detect";
 import * as THREE from "three";
-import { WORK_TIMELINE } from "../constants";
-import { WorkTimelinePoint } from "../types";
+
+import { WORK_TIMELINE } from "@constants";
+import { WorkTimelinePoint } from "@types";
 
 const reusableLeft = new THREE.Vector3(-0.3, 0, -0.1);
 const reusableRight = new THREE.Vector3(0.3, 0, -0.1);

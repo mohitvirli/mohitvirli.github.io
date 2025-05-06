@@ -1,7 +1,8 @@
-import { useScrollHintStore } from "@stores";
 import gsap from "gsap";
 import Image from "next/image";
 import { useEffect } from "react";
+
+import { useScrollHintStore } from "@stores";
 
 export const ScrollHint = () => {
   const { showScrollHint, hintText } = useScrollHintStore();

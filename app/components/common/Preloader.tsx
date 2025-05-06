@@ -1,9 +1,9 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Memory } from './models/Memory'
-import { Wanderer } from './models/Wanderer'
-import WindowModel from './models/WindowModel'
+import { Memory } from '../models/Memory'
+import { Wanderer } from '../models/Wanderer'
+import WindowModel from '../models/WindowModel'
 
 // List of models to preload.
 const MODELS = [WindowModel, Memory, Wanderer];

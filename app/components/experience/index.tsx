@@ -5,8 +5,8 @@ import { useRef } from "react";
 import { isMobile } from "react-device-detect";
 import * as THREE from 'three';
 import GridTile from "./GridTile";
-import Projects from "./Projects";
-import Work from "./Work";
+import Projects from "./projects";
+import Work from "./work";
 
 const Experience = () => {
   const titleRef = useRef<THREE.Group>(null);

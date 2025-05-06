@@ -4,8 +4,8 @@ import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
 import { isMobile } from "react-device-detect";
 import * as THREE from "three";
-import { FOOTER_LINKS } from "../constants";
-import { FooterLink } from "../types";
+import { FOOTER_LINKS } from "../../constants";
+import { FooterLink } from "../../types";
 
 const FooterLinkItem = ({ link }: { link: FooterLink }) => {
   const textRef = useRef<THREE.Group>(null);

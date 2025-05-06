@@ -1,10 +1,10 @@
 'use client';
 
-import CanvasLoader from "./components/CanvasLoader";
-import Experience from "./components/Experience";
-import Footer from "./components/Footer";
-import Hero from "./components/Hero";
-import ScrollWrapper from "./components/ScrollWrapper";
+import CanvasLoader from "./components/common/CanvasLoader";
+import ScrollWrapper from "./components/common/ScrollWrapper";
+import Experience from "./components/experience";
+import Footer from "./components/footer";
+import Hero from "./components/hero";
 
 const Home = () => {
   return (

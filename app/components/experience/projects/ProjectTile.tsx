@@ -5,8 +5,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { isMobile } from "react-device-detect";
 import * as THREE from "three";
 
-import { usePortalStore } from "../stores";
-import { Project } from "../types";
+import { usePortalStore } from "@stores";
+import { Project } from "@types";
 
 interface ProjectTileProps {
   project: Project;
