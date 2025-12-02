@@ -120,12 +120,12 @@ const ProjectTile = ({ project, index, position, rotation, activeId, onClick }: 
             <meshBasicMaterial color="#777" opacity={0} wireframe />
             <Edges color="black" lineWidth={1} />
           </mesh>
-          <Text
+          {/* <Text
             {...subtitleProps}
             position={[-0.7, 0.2, 0]}
             fontSize={0.3}>
             {project.date.toUpperCase()}
-          </Text>
+          </Text> */}
         </group>
         <Text
           {...subtitleProps}

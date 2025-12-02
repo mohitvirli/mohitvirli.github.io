@@ -14,12 +14,12 @@ const vercettiFont = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Mohit Virli ✌️",
-  description: "A frontend developer by profession, a creative at heart.",
-  keywords: "Mohit Virli, Frontend Engineer, React Developer, Three.js, Creative Developer, Web Development, Angular, JavaScript, TypeScript, Portfolio",
-  authors: [{ name: "Mohit Virli" }],
-  creator: "Mohit Virli",
-  publisher: "Mohit Virli",
+  title: " Rohan ✌️",
+  description: "A full-stack developer by profession, a creative at heart.",
+  keywords: "Rohan Subhash, Full-Stack Engineer, React Developer, Three.js, Creative Developer, Web Development, Angular, JavaScript, TypeScript, Portfolio",
+  authors: [{ name: "Rohan Subhash" }],
+  creator: "Rohan Subhash",
+  publisher: "Rohan Subhash",
   formatDetection: {
     email: false,
     address: false,
@@ -36,16 +36,16 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Mohit Virli - Frontend Engineer",
+    title: "Rohan Subhash- Frontend Engineer",
     description: "Frontend engineer by profession, creative at heart.",
     url: "https://mohitvirli.github.io",
-    siteName: "Mohit Virli's Portfolio",
+    siteName: "M Portfolio",
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mohit Virli - Frontend Engineer",
+    title: "Rohan Subhash - Frontend Engineer",
     description: "Frontend engineer by profession, creative at heart.",
   },
   verification: {

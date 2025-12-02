@@ -5,7 +5,7 @@ interface ProjectUrl {
 
 export interface Project {
   title: string;
-  date: string;
+  // date: string;
   subtext: string;
   url?: string;
   urls?: ProjectUrl[];

@@ -21,6 +21,7 @@ const TextWindow = () => {
 
   const fontProps = {
     font: "./soria-font.ttf",
+    
   };
 
   return (
