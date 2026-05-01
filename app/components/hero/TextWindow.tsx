@@ -50,7 +50,7 @@ const TextWindow = () => {
           scale={[1, -1, 1]}
           fontSize={0.8}
           rotation={[0, -Math.PI / 2,  -Math.PI / 2]}>
-          DESIGNER. DUMBASS.
+          ANALYST. BACKEND.
         </Text>
 
         <Text color="white" anchorX="left" anchorY="middle"
@@ -59,7 +59,7 @@ const TextWindow = () => {
           fontSize={0.8}
           position={[0, 0, -0.6]}
           rotation={[0, -Math.PI / 2,  -Math.PI / 2]}>
-          DJ. MELOMANIAC
+          ARTIST. MELOMANIAC
         </Text>
       </group>
 
@@ -69,7 +69,7 @@ const TextWindow = () => {
           scale={[-1, -1, 1]}
           fontSize={0.8}
           rotation={[0, -Math.PI / 2,  -Math.PI / 2]}>
-          GAMER. CREATIVE
+          LOGIC. CREATIVE
         </Text>
         <Text color="white" anchorX="right" anchorY="middle"
           {...fontProps}
@@ -77,7 +77,7 @@ const TextWindow = () => {
           fontSize={0.8}
           position={[0, 0, -0.6]}
           rotation={[0, -Math.PI / 2,  -Math.PI / 2]}>
-          CREATIVE. OPTIMIST
+          CREATIVE. SCIENTIST
         </Text>
       </group>
     </group>

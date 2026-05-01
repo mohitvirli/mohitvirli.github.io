@@ -11,7 +11,7 @@ export const FOOTER_LINKS: FooterLink[] = [
     name: 'GitHub',
     hoverText: 'Open Sourcing',
     icon: 'icons/github.svg',
-    url: 'https://github.com/mohitvirli',
+    url: 'https://github.com/rebecatorrecilla',
   },
   {
     name: 'Spotify',
@@ -21,7 +21,7 @@ export const FOOTER_LINKS: FooterLink[] = [
   },
   {
     name: 'Instagram',
-    hoverText: '@clevirli',
+    hoverText: '@rebeca13todo',
     icon: 'icons/instagram.svg',
     url: 'https://www.instagram.com/clevirli/',
   },
