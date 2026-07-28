@@ -16,7 +16,7 @@
     "@react-three/fiber": "^9.0.4",
     "@vercel/analytics": "^2.0.1",
     "gsap": "^3.12.7",
-    "next": "^16.2.6",
+    "next": "^16.2.12",
     "react": "^19.2.5",
     "react-device-detect": "^2.2.3",
     "react-dom": "^19.2.5",
